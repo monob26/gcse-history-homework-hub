@@ -57,6 +57,8 @@ class Runner:
         self.people = {}
         self.accounts = {}
         self.ids = {}
+        self.registers = {}
+        self.last_retry_after = 0
 
     def http(self, method, path, data=None, bearer=None, schema=None, admin=False):
         self.requests += 1
@@ -71,8 +73,10 @@ class Runner:
         try:
             with urllib.request.urlopen(req, timeout=20) as response:
                 status, body = response.status, response.read()
+                self.last_retry_after = int(response.headers.get('Retry-After', '0'))
         except urllib.error.HTTPError as error:
             status, body = error.code, error.read()
+            self.last_retry_after = int(error.headers.get('Retry-After', '0'))
         try:
             body = json.loads(body)
         except (ValueError, UnicodeError):
@@ -102,23 +106,34 @@ class Runner:
             statements += [f"INSERT INTO public.history_classes(id,class_name,year_group) VALUES ('{class_id}','{self.class_names[who]}',10);",
                            f"INSERT INTO public.history_teacher_classes(user_id,class_id) VALUES ('{self.accounts[who][2]}','{class_id}');"]
         prefix = ''.join(secrets.choice('ABCDEFGHJKLMNPQRSTUVWXYZ23456789') for _ in range(5))
+        random_codes = sql("SELECT to_json(EXISTS(SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='history_pupils' AND column_name='register_number'));", True)
         for n, key in enumerate(['T5', 'T6', 'T7', 'other', 'T8', 'T9', 'T10', 'T11', 'T12', 'B'], 1):
             pupil_id = str(uuid.uuid4())
             code = prefix + '-' + str(n).zfill(2)
             self.people[key] = code
             self.ids[key] = pupil_id
+            self.registers[key] = n
             group = 'B' if key == 'B' else 'A'
-            statements.append(f"INSERT INTO public.history_pupils(id,pupil_code,class_id) VALUES ('{pupil_id}','{code}','{self.classes[group]}');")
+            if random_codes:
+                statements.append(f"INSERT INTO public.history_pupils(id,register_number,class_id) VALUES ('{pupil_id}',{n},'{self.classes[group]}');")
+            else:
+                statements.append(f"INSERT INTO public.history_pupils(id,pupil_code,class_id) VALUES ('{pupil_id}','{code}','{self.classes[group]}');")
         statements += [f"""INSERT INTO public.history_quizzes(id,quiz_title,year_group,topic,week_number,total_questions,pass_mark,is_published,created_at)
             VALUES ('{self.quiz}','R2 Fictional Quiz',10,'Fictional security fixture',1,25,20,true,clock_timestamp());""",
             f"""INSERT INTO public.history_questions(quiz_id,question_number,question_type,question_text,answer_options,correct_answer,explanation,time_allowed_seconds)
             SELECT '{self.quiz}',n,'multiple_choice','Fictional question '||n,'[\"A\",\"B\",\"C\",\"D\"]'::jsonb,'0'::jsonb,'Fictional explanation',45 FROM generate_series(1,25)n;"""]
         sql('\n'.join(statements))
+        if random_codes:
+            for key, pupil_id in self.ids.items():
+                self.people[key] = sql(f"SELECT to_json(pupil_code) FROM public.history_pupils WHERE id='{pupil_id}';", True)
         self.tables = sql("SELECT coalesce(json_agg(json_build_object('schema',n.nspname,'name',c.relname)), '[]'::json) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname IN ('public','homework_api') AND c.relkind IN ('r','p');", True)
         self.functions = json.loads((ROOT / 'supabase/schema-snapshot.json').read_text())['functions']
         # T12 starts with an existing unfinished attempt, as the test requires.
         # This occurs during fixture preparation, not while the test is running.
         self.start('T12')
+        if random_codes:
+            # Isolate this LOCAL test run before its test phase; never reset mid-test.
+            sql('TRUNCATE homework_private.pupil_code_failures;')
 
     def login(self, who):
         email, password, _ = self.accounts[who]
@@ -226,23 +241,44 @@ class Runner:
 
     def T5(self):
         blocked = None
+        began = time.monotonic()
+        shapes = set()
         for n in range(50):
             status, body = self.rpc('get_current_pupil_homework', {'entered_code': 'WRONG-' + str(n)})
+            if status == 200 and body:
+                shapes.add(tuple(sorted(body[0])))
             if status == 429 or (status >= 400 and isinstance(body, dict) and any(w in body.get('message', '').lower() for w in ['rate', 'limit', 'many'])):
-                blocked = n + 1
-                break
-        self.rpc('get_current_pupil_homework', {'entered_code': self.people['T5']})
-        return False, 'No throttle before guess 50' if blocked is None else f'Blocked at {blocked}; recovery interval/shared-network clearance still needs verification'
+                blocked = blocked or n + 1
+        within_minute = time.monotonic() - began < 60
+        valid_status, _ = self.rpc('get_current_pupil_homework', {'entered_code': self.people['T5']})
+        if blocked is None:
+            return False, 'No throttle before guess 50'
+        delay = self.last_retry_after
+        if valid_status != 429 or not (0 < delay <= 10):
+            return False, 'Known valid code did not share a bounded, stated network cooldown'
+        time.sleep(delay + 0.25)
+        status, body = self.rpc('get_current_pupil_homework', {'entered_code': self.people['T5']})
+        recovered = status == 200 and body and body[0].get('valid_code') is True
+        same_shape = recovered and len(shapes) == 1 and tuple(sorted(body[0])) in shapes
+        return blocked <= 20 and within_minute and recovered and same_shape, f'50 wrong codes sent within one minute; first block at {blocked}; valid code shared at-most-10-second network block and recovered; valid/invalid row fields match'
 
     def T6(self):
         code = self.people['T6']
-        prefix, number = code.split('-')
-        neighbour = prefix + '-' + str(int(number) + 1).zfill(2)
-        status, body = self.rpc('get_current_pupil_homework', {'entered_code': neighbour})
-        valid = status == 200 and body and body[0].get('valid_code') is True
-        if valid:
-            raise Disclosure('A neighbouring fictional pupil code was derived and accepted; response withheld')
-        return 'Neighbouring code not accepted; code-generation independence also requires an R3 review'
+        if '-' in code:
+            prefix, number = code.split('-')
+            neighbours = [prefix + '-' + str(int(number) + 1).zfill(2)]
+        else:
+            alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+            index = alphabet.index(code[-1])
+            neighbours = [code[:-1] + alphabet[(index + delta) % len(alphabet)] for delta in [-1, 1]]
+            neighbours += [code[:5] + '-' + str(self.registers['T6'] + 1).zfill(2)]
+        for neighbour in neighbours:
+            status, body = self.rpc('get_current_pupil_homework', {'entered_code': neighbour})
+            valid = status == 200 and body and body[0].get('valid_code') is True
+            if valid:
+                raise Disclosure('A neighbouring fictional pupil code was derived and accepted; response withheld')
+            assert status == 200 and body and body[0].get('valid_code') is False, 'Neighbour check was masked by throttling or an unrelated error'
+        return f'{len(neighbours)} neighbouring/legacy-register derivations refused without masking; random-generator independence checked separately in R3'
 
     def T7(self):
         attempt, other = self.start('T7'), self.start('other')
@@ -388,10 +424,14 @@ const fs=require('node:fs');
         email, password, _ = self.accounts['A']
         fixture = {'root': str(ROOT), 'email': email, 'password': password, 'code': self.people['T5'],
                    'otherCode': self.people['T6'], 'foreignCode': self.people['B'], 'quiz': self.quiz}
+        has_registers = sql("SELECT to_json(EXISTS(SELECT 1 FROM information_schema.columns WHERE table_schema='public' AND table_name='history_pupils' AND column_name='register_number'));", True)
+        if has_registers:
+            fixture['registerCodes'] = sql(f"SELECT json_agg(pupil_code ORDER BY register_number) FROM public.history_pupils WHERE class_id='{self.classes['A']}';", True)
+            source = source.replace("assert.equal(external.length, 0, 'A page attempted to contact a non-local host');", "assert.deepEqual(await teacher.locator('#results tr td:first-child').allTextContents(), fixture.registerCodes);\n    assert.equal(external.length, 0, 'A page attempted to contact a non-local host');")
         p = subprocess.run(['node', '-e', source], input=json.dumps(fixture), capture_output=True, text=True)
         assert p.returncode == 0, 'Full pupil/teacher page regression failed; credential-bearing diagnostics withheld'
         assert p.stdout.count('PASS:') == 4, 'Browser regression did not finish all four assertion groups'
-        return {'result': 'pass', 'evidence': 'Original pupil page completes all 25 questions at 25/25 through the new wrappers; original teacher page displays that result and 8 unattempted allocated pupils; loopback requests only'}
+        return {'result': 'pass', 'evidence': 'Original pupil page completes all 25 questions at 25/25 through the new wrappers; teacher page displays the result and 8 unattempted allocated pupils; loopback requests only', 'separate_register_order_verified': bool(has_registers)}
 
     def run(self, selected):
         stopped = False

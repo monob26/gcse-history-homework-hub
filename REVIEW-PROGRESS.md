@@ -7,8 +7,8 @@ No hosted database writes, hosted test project, pushes or website publication.
 | Order | Item | Status | Acceptance evidence / remaining work |
 | --- | --- | --- | --- |
 | 1 | R1 Backend under version control | Complete | CLI 2.81.3 link succeeded (exit 0) after owner updated the environment token. Existing MCP export, catalog equality, SQL/secret checks and fresh local rebuild/two-page acceptance evidence retained without repeating tests. See docs/R1-VERIFICATION.md. |
-| 2 | R2 Outside access rules | In progress; blocked | Two new migrations pass local access, boundary and page checks. R2.7 verified hosted. T5/T6 fail, T13/T14 pending; hosted deployment and leaked-password protection unresolved. See docs/R2-REVIEW.md. |
-| 3 | R3 Unguessable pupil codes | Not started | Confirmation, independent codes, register field, throttling and tests pending. |
+| 2 | R2 Outside access rules | In progress; blocked | T1-T12 now pass locally after R2/R3 fixes; R2.7 verified hosted. Hosted fixes, leaked-password protection and T13/T14 remain unresolved. |
+| 3 | R3 Unguessable pupil codes | Implemented and verified locally; not deployed | Owner confirmed legacy design; aggregate hosted inspection completed. Independent random codes, register field/sort and DB failure limits prepared locally. No hosted rotation or publication. See docs/R3-REVIEW.md. |
 | 4 | R4 Timer bugs | Not started | Confirmation and both browser regression tests pending. |
 | 5 | R5 Library pin and integrity | Not started | Pin/hash or local copy and sign-in verification pending. |
 | 6 | R11 Shared-network teacher access | Not started | Logs, deliberate limits, CAPTCHA, SMTP and T13/T14 pending. |
@@ -34,18 +34,19 @@ R1 details:
 ## All 14 adversarial tests
 
 Current evidence is LOCAL and fictional only; no hosted adversarial run occurred.
-The earlier runs stopped on disclosures as required. After the owner asked to continue,
-a new targeted run tested the remaining safe local cases; failed checks were fixed in a
-separate migration and rerun. Historical failures are retained in docs/r2/.
+Following the owner's confirmation of the legacy design, R3 fixes were prepared locally
+without marking R2 complete. A full new run was required after those fixes by the
+companion: T1-T12 passed; T13/T14 remain not run, not waived or counted as passed.
+Historical failures and stop-on-disclosure runs remain in docs/r2/.
 
-| Test | Current local status | Evidence / remaining work |
+| Test | Latest local status | Evidence |
 | --- | --- | --- |
 | T1 | pass | 9 table requests: no rows; no correct answers returned |
 | T2 | pass | 16 teacher/unused RPC probes refused (false teacher predicate is a refusal) |
 | T3 | pass | Signup refused explicitly with signup_disabled |
 | T4 | pass | Teacher A cannot read B classes, pupils or class results |
-| T5 | fail | No throttle before guess 50 |
-| T6 | fail | A neighbouring fictional pupil code was derived and accepted; response withheld |
+| T5 | pass | 50 wrong codes sent within one minute; first block at 20; valid code shared at-most-10-second network block and recovered; valid/invalid row fields match |
+| T6 | pass | 3 neighbouring/legacy-register derivations refused without masking; random-generator independence checked separately in R3 |
 | T7 | pass | All six invalid/missing/other-token requests refused; 1 distinct error shapes/messages |
 | T8 | pass | Correct answer submitted one second after the displayed server deadline was marked wrong |
 | T9 | pass | Second submission refused and the single original wrong answer stands |
@@ -55,12 +56,21 @@ separate migration and rerun. Historical failures are retained in docs/r2/.
 | T13 | not run | Not run: requires approved hosted shared-network lockout test, current Auth limits/logs and teacher instructions; local Auth cannot establish the hosted limit |
 | T14 | not run | Not run: requires approved hosted reset emails, test inbox verification and current SMTP cap; local Mailpit cannot prove hosted delivery/quota |
 
-The approved unallocated-teacher check passes locally. Structural RLS/search-path/grant
-checks and a complete 25-question pupil/teacher page regression also pass after the
-boundary fixes. See docs/r2/current-test-summary.json.
+## R3 checklist
 
-R2.7 is VERIFIED on hosted Supabase: Site URL and sole redirect entry are both
-`https://monob26.github.io/history-teacher-dashboard/`, and public signup is disabled.
-R2 is not complete: hosted remediation/verification, leaked-password protection, T5/T6
-and the required full adversarial process remain unresolved. No later review item has
-been marked complete. No R2 changes have been pushed, merged, published or applied hosted.
+- [x] Owner confirmed the original class-prefix/register-number design.
+- [x] Hosted aggregate-only inspection: 466 legacy-format codes, 17 populated classes,
+  16 with one shared prefix, 13 sequential from one; no register_number column.
+- [x] New local migration generates independent 12-character codes with a 32-symbol
+  unambiguous alphabet and cryptographic randomness.
+- [x] Preserve register numbers in their own column; update teacher query/RPC/sort.
+- [x] Database limits cover both code-checking entry points and persist failed attempts.
+- [x] Valid/invalid homework responses share fields and a 50 ms minimum processing floor.
+- [x] T5/T6 and upgrade-preservation, limiter-recovery and browser checks pass locally.
+- [x] Clean rebuild verification completed, including random seed codes, both pages and register sorting.
+- [ ] Hosted migration/credential rotation and trusted-client-IP verification approved/completed.
+- [ ] R3 marked complete: remains unchecked until the outstanding deployment checks are satisfied.
+
+R2.7 remains verified on hosted Supabase. R2 is still incomplete: no hosted R2 migration
+has been applied, leaked-password protection is unresolved on Free, and hosted T13/T14
+are not authorised/completed. No R2 or R3 pushes, merges or publications occurred.

@@ -1,0 +1,17 @@
+{
+  "target": "disposable local Supabase only",
+  "result": "pass",
+  "all_migrations_and_seed_replayed": true,
+  "seed": {
+    "pupils": 3,
+    "valid_codes": true,
+    "separate_registers": true,
+    "unique_codes": true
+  },
+  "original_page_regression": {
+    "result": "pass",
+    "evidence": "Original pupil page completes all 25 questions at 25/25 through the new wrappers; teacher page displays the result and 8 unattempted allocated pupils; loopback requests only",
+    "separate_register_order_verified": true
+  },
+  "individual_codes_or_tokens_exported": false
+}

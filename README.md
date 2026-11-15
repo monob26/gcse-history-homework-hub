@@ -174,7 +174,36 @@ and an owner-authorised continuation, targeted remaining tests can run in a sepa
 Fixes are never applied during a test run. Use `--smoke-pages` with `--tests ''` and set
 `SUPABASE_JS_TEST_BUNDLE` to reuse the R1 browser assertions against isolated R2 fixtures.
 
-R2 remains incomplete. T1-T4 and T7-T12 have passed locally. T5/T6 fail, T13/T14 are not run,
+R2 remains incomplete. After the authorised local R3 fixes, T1-T12 pass locally; T13/T14 are not run,
 and no complete clean full-suite pass is claimed. R2.7 is verified on hosted Supabase;
 hosted migrations and leaked-password protection still require owner action.
 See docs/R2-REVIEW.md and docs/r2/current-test-summary.json.
+
+## R3: independent pupil codes (local, not deployed)
+
+`20261115193842_independent_pupil_codes.sql` preserves the old suffix in a separate
+`history_pupils.register_number` integer column and rotates every pupil code to an
+independent 12-character value. The generator uses pgcrypto cryptographic bytes and
+`ABCDEFGHJKLMNPQRSTUVWXYZ23456789`; no class prefix or register information is encoded.
+Future pupils receive generated codes by default; supply register_number separately.
+The revised seed creates fictional pupils without hardcoded codes.
+
+The authorised class-results RPC now additionally returns `register_number integer`.
+The teacher page selects and sorts by that field; deploy the database migration before
+publishing the matching teacher page. Both HTML changes remain local.
+
+Failed code checks through both homework lookup and quiz start share a database counter
+per gateway-observed address. Twenty failures in the observation window trigger a
+10-second cooldown. Blocked requests do not extend it; the budget resets after cooldown.
+This is a burst/cooldown policy, not a promise of a strict twenty-per-ten-minute quota.
+A valid pupil sharing that address is temporarily blocked too; active quiz RPCs and
+teacher Auth are unaffected. The pupil page shows a plain retry message.
+
+Before hosted deployment, verify the gateway's trusted client-IP header handling. Local
+Kong testing rejects forged leading XFF values; it does not prove the hosted Cloudflare
+trust boundary. The migration revokes old pupil codes and unfinished-attempt tokens,
+while preserving saved progress and question deadlines. New codes must be distributed
+through an authorised teacher workflow after approved deployment; do not export them
+into documentation, migrations or test reports. No hosted rotation has occurred.
+
+See docs/R3-REVIEW.md for evidence, trade-offs, scripts and remaining approval requirements.

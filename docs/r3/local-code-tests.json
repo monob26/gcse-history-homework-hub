@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-15",
+  "target": "local fictional Supabase only",
+  "phase": "r3-code-checks",
+  "stopped_on_disclosure": false,
+  "tests": {
+    "T1": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T2": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T3": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T4": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T5": {
+      "result": "pass",
+      "evidence": "50 wrong codes sent within one minute; first block at 20; valid code shared at-most-10-second network block and recovered; valid/invalid row fields match",
+      "requests": 52
+    },
+    "T6": {
+      "result": "pass",
+      "evidence": "3 neighbouring/legacy-register derivations refused without masking; random-generator independence checked separately in R3",
+      "requests": 3
+    },
+    "T7": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T8": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T9": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T10": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T11": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T12": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T13": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T14": {
+      "result": "not run",
+      "evidence": "Not reached"
+    }
+  },
+  "R2_additional": {},
+  "http_requests": 59
+}

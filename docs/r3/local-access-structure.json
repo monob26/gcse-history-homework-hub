@@ -1,0 +1,10 @@
+{
+  "check_pupil_code_dropped": true,
+  "no_client_schema_creation": true,
+  "all_application_tables_have_rls": true,
+  "definers_have_fixed_search_path": true,
+  "every_table_has_explicit_policy": true,
+  "no_client_table_writes_or_truncate": true,
+  "private_definer_grants_are_minimal": true,
+  "no_exposed_definer_executes_as_client": true
+}

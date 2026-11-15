@@ -8,9 +8,10 @@ merges, publications or paid resources were performed.
 ## Current outcome
 
 All nine hosted application tables have RLS enabled and the hosted R2.7 Auth settings
-are verified. Repeatable local tests pass for T1-T4 and T7-T12, the approved teacher
+are verified. Repeatable local tests pass for T1-T12, the approved teacher
 with no allocated classes, the structural access rules and both original pages.
-T5/T6 remain failed; T13/T14 are not run. No complete clean full-suite pass is claimed.
+T5/T6 initially failed and now pass locally after the owner-authorised R3 fixes. T13/T14
+are not run. No complete hosted or all-14 pass is claimed.
 Hosted migration application and leaked-password protection also remain unresolved.
 
 ## Security findings and prepared fixes
@@ -53,7 +54,7 @@ Hosted migration application and leaked-password protection also remain unresolv
 | 5. Definer search paths and grants | Hosted definitions use fixed paths. Local structural checks pass after both migrations: only needed private definer execution, no exposed client-executable definer, no client table writes or schema creation. |
 | 6. Drop check_pupil_code | First migration drops without CASCADE. Absence verified locally; hosted function remains until deployment is explicitly approved. |
 | 7. Signup and redirects | VERIFIED hosted: disable_signup=true; Site URL and sole redirect are https://monob26.github.io/history-teacher-dashboard/. Owner corrected settings manually; the assistant only verified them. No more permission is needed for these completed reads. |
-| 8. Adversarial tests recorded | T1-T4 and T7-T12 pass locally; T5/T6 fail; T13/T14 not run. Prior disclosure runs stopped immediately. The owner subsequently requested continuation, so the remaining safe local tests ran in a new invocation. Historical failures and the latest results are all retained. Full clean suite and hosted tests remain pending. |
+| 8. Adversarial tests recorded | T1-T12 now pass locally after authorised R3 work; T13/T14 remain not run. Prior disclosure runs stopped immediately. The owner subsequently requested continuation, so the remaining safe local tests ran in a new invocation. Historical failures and the latest results are all retained. Full clean suite and hosted tests remain pending. |
 
 R2 is not ticked complete even though its specific anonymous/unallocated-teacher scripts
 pass locally: the remaining requirements have not all been satisfied.
@@ -150,8 +151,9 @@ implementation/execution is still pending; no placeholder result is a completed 
 - **Leaked passwords:** R2.1 cannot be fully satisfied on the current Free plan using
   Supabase's documented feature. The owner must decide about the paid entitlement or
   explicitly amend the requirement. No upgrade or silent exception is authorised.
-- **T5/T6:** code generation and throttling still need R3's required confirmation and
-  fixes. They are not waived or marked passed. R3 itself has not been marked started/completed.
+- **R3 dependency:** the owner confirmed the original design and authorised local R3 work.
+  T5/T6 now pass locally; hosted code rotation and trusted-header checks remain pending.
+  See docs/R3-REVIEW.md. Neither R2 nor R3 is marked complete for hosted use.
 - **T13/T14:** hosted lockout/email tests are not authorised by an instruction to continue
   local work; separate explicit permission and safe fictional test accounts are needed.
 
@@ -168,3 +170,14 @@ approval and the appropriate scoped capability; approval is not inferred from to
 - Authenticated definer finding: https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable
 - Password security and plan requirement: https://supabase.com/docs/guides/auth/password-security
 - Scoped permissions: https://supabase.com/docs/guides/platform/personal-access-tokens
+
+## R3 follow-up (owner-authorised, local only)
+
+The owner confirmed the class-prefix/register-number design. Read-only aggregate hosted
+inspection found 466 legacy codes, 16/17 populated classes sharing one prefix and 13/17
+sequential from one, with no separate register column. No individual code was returned.
+R3 now prepares independent random codes, preserved register numbers and database failure
+limits. T1-T12 passed in a new full local run; T13/T14 remain not run. The teacher page
+sorts by the new register field, and a clean rebuild plus both-page regression passed.
+No hosted code or attempt token has been rotated. R2 remains incomplete. Current evidence
+is in docs/r3/local-full-suite.json and docs/R3-REVIEW.md; historical R2 failures are retained.

@@ -1,0 +1,15 @@
+{
+  "target": "disposable local Supabase only",
+  "result": "pass",
+  "pupils_rotated_and_registers_preserved": 10,
+  "retired_codes_tested_and_refused": 3,
+  "retired_attempt_token_refused": true,
+  "saved_answers_and_deadline_preserved": true,
+  "new_code_resumes_existing_attempt": true,
+  "generator_sample": {
+    "count": 1000,
+    "distinct": 1000,
+    "valid": true
+  },
+  "individual_codes_or_tokens_exported": false
+}

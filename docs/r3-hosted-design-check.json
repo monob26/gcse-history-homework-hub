@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-15",
+  "target": "hosted; read-only aggregate inspection",
+  "individual_codes_returned": false,
+  "summary": {
+    "pupil_count": 466,
+    "code_constraints": [
+      "CHECK ((pupil_code ~ '^[A-Z0-9]{4,5}-[0-9]{2,3}$'::text))"
+    ],
+    "populated_classes": 17,
+    "legacy_format_count": 466,
+    "classes_sharing_one_prefix": 16,
+    "classes_sequential_from_one": 13,
+    "register_number_column_exists": false,
+    "zero_register_numbers": 0,
+    "classes_with_duplicate_register_numbers": 0
+  }
+}

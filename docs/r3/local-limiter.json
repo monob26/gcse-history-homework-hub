@@ -1,0 +1,20 @@
+{
+  "target": "local fictional Supabase only",
+  "result": "pass",
+  "forged_leading_xff_did_not_change_local_bucket": true,
+  "mixed_get_and_start_first_block": 20,
+  "failed_start_counters_survive_http_400": true,
+  "shared_network_effect": "A known valid pupil sharing the address is also blocked for at most 10 seconds; active quiz RPCs are unaffected",
+  "blocked_requests_do_not_extend_cooldown": true,
+  "honest_use_recovers": true,
+  "same_valid_invalid_fields": true,
+  "valid_median_ms": 54.3,
+  "invalid_median_ms": 53.9,
+  "pupil_browser": {
+    "plainCooldownMessage": true,
+    "recovered": true
+  },
+  "driver_http_requests": 47,
+  "production_header_trust_verified": false,
+  "production_note": "Hosted Cloudflare client-IP header trust and end-to-end enforcement still require approved verification; local proof is not a hosted pass"
+}
