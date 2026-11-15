@@ -1,0 +1,29 @@
+{
+  "method": "read-only metadata; no password/token retrieval or login",
+  "accounts": [
+    {
+      "id": "535546ce-806c-491a-9ed9-a3e070ea95b0",
+      "email": "r2-hosted-a-20261115@example.test",
+      "email_confirmed": true,
+      "role": "authenticated",
+      "application_teacher_approved": false,
+      "allocated_classes": 0
+    },
+    {
+      "id": "662e4309-a30f-4887-926a-6a2b83b88ce1",
+      "email": "r2-hosted-b-20261115@example.test",
+      "email_confirmed": true,
+      "role": "authenticated",
+      "application_teacher_approved": false,
+      "allocated_classes": 0
+    },
+    {
+      "id": "41f5cd97-c4bb-4048-9597-83e59a00847a",
+      "email": "r2-hosted-unallocated-20261115@example.test",
+      "email_confirmed": true,
+      "role": "authenticated",
+      "application_teacher_approved": false,
+      "allocated_classes": 0
+    }
+  ]
+}

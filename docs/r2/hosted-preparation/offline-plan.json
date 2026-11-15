@@ -1,0 +1,44 @@
+{
+  "mode": "OFFLINE PLAN ONLY: no requests",
+  "project": "inxsjdogxvqbvxydxmym",
+  "manifest": {
+    "project_ref": "inxsjdogxvqbvxydxmym",
+    "fixture_label": "R2-HOSTED-20261115",
+    "quiz_id": "cd9fbeb8-e646-4d2f-b662-2b2044d8591c",
+    "year_group": 10,
+    "accounts": {
+      "A": "r2-hosted-a-20261115@example.test",
+      "B": "r2-hosted-b-20261115@example.test",
+      "U": "r2-hosted-unallocated-20261115@example.test"
+    },
+    "signup_email": "r2-hosted-outsider-20261115@example.test",
+    "classes": {
+      "A": {
+        "id": "eab072a6-274e-4fe1-83e8-9bd61fc92501",
+        "name": "R2 Fictional A 20261115"
+      },
+      "B": {
+        "id": "eab072a6-274e-4fe1-83e8-9bd61fc92502",
+        "name": "R2 Fictional B 20261115"
+      }
+    },
+    "pupils": {
+      "A": "46ec9d5c-5292-47fb-a238-34d5295cab01",
+      "B": "46ec9d5c-5292-47fb-a238-34d5295cab02"
+    },
+    "attempts": {
+      "A": "71f808f5-8059-47df-88e7-88b68cb0ab01",
+      "B": "71f808f5-8059-47df-88e7-88b68cb0ab02"
+    },
+    "allocations": {
+      "A": "fedf41b8-c1b2-4a6a-b258-11f485faaa01",
+      "B": "fedf41b8-c1b2-4a6a-b258-11f485faaa02"
+    },
+    "scores": {
+      "A": 21,
+      "B": 22
+    }
+  },
+  "plan_sha256": "8f97a93797b740b05864e894605f75e14c2ef4bfe4af8b45919faf7e5d830fdb",
+  "request_cap": 90
+}

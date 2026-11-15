@@ -1,6 +1,14 @@
 # R2: prove the access rules from outside
 
 Status: **incomplete**. Evidence date: 2026-11-15.
+
+UPDATE: the owner subsequently approved and both R2 migrations were applied to the
+hosted project. Read-only structural checks passed; the fresh hosted Advisor now has
+only the leaked-password-protection finding. See docs/r2/HOSTED-DEPLOYMENT.md and
+hosted-deployment.json. Older sections below describe the pre-deployment history;
+statements that the R2 migrations remain local are superseded by this update.
+R2 is still incomplete: password protection and hosted external/adversarial proof
+remain outstanding. R3/R4 were not deployed.
 Hosted project: `inxsjdogxvqbvxydxmym`. R1 remains complete.
 R2 changes are local only on `review/r2-access-rules`; no R2 database writes, pushes,
 merges, publications or paid resources were performed.
@@ -181,3 +189,11 @@ limits. T1-T12 passed in a new full local run; T13/T14 remain not run. The teach
 sorts by the new register field, and a clean rebuild plus both-page regression passed.
 No hosted code or attempt token has been rotated. R2 remains incomplete. Current evidence
 is in docs/r3/local-full-suite.json and docs/R3-REVIEW.md; historical R2 failures are retained.
+
+## Owner decision: no Pro upgrade
+
+The owner declined upgrading at this stage. The leaked-password-protection finding
+remains unresolved, with no requirement change or R2 completion. The earlier
+proposed-hosted-auth-settings.json is an unapproved historical proposal, not a queued
+action. Remaining hosted test prerequisites/approval boundaries are documented in
+docs/r2/HOSTED-TEST-PREREQUISITES.md. No tests/hosted changes were made for this assessment.

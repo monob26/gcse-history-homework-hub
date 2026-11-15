@@ -4,7 +4,15 @@ Status: both page bugs fixed and browser acceptance checks passed locally.
 The overall review remains open; hosted deployment and the companion's T13/T14
 have not been authorised or completed. R2 and R3 remain incomplete.
 
-## Server confirmation
+## Current handoff update
+
+The two approved R2 migrations are now hosted. Read-only post-deployment checks
+confirmed the strict server clock check with no five-second grace. R4's pupil-page
+fix remains local/unpublished; companion T13/T14 remain outstanding. The original
+server-confirmation account below describes the pre-deployment inspection.
+See ../HANDOFF.md and r2/hosted-deployment.json. No new test was run for this update.
+
+## Server confirmation (historical)
 
 Read-only inspection of hosted `homework_api.submit_pupil_answer(uuid,uuid,integer)`
 confirmed that it checks the server clock but still contains a five-second grace.

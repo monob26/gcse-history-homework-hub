@@ -1,0 +1,27 @@
+{
+  "project": "inxsjdogxvqbvxydxmym",
+  "approval": "Explicit owner approval for only 11 fictional application records; hosted test execution remains blocked.",
+  "local_file": "supabase/hosted-fixtures/20261115203341_r2_hosted_access_fixtures.sql",
+  "sha256": "f74f47294d816798331f4e2cf09833988461beeef332e58c7b9d62282d87c733",
+  "hosted_version": "20261115203420",
+  "name": "r2_hosted_access_fixtures",
+  "apply_result": {
+    "success": true
+  },
+  "verification": {
+    "pupils": 2,
+    "classes": 2,
+    "allocations": 2,
+    "teacher_approvals": 3,
+    "no_fixture_answers": true,
+    "synthetic_attempts": 2,
+    "unallocated_teacher_class_count": 0,
+    "fixture_codes_valid_and_distinct": true
+  },
+  "hosted_tests_run": false,
+  "signups_attempted": 0,
+  "logins_attempted": 0,
+  "R2_complete": false,
+  "R3_complete": false,
+  "R4_complete": false
+}

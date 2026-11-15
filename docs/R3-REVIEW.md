@@ -8,7 +8,16 @@ sequential register number. R3 work was explicitly requested to resolve the outs
 code weaknesses without pretending R2 was complete. No hosted writes, pushes, merges
 or publication occurred.
 
-## Read-only check of the current hosted design
+## Current handoff update
+
+R3 is still not deployed. Only the two approved R2 security migrations and the
+separately approved fictional fixture migration are hosted. The historical 466-pupil
+aggregate predates the two new fixture pupils; it is not a current hosted row count.
+The Pro upgrade was declined, and hosted access tests were approved but have not run.
+See ../HANDOFF.md for migration IDs, fixtures and the credential-transfer blocker.
+No additional test or hosted inspection was run to prepare this update.
+
+## Read-only check of the hosted design (historical)
 
 Aggregate-only MCP inspection found:
 
