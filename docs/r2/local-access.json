@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-15",
+  "target": "local fictional Supabase only",
+  "phase": "hardened-access",
+  "stopped_on_disclosure": false,
+  "tests": {
+    "T1": {
+      "result": "pass",
+      "evidence": "9 table requests: no rows; no correct answers returned",
+      "requests": 9
+    },
+    "T2": {
+      "result": "pass",
+      "evidence": "16 teacher/unused RPC probes refused (false teacher predicate is a refusal)",
+      "requests": 16
+    },
+    "T3": {
+      "result": "pass",
+      "evidence": "Signup refused explicitly with signup_disabled",
+      "requests": 1
+    },
+    "T4": {
+      "result": "fail",
+      "evidence": "Fictional teacher sign-in failed",
+      "requests": 1
+    },
+    "T5": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T6": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T7": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T8": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T9": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T10": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T11": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T12": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T13": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T14": {
+      "result": "not run",
+      "evidence": "Not reached"
+    }
+  },
+  "R2_additional": {
+    "unallocated": {
+      "result": "fail",
+      "evidence": "Fictional teacher sign-in failed"
+    },
+    "pupil_functions": {
+      "result": "pass",
+      "evidence": "All five used pupil RPCs requested anonymously with invalid credentials"
+    }
+  },
+  "http_requests": 37
+}

@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "findings": [],
+  "scope": "CLI 2.81.3 local database lints only; does not inspect hosted Auth settings or contain all current hosted lints"
+}

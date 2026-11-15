@@ -1,0 +1,77 @@
+{
+  "date": "2026-11-15",
+  "target": "local fictional Supabase only",
+  "phase": "hardened-auth-corrected",
+  "stopped_on_disclosure": false,
+  "tests": {
+    "T1": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T2": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T3": {
+      "result": "pass",
+      "evidence": "Signup refused explicitly with signup_disabled",
+      "requests": 1
+    },
+    "T4": {
+      "result": "pass",
+      "evidence": "Teacher A cannot read B classes, pupils or class results",
+      "requests": 4
+    },
+    "T5": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T6": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T7": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T8": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T9": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T10": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T11": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T12": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T13": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T14": {
+      "result": "not run",
+      "evidence": "Not reached"
+    }
+  },
+  "R2_additional": {
+    "unallocated": {
+      "result": "pass",
+      "evidence": "Unallocated approved teacher sees no classes, pupils, quizzes, attempts or class results"
+    },
+    "pupil_functions": {
+      "result": "pass",
+      "evidence": "All five used pupil RPCs requested anonymously with invalid credentials"
+    }
+  },
+  "http_requests": 21
+}

@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-15",
+  "target": "local fictional Supabase only",
+  "phase": "resumed-local-r2",
+  "stopped_on_disclosure": false,
+  "tests": {
+    "T1": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T2": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T3": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T4": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T5": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T6": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T7": {
+      "result": "fail",
+      "evidence": "All six invalid/missing/other-token requests refused; 3 distinct error shapes/messages",
+      "requests": 8
+    },
+    "T8": {
+      "result": "fail",
+      "evidence": "Late correct answer credited",
+      "requests": 3
+    },
+    "T9": {
+      "result": "pass",
+      "evidence": "Second submission refused and the single original wrong answer stands",
+      "requests": 4
+    },
+    "T10": {
+      "result": "pass",
+      "evidence": "Repeated open preserves position/time, early finish refused, and two real tabs enforce session takeover",
+      "requests": 19
+    },
+    "T11": {
+      "result": "fail",
+      "evidence": "2/6 malformed inputs returned short plain refusal",
+      "requests": 8
+    },
+    "T12": {
+      "result": "pass",
+      "evidence": "200 starts reused the existing unfinished attempt; row count and attempts_taken unchanged",
+      "requests": 200
+    },
+    "T13": {
+      "result": "not run",
+      "evidence": "Not run: requires approved hosted shared-network lockout test, current Auth limits/logs and teacher instructions; local Auth cannot establish the hosted limit",
+      "requests": 0
+    },
+    "T14": {
+      "result": "not run",
+      "evidence": "Not run: requires approved hosted reset emails, test inbox verification and current SMTP cap; local Mailpit cannot prove hosted delivery/quota",
+      "requests": 0
+    }
+  },
+  "R2_additional": {},
+  "http_requests": 246
+}

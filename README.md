@@ -143,3 +143,38 @@ presence is recorded faithfully; removal and access remediation belong to later 
 
 This helper trusts a client-supplied score and is preserved only as part of the baseline;
 its source EXECUTE grant is restricted to `postgres`. Do not expose it to clients.
+
+## R2 work in progress
+
+Two new migrations have been applied only locally:
+
+- `20261115132031_harden_r2_access_rules.sql`: restricts grants, removes the unused
+  code-check function and isolates privileged implementations in `homework_private`.
+- `20261115140316_enforce_pupil_rpc_boundaries.sql`: gives invalid sessions consistent
+  errors, rejects malformed input plainly, removes the five-second late-answer grace
+  period and preserves question deadlines during session takeover.
+
+The five pupil page-facing RPC names and JSON return fields are preserved. The three
+attempt-session API wrappers now accept attempt IDs/tokens as text UUID strings so
+malformed values can be handled inside a controlled boundary. Their token parameters
+default to NULL for consistent missing-token refusal; submit's answer is JSONB at the
+boundary (numeric 0-3 or null), then validated before calling the typed private function.
+The R1 function table above records the exported baseline, not these later signatures.
+Teacher read RPCs use invoker security and RLS. Do not expose homework_private via the API.
+
+Repeatable local access checks (single shell line):
+
+```sh
+python tests/adversarial/run.py --phase local-r2 --tests T1,T2,T3,T4 --output docs/r2/new-access-run.json
+```
+
+The runner provisions fictional local teachers through the local Auth admin API because
+public signup is disabled. Passwords and keys remain in memory. After a reported disclosure
+and an owner-authorised continuation, targeted remaining tests can run in a separate run.
+Fixes are never applied during a test run. Use `--smoke-pages` with `--tests ''` and set
+`SUPABASE_JS_TEST_BUNDLE` to reuse the R1 browser assertions against isolated R2 fixtures.
+
+R2 remains incomplete. T1-T4 and T7-T12 have passed locally. T5/T6 fail, T13/T14 are not run,
+and no complete clean full-suite pass is claimed. R2.7 is verified on hosted Supabase;
+hosted migrations and leaked-password protection still require owner action.
+See docs/R2-REVIEW.md and docs/r2/current-test-summary.json.

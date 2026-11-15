@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-15",
+  "target": "local fictional Supabase only",
+  "phase": "local-page-regression",
+  "stopped_on_disclosure": false,
+  "tests": {
+    "T1": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T2": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T3": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T4": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T5": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T6": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T7": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T8": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T9": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T10": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T11": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T12": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T13": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T14": {
+      "result": "not run",
+      "evidence": "Not reached"
+    }
+  },
+  "R2_additional": {
+    "page_smoke": {
+      "result": "pass",
+      "evidence": "Original pupil page completes all 25 questions at 25/25 through the new wrappers; original teacher page displays that result and 8 unattempted allocated pupils; loopback requests only"
+    }
+  },
+  "http_requests": 4
+}

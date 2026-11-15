@@ -1,0 +1,6 @@
+{
+  "target": "local fictional Supabase only",
+  "result": "pass",
+  "evidence": "All five used pupil RPCs requested anonymously with invalid credentials",
+  "reason_for_repeat": "RPC boundary signatures changed in the new migration"
+}

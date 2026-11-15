@@ -1,0 +1,17 @@
+{
+  "inspection_date": "2026-11-15",
+  "method": "GET only; configuration response filtered before storage",
+  "project_ref": "inxsjdogxvqbvxydxmym",
+  "auth": {
+    "site_url": "https://monob26.github.io/history-teacher-dashboard/",
+    "uri_allow_list": "https://monob26.github.io/history-teacher-dashboard/",
+    "disable_signup": true,
+    "password_hibp_enabled": false
+  },
+  "data_api": {
+    "db_schema": "public,graphql_public,homework_api",
+    "db_extra_search_path": "public,extensions"
+  },
+  "expected_dashboard_url": "https://monob26.github.io/history-teacher-dashboard/",
+  "status": "R2.7 verified; R2 incomplete due to other findings and stopped adversarial suite"
+}

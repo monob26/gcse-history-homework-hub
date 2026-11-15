@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-15",
+  "target": "local fictional Supabase only",
+  "phase": "baseline",
+  "stopped_on_disclosure": true,
+  "tests": {
+    "T1": {
+      "result": "pass",
+      "evidence": "9 table requests: no rows; no correct answers returned",
+      "requests": 9
+    },
+    "T2": {
+      "result": "fail",
+      "evidence": "An unused/teacher function returned data to an unauthorised caller; response withheld",
+      "requests": 3
+    },
+    "T3": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T4": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T5": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T6": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T7": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T8": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T9": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T10": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T11": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T12": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T13": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T14": {
+      "result": "not run",
+      "evidence": "Not reached"
+    }
+  },
+  "R2_additional": {},
+  "http_requests": 15
+}

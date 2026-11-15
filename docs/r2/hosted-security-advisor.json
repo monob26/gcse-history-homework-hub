@@ -1,0 +1,230 @@
+{
+  "result": {
+    "lints": [
+      {
+        "name": "rls_enabled_no_policy",
+        "title": "RLS Enabled No Policy",
+        "level": "INFO",
+        "facing": "EXTERNAL",
+        "categories": [
+          "SECURITY"
+        ],
+        "description": "Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+        "count": 2,
+        "findings": [
+          {
+            "detail": "Table \\`public.history_quiz_attempts\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "history_quiz_attempts",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Table \\`public.history_teachers\\` has RLS enabled, but no policies exist",
+            "metadata": {
+              "name": "history_teachers",
+              "type": "table",
+              "schema": "public"
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          }
+        ]
+      },
+      {
+        "name": "anon_security_definer_function_executable",
+        "title": "Public Can Execute SECURITY DEFINER Function",
+        "level": "WARN",
+        "facing": "EXTERNAL",
+        "categories": [
+          "SECURITY"
+        ],
+        "description": "Detects `SECURITY DEFINER` functions that are callable without signing in. Revoke `EXECUTE`, switch the function to `SECURITY INVOKER`, or move it out of your exposed API schema if it is not meant to be public.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable",
+        "count": 7,
+        "findings": [
+          {
+            "detail": "Function `homework_api.check_pupil_code(entered_code text)` can be executed by the `anon` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/check_pupil_code`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "check_pupil_code",
+              "schema": "homework_api",
+              "language": "plpgsql",
+              "arguments": "entered_code text",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Function `homework_api.complete_pupil_quiz(entered_attempt_id uuid, entered_attempt_token uuid)` can be executed by the `anon` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/complete_pupil_quiz`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "complete_pupil_quiz",
+              "schema": "homework_api",
+              "language": "plpgsql",
+              "arguments": "entered_attempt_id uuid, entered_attempt_token uuid",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Function `homework_api.get_current_pupil_homework(entered_code text)` can be executed by the `anon` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/get_current_pupil_homework`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "get_current_pupil_homework",
+              "schema": "homework_api",
+              "language": "sql",
+              "arguments": "entered_code text",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Function `homework_api.open_pupil_question(entered_attempt_id uuid, entered_attempt_token uuid)` can be executed by the `anon` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/open_pupil_question`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "open_pupil_question",
+              "schema": "homework_api",
+              "language": "plpgsql",
+              "arguments": "entered_attempt_id uuid, entered_attempt_token uuid",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Function `homework_api.start_pupil_quiz(entered_code text, entered_quiz_id uuid)` can be executed by the `anon` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/start_pupil_quiz`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "start_pupil_quiz",
+              "schema": "homework_api",
+              "language": "plpgsql",
+              "arguments": "entered_code text, entered_quiz_id uuid",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Function `homework_api.submit_pupil_answer(entered_attempt_id uuid, entered_attempt_token uuid, entered_answer integer)` can be executed by the `anon` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/submit_pupil_answer`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "submit_pupil_answer",
+              "schema": "homework_api",
+              "language": "plpgsql",
+              "arguments": "entered_attempt_id uuid, entered_attempt_token uuid, entered_answer integer",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Function `public.rls_auto_enable()` can be executed by the `anon` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/rls_auto_enable`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "rls_auto_enable",
+              "schema": "public",
+              "language": "plpgsql",
+              "arguments": "",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          }
+        ]
+      },
+      {
+        "name": "authenticated_security_definer_function_executable",
+        "title": "Signed-In Users Can Execute SECURITY DEFINER Function",
+        "level": "WARN",
+        "facing": "EXTERNAL",
+        "categories": [
+          "SECURITY"
+        ],
+        "description": "Detects `SECURITY DEFINER` functions that are callable by signed-in users. Revoke `EXECUTE`, switch the function to `SECURITY INVOKER`, or move it out of your exposed API schema if signed-in users should not call it.",
+        "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable",
+        "count": 6,
+        "findings": [
+          {
+            "detail": "Function `homework_api.check_pupil_code(entered_code text)` can be executed by the `authenticated` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/check_pupil_code`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "check_pupil_code",
+              "schema": "homework_api",
+              "language": "plpgsql",
+              "arguments": "entered_code text",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Function `homework_api.get_current_pupil_homework(entered_code text)` can be executed by the `authenticated` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/get_current_pupil_homework`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "get_current_pupil_homework",
+              "schema": "homework_api",
+              "language": "sql",
+              "arguments": "entered_code text",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Function `homework_api.get_pupil_attempt_status(entered_code text, entered_quiz_id uuid)` can be executed by the `authenticated` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/get_pupil_attempt_status`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "get_pupil_attempt_status",
+              "schema": "homework_api",
+              "language": "plpgsql",
+              "arguments": "entered_code text, entered_quiz_id uuid",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Function `public.get_history_class_results(requested_class text, requested_quiz uuid)` can be executed by the `authenticated` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/get_history_class_results`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "get_history_class_results",
+              "schema": "public",
+              "language": "plpgsql",
+              "arguments": "requested_class text, requested_quiz uuid",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Function `public.is_history_teacher()` can be executed by the `authenticated` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/is_history_teacher`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "is_history_teacher",
+              "schema": "public",
+              "language": "sql",
+              "arguments": "",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          },
+          {
+            "detail": "Function `public.rls_auto_enable()` can be executed by the `authenticated` role as a `SECURITY DEFINER` function via `/rest/v1/rpc/rls_auto_enable`. Revoke `EXECUTE` or switch it to `SECURITY INVOKER` if that is not intentional.",
+            "metadata": {
+              "name": "rls_auto_enable",
+              "schema": "public",
+              "language": "plpgsql",
+              "arguments": "",
+              "security_definer": true
+            },
+            "observed_at": "2026-11-15T13:19:02.522Z"
+          }
+        ]
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "title": "Leaked Password Protection Disabled",
+        "level": "WARN",
+        "facing": "EXTERNAL",
+        "categories": [
+          "SECURITY"
+        ],
+        "description": "Leaked password protection is currently disabled.",
+        "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+        "count": 1,
+        "findings": [
+          {
+            "detail": "Supabase Auth prevents the use of compromised passwords by checking against HaveIBeenPwned.org. Enable this feature to enhance security.",
+            "metadata": {
+              "type": "auth",
+              "entity": "Auth"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

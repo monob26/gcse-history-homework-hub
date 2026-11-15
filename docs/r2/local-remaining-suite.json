@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-15",
+  "target": "local fictional Supabase only",
+  "phase": "hardened-remaining-suite",
+  "stopped_on_disclosure": true,
+  "tests": {
+    "T1": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T2": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T3": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T4": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T5": {
+      "result": "fail",
+      "evidence": "No throttle before guess 50",
+      "requests": 51
+    },
+    "T6": {
+      "result": "fail",
+      "evidence": "A neighbouring fictional pupil code was derived and accepted; response withheld",
+      "requests": 1
+    },
+    "T7": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T8": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T9": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T10": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T11": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T12": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T13": {
+      "result": "not run",
+      "evidence": "Not reached"
+    },
+    "T14": {
+      "result": "not run",
+      "evidence": "Not reached"
+    }
+  },
+  "R2_additional": {},
+  "http_requests": 56
+}
