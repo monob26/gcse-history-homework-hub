@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+supabase/.temp/
+supabase/.branches/
+node_modules/
+__pycache__/
+test-results/
+playwright-report/
+*.log

@@ -1,0 +1,677 @@
+{
+  "rules": 0,
+  "comments": [
+    {
+      "class": "pg_namespace",
+      "subid": 0,
+      "object": "2200",
+      "comment": "standard public schema"
+    }
+  ],
+  "collations": 0,
+  "other_types": null,
+  "unsupported": [
+    {
+      "kind": "i",
+      "name": "history_answers_attempt_id_question_number_key",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_classes_pkey",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_classes_class_name_key",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_pupils_pkey",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_pupils_pupil_code_key",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_quizzes_pkey",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_answers_attempt_idx",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_quiz_attempts_pkey",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_answers_pkey",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "S",
+      "name": "history_quiz_attempts_id_seq",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_questions_pkey",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_questions_quiz_id_question_number_key",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_attempts_pkey",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_attempts_pupil_id_quiz_id_attempt_number_key",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_attempts_pupil_idx",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_teachers_pkey",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_attempts_quiz_idx",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_attempts_attempt_token_unique",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_teacher_classes_pkey",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    },
+    {
+      "kind": "i",
+      "name": "history_teacher_classes_user_id_class_id_key",
+      "schema": "public",
+      "tablespace": "0",
+      "persistence": "p",
+      "replica_identity": "n"
+    }
+  ],
+  "publications": null,
+  "column_grants": 0,
+  "column_metadata": [
+    {
+      "stats": null,
+      "table": "history_pupils",
+      "column": "id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_pupils",
+      "column": "pupil_code",
+      "storage": "x",
+      "collation": "\"default\"",
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_pupils",
+      "column": "class_id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_pupils",
+      "column": "created_at",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "pupil_id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "quiz_id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "attempt_number",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "status",
+      "storage": "x",
+      "collation": "\"default\"",
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "score",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "question_position",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "saved_progress",
+      "storage": "x",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "started_at",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "completed_at",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "attempt_token",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_attempts",
+      "column": "question_started_at",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_answers",
+      "column": "id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_answers",
+      "column": "attempt_id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_answers",
+      "column": "question_number",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_answers",
+      "column": "question_id",
+      "storage": "x",
+      "collation": "\"default\"",
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_answers",
+      "column": "pupil_answer",
+      "storage": "x",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_answers",
+      "column": "is_correct",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_answers",
+      "column": "time_allowed_seconds",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_answers",
+      "column": "answered_at",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_classes",
+      "column": "id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_classes",
+      "column": "class_name",
+      "storage": "x",
+      "collation": "\"default\"",
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_classes",
+      "column": "year_group",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_classes",
+      "column": "created_at",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quiz_attempts",
+      "column": "id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quiz_attempts",
+      "column": "pupil_code",
+      "storage": "x",
+      "collation": "\"default\"",
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quiz_attempts",
+      "column": "quiz_id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quiz_attempts",
+      "column": "attempt_number",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quiz_attempts",
+      "column": "score",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quiz_attempts",
+      "column": "total_questions",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quiz_attempts",
+      "column": "passed",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quiz_attempts",
+      "column": "completed_at",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quizzes",
+      "column": "id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quizzes",
+      "column": "quiz_title",
+      "storage": "x",
+      "collation": "\"default\"",
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quizzes",
+      "column": "year_group",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quizzes",
+      "column": "topic",
+      "storage": "x",
+      "collation": "\"default\"",
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quizzes",
+      "column": "week_number",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quizzes",
+      "column": "due_at",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quizzes",
+      "column": "total_questions",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quizzes",
+      "column": "pass_mark",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quizzes",
+      "column": "version_number",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quizzes",
+      "column": "is_published",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_quizzes",
+      "column": "created_at",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_teachers",
+      "column": "user_id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_teachers",
+      "column": "approved_at",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_teacher_classes",
+      "column": "id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_teacher_classes",
+      "column": "user_id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_teacher_classes",
+      "column": "class_id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_teacher_classes",
+      "column": "assigned_at",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_questions",
+      "column": "id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_questions",
+      "column": "quiz_id",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_questions",
+      "column": "question_number",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_questions",
+      "column": "question_type",
+      "storage": "x",
+      "collation": "\"default\"",
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_questions",
+      "column": "question_text",
+      "storage": "x",
+      "collation": "\"default\"",
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_questions",
+      "column": "answer_options",
+      "storage": "x",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_questions",
+      "column": "correct_answer",
+      "storage": "x",
+      "collation": null,
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_questions",
+      "column": "explanation",
+      "storage": "x",
+      "collation": "\"default\"",
+      "compression": ""
+    },
+    {
+      "stats": null,
+      "table": "history_questions",
+      "column": "time_allowed_seconds",
+      "storage": "p",
+      "collation": null,
+      "compression": ""
+    }
+  ],
+  "foreign_grantors": null,
+  "extended_statistics": 0
+}
