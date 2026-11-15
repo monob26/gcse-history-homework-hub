@@ -1,0 +1,2471 @@
+{
+  "grants": [
+    {
+      "kind": "schema",
+      "name": "public",
+      "owner": "pg_database_owner",
+      "schema": "public",
+      "grantee": "pg_database_owner",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "schema",
+      "name": "public",
+      "owner": "pg_database_owner",
+      "schema": "public",
+      "grantee": "pg_database_owner",
+      "identity": null,
+      "grantable": false,
+      "privilege": "CREATE"
+    },
+    {
+      "kind": "schema",
+      "name": "public",
+      "owner": "pg_database_owner",
+      "schema": "public",
+      "grantee": "PUBLIC",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "schema",
+      "name": "public",
+      "owner": "pg_database_owner",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "schema",
+      "name": "public",
+      "owner": "pg_database_owner",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "schema",
+      "name": "public",
+      "owner": "pg_database_owner",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "schema",
+      "name": "public",
+      "owner": "pg_database_owner",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "schema",
+      "name": "homework_api",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "schema",
+      "name": "homework_api",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "CREATE"
+    },
+    {
+      "kind": "schema",
+      "name": "homework_api",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "schema",
+      "name": "homework_api",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_pupils",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_answers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_quiz_attempts",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "sequence",
+      "name": "history_quiz_attempts_id_seq",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "sequence",
+      "name": "history_quiz_attempts_id_seq",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "sequence",
+      "name": "history_quiz_attempts_id_seq",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_quizzes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_teachers",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_teacher_classes",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "table",
+      "name": "history_questions",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "function",
+      "name": "mark_test_answer",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_question_id uuid, entered_answer integer",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "save_quiz_result",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_code text, entered_quiz_id uuid, entered_score integer",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "rls_auto_enable",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "PUBLIC",
+      "identity": "",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "rls_auto_enable",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": "",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "check_pupil_code",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_code text",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "check_pupil_code",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "anon",
+      "identity": "entered_code text",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "check_pupil_code",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "authenticated",
+      "identity": "entered_code text",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "check_pupil_code",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "service_role",
+      "identity": "entered_code text",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "mark_quiz_test",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_quiz_id uuid, submitted_answers jsonb",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "save_marked_test_attempt",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_pupil_code text, entered_quiz_id uuid, submitted_answers jsonb",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "is_history_teacher",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": "",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "is_history_teacher",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": "",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "get_pupil_attempt_status",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_code text, entered_quiz_id uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "get_pupil_attempt_status",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "authenticated",
+      "identity": "entered_code text, entered_quiz_id uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "start_quiz_test",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_code text, entered_quiz_id uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "submit_answer_test",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_attempt_id uuid, entered_answer integer",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "get_history_class_results",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": "requested_class text, requested_quiz uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "get_history_class_results",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": "requested_class text, requested_quiz uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "get_history_class_results",
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": "requested_class text, requested_quiz uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "complete_quiz_test",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_attempt_id uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "check_published_attempt",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_attempt_id uuid, entered_attempt_token uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "set_question_start_time",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "PUBLIC",
+      "identity": "",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "set_question_start_time",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "start_pupil_quiz",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_code text, entered_quiz_id uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "start_pupil_quiz",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "anon",
+      "identity": "entered_code text, entered_quiz_id uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "_ensure_attempt_shuffle",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "v_attempt_id uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "get_pupil_questions",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_attempt_id uuid, entered_attempt_token uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "submit_pupil_answer",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_attempt_id uuid, entered_attempt_token uuid, entered_answer integer",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "submit_pupil_answer",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "anon",
+      "identity": "entered_attempt_id uuid, entered_attempt_token uuid, entered_answer integer",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "complete_pupil_quiz",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_attempt_id uuid, entered_attempt_token uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "complete_pupil_quiz",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "anon",
+      "identity": "entered_attempt_id uuid, entered_attempt_token uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "open_pupil_question",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_attempt_id uuid, entered_attempt_token uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "open_pupil_question",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "anon",
+      "identity": "entered_attempt_id uuid, entered_attempt_token uuid",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "get_current_pupil_homework",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "postgres",
+      "identity": "entered_code text",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "get_current_pupil_homework",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "anon",
+      "identity": "entered_code text",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "function",
+      "name": "get_current_pupil_homework",
+      "owner": "postgres",
+      "schema": "homework_api",
+      "grantee": "authenticated",
+      "identity": "entered_code text",
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "default_f",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "default_f",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "default_f",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "default_f",
+      "name": null,
+      "owner": "supabase_admin",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "EXECUTE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "INSERT"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "DELETE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "anon",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "authenticated",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "REFERENCES"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "TRIGGER"
+    },
+    {
+      "kind": "default_r",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "service_role",
+      "identity": null,
+      "grantable": false,
+      "privilege": "MAINTAIN"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "SELECT"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "kind": "default_S",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "USAGE"
+    },
+    {
+      "kind": "default_f",
+      "name": null,
+      "owner": "postgres",
+      "schema": "public",
+      "grantee": "postgres",
+      "identity": null,
+      "grantable": false,
+      "privilege": "EXECUTE"
+    }
+  ],
+  "sequence_details": [
+    {
+      "max": "9223372036854775807",
+      "min": "1",
+      "name": "history_quiz_attempts_id_seq",
+      "type": "bigint",
+      "cache": "1",
+      "cycle": false,
+      "start": "1",
+      "schema": "public",
+      "increment": "1",
+      "table_name": "history_quiz_attempts",
+      "column_name": "id",
+      "table_schema": "public",
+      "dependency_type": "i"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "history-homework-hub",
+  "private": true,
+  "scripts": {
+    "format": "prettier --ignore-unknown --write pupil teacher shared scripts tests docs package.json .prettierrc.json",
+    "format:check": "prettier --ignore-unknown --check pupil teacher shared scripts tests docs package.json .prettierrc.json",
+    "test:r6": "node tests/r6/pages.cjs && node tests/r6/teacher.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "prettier": "3.10.1"
+  }
+}
