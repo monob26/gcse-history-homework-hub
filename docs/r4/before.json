@@ -1,0 +1,25 @@
+{
+  "scope": "local Chromium with fictional RPC responses; external requests blocked",
+  "results": [
+    {
+      "scenario": "expired-resume",
+      "status": "FAIL",
+      "reason": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ []\n- [\n-   null\n- ]\n"
+    },
+    {
+      "scenario": "expired-next",
+      "status": "FAIL",
+      "reason": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    1,\n-   null\n  ]\n"
+    },
+    {
+      "scenario": "dialog-keeps-deadline",
+      "status": "FAIL",
+      "reason": "Expected values to be strictly equal:\n\n'00:45' !== '00:42'\n"
+    },
+    {
+      "scenario": "dialog-expires",
+      "status": "FAIL",
+      "reason": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ []\n- [\n-   null\n- ]\n"
+    }
+  ]
+}

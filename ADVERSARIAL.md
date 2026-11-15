@@ -119,17 +119,17 @@ The quiz questions and answers are not confidential. The things to protect are:
 
 | Test | Date | Result (pass, fail, not run) | Evidence | Fix task |
 | --- | --- | --- | --- | --- |
-| T1 | 2026-11-15 | pass | LOCAL: 9 table requests: no rows; no correct answers returned; docs/r3/local-full-suite.json | R2; hosted deployment/verification pending |
-| T2 | 2026-11-15 | pass | LOCAL: 16 teacher/unused RPC probes refused (false teacher predicate is a refusal); docs/r3/local-full-suite.json | R2; hosted deployment/verification pending |
-| T3 | 2026-11-15 | pass | LOCAL: Signup refused explicitly with signup_disabled; docs/r3/local-full-suite.json | R2; hosted deployment/verification pending |
-| T4 | 2026-11-15 | pass | LOCAL: Teacher A cannot read B classes, pupils or class results; docs/r3/local-full-suite.json | R2; hosted deployment/verification pending |
-| T5 | 2026-11-15 | pass | LOCAL: 50 wrong codes sent within one minute; first block at 20; valid code shared at-most-10-second network block and recovered; valid/invalid row fields match; docs/r3/local-full-suite.json | R3; hosted deployment/verification pending |
-| T6 | 2026-11-15 | pass | LOCAL: 3 neighbouring/legacy-register derivations refused without masking; random-generator independence checked separately in R3; docs/r3/local-full-suite.json | R3; hosted deployment/verification pending |
-| T7 | 2026-11-15 | pass | LOCAL: All six invalid/missing/other-token requests refused; 1 distinct error shapes/messages; docs/r3/local-full-suite.json | R2; hosted deployment/verification pending |
-| T8 | 2026-11-15 | pass | LOCAL: Correct answer submitted one second after the displayed server deadline was marked wrong; docs/r3/local-full-suite.json | R2; hosted deployment/verification pending |
-| T9 | 2026-11-15 | pass | LOCAL: Second submission refused and the single original wrong answer stands; docs/r3/local-full-suite.json | R2; hosted deployment/verification pending |
-| T10 | 2026-11-15 | pass | LOCAL: Repeated open and two-tab takeover preserve the original question deadline; early finish refused; docs/r3/local-full-suite.json | R2; hosted deployment/verification pending |
-| T11 | 2026-11-15 | pass | LOCAL: 6/6 malformed inputs returned short plain refusal; docs/r3/local-full-suite.json | R2; hosted deployment/verification pending |
-| T12 | 2026-11-15 | pass | LOCAL: 200 starts reused the existing unfinished attempt; row count and attempts_taken unchanged; docs/r3/local-full-suite.json | R2; hosted deployment/verification pending |
-| T13 | 2026-11-15 | not run | LOCAL: Not run: requires approved hosted shared-network lockout test, current Auth limits/logs and teacher instructions; local Auth cannot establish the hosted limit; docs/r3/local-full-suite.json | R11; approved hosted test required |
-| T14 | 2026-11-15 | not run | LOCAL: Not run: requires approved hosted reset emails, test inbox verification and current SMTP cap; local Mailpit cannot prove hosted delivery/quota; docs/r3/local-full-suite.json | R11; approved hosted test required |
+| T1 | 2026-11-15 | pass | LOCAL: 9 table requests: no rows; no correct answers returned; docs/r4/full-adversarial.json | R2; hosted deployment/verification pending |
+| T2 | 2026-11-15 | pass | LOCAL: 16 teacher/unused RPC probes refused (false teacher predicate is a refusal); docs/r4/full-adversarial.json | R2; hosted deployment/verification pending |
+| T3 | 2026-11-15 | pass | LOCAL: Signup refused explicitly with signup_disabled; docs/r4/full-adversarial.json | R2; hosted deployment/verification pending |
+| T4 | 2026-11-15 | pass | LOCAL: Teacher A cannot read B classes, pupils or class results; docs/r4/full-adversarial.json | R2; hosted deployment/verification pending |
+| T5 | 2026-11-15 | pass | LOCAL: 50 wrong codes sent within one minute; first block at 20; valid code shared at-most-10-second network block and recovered; valid/invalid row fields match; docs/r4/full-adversarial.json | R3; hosted deployment/verification pending |
+| T6 | 2026-11-15 | pass | LOCAL: 3 neighbouring/legacy-register derivations refused without masking; random-generator independence checked separately in R3; docs/r4/full-adversarial.json | R3; hosted deployment/verification pending |
+| T7 | 2026-11-15 | pass | LOCAL: All six invalid/missing/other-token requests refused; 1 distinct error shapes/messages; docs/r4/full-adversarial.json | R2; hosted deployment/verification pending |
+| T8 | 2026-11-15 | pass | LOCAL: Correct answer submitted one second after the displayed server deadline was marked wrong; docs/r4/full-adversarial.json | R2; hosted deployment/verification pending |
+| T9 | 2026-11-15 | pass | LOCAL: Second submission refused and the single original wrong answer stands; docs/r4/full-adversarial.json | R2; hosted deployment/verification pending |
+| T10 | 2026-11-15 | pass | LOCAL: Repeated open and two-tab takeover preserve the original question deadline; early finish refused; docs/r4/full-adversarial.json | R2; hosted deployment/verification pending |
+| T11 | 2026-11-15 | pass | LOCAL: 6/6 malformed inputs returned short plain refusal; docs/r4/full-adversarial.json | R2; hosted deployment/verification pending |
+| T12 | 2026-11-15 | pass | LOCAL: 200 starts reused the existing unfinished attempt; row count and attempts_taken unchanged; docs/r4/full-adversarial.json | R2; hosted deployment/verification pending |
+| T13 | 2026-11-15 | not run | LOCAL: Not run: requires approved hosted shared-network lockout test, current Auth limits/logs and teacher instructions; local Auth cannot establish the hosted limit; docs/r4/full-adversarial.json | R11; approved hosted test required |
+| T14 | 2026-11-15 | not run | LOCAL: Not run: requires approved hosted reset emails, test inbox verification and current SMTP cap; local Mailpit cannot prove hosted delivery/quota; docs/r4/full-adversarial.json | R11; approved hosted test required |

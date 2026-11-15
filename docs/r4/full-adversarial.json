@@ -1,0 +1,94 @@
+{
+  "date": "2026-11-15",
+  "target": "local fictional Supabase only",
+  "phase": "r4-timer-fixes",
+  "stopped_on_disclosure": false,
+  "tests": {
+    "T1": {
+      "result": "pass",
+      "evidence": "9 table requests: no rows; no correct answers returned",
+      "requests": 9
+    },
+    "T2": {
+      "result": "pass",
+      "evidence": "16 teacher/unused RPC probes refused (false teacher predicate is a refusal)",
+      "requests": 16
+    },
+    "T3": {
+      "result": "pass",
+      "evidence": "Signup refused explicitly with signup_disabled",
+      "requests": 1
+    },
+    "T4": {
+      "result": "pass",
+      "evidence": "Teacher A cannot read B classes, pupils or class results",
+      "requests": 4
+    },
+    "T5": {
+      "result": "pass",
+      "evidence": "50 wrong codes sent within one minute; first block at 20; valid code shared at-most-10-second network block and recovered; valid/invalid row fields match",
+      "requests": 52
+    },
+    "T6": {
+      "result": "pass",
+      "evidence": "3 neighbouring/legacy-register derivations refused without masking; random-generator independence checked separately in R3",
+      "requests": 3
+    },
+    "T7": {
+      "result": "pass",
+      "evidence": "All six invalid/missing/other-token requests refused; 1 distinct error shapes/messages",
+      "requests": 8
+    },
+    "T8": {
+      "result": "pass",
+      "evidence": "Correct answer submitted one second after the displayed server deadline was marked wrong",
+      "requests": 3
+    },
+    "T9": {
+      "result": "pass",
+      "evidence": "Second submission refused and the single original wrong answer stands",
+      "requests": 4
+    },
+    "T10": {
+      "result": "pass",
+      "evidence": "Repeated open and two-tab takeover preserve the original question deadline; early finish refused",
+      "requests": 20
+    },
+    "T11": {
+      "result": "pass",
+      "evidence": "6/6 malformed inputs returned short plain refusal",
+      "requests": 8
+    },
+    "T12": {
+      "result": "pass",
+      "evidence": "200 starts reused the existing unfinished attempt; row count and attempts_taken unchanged",
+      "requests": 200
+    },
+    "T13": {
+      "result": "not run",
+      "evidence": "Not run: requires approved hosted shared-network lockout test, current Auth limits/logs and teacher instructions; local Auth cannot establish the hosted limit",
+      "requests": 0
+    },
+    "T14": {
+      "result": "not run",
+      "evidence": "Not run: requires approved hosted reset emails, test inbox verification and current SMTP cap; local Mailpit cannot prove hosted delivery/quota",
+      "requests": 0
+    }
+  },
+  "R2_additional": {
+    "unallocated": {
+      "result": "pass",
+      "evidence": "Unallocated approved teacher sees no classes, pupils, quizzes, attempts or class results"
+    },
+    "pupil_functions": {
+      "result": "pass",
+      "evidence": "All five used pupil RPCs requested anonymously with invalid credentials"
+    },
+    "page_smoke": {
+      "result": "pass",
+      "evidence": "Original pupil page completes all 25 questions at 25/25 through the new wrappers; teacher page displays the result and 8 unattempted allocated pupils; loopback requests only",
+      "separate_register_order_verified": true
+    }
+  },
+  "http_requests": 344
+}

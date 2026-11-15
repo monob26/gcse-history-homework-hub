@@ -1,0 +1,21 @@
+{
+  "scope": "local Chromium with fictional RPC responses; external requests blocked",
+  "results": [
+    {
+      "scenario": "expired-resume",
+      "status": "PASS"
+    },
+    {
+      "scenario": "expired-next",
+      "status": "PASS"
+    },
+    {
+      "scenario": "dialog-keeps-deadline",
+      "status": "PASS"
+    },
+    {
+      "scenario": "dialog-expires",
+      "status": "PASS"
+    }
+  ]
+}

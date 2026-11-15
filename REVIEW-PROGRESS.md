@@ -9,7 +9,7 @@ No hosted database writes, hosted test project, pushes or website publication.
 | 1 | R1 Backend under version control | Complete | CLI 2.81.3 link succeeded (exit 0) after owner updated the environment token. Existing MCP export, catalog equality, SQL/secret checks and fresh local rebuild/two-page acceptance evidence retained without repeating tests. See docs/R1-VERIFICATION.md. |
 | 2 | R2 Outside access rules | In progress; blocked | T1-T12 now pass locally after R2/R3 fixes; R2.7 verified hosted. Hosted fixes, leaked-password protection and T13/T14 remain unresolved. |
 | 3 | R3 Unguessable pupil codes | Implemented and verified locally; not deployed | Owner confirmed legacy design; aggregate hosted inspection completed. Independent random codes, register field/sort and DB failure limits prepared locally. No hosted rotation or publication. See docs/R3-REVIEW.md. |
-| 4 | R4 Timer bugs | Not started | Confirmation and both browser regression tests pending. |
+| 4 | R4 Timer bugs | Page fixes verified locally; overall review open | Four Chromium regressions pass (both original bugs reproduced first). Strict server deadline already in local R2 migration; hosted rollout and companion T13/T14 remain outstanding. See docs/R4-REVIEW.md. |
 | 5 | R5 Library pin and integrity | Not started | Pin/hash or local copy and sign-in verification pending. |
 | 6 | R11 Shared-network teacher access | Not started | Logs, deliberate limits, CAPTCHA, SMTP and T13/T14 pending. |
 | 7 | R6 Repository consolidation | Not started | All restructuring and URL continuity checks pending. |
@@ -35,7 +35,7 @@ R1 details:
 
 Current evidence is LOCAL and fictional only; no hosted adversarial run occurred.
 Following the owner's confirmation of the legacy design, R3 fixes were prepared locally
-without marking R2 complete. A full new run was required after those fixes by the
+without marking R2 complete. A full new run was required after those fixes and again after R4 by the
 companion: T1-T12 passed; T13/T14 remain not run, not waived or counted as passed.
 Historical failures and stop-on-disclosure runs remain in docs/r2/.
 
@@ -74,3 +74,20 @@ Historical failures and stop-on-disclosure runs remain in docs/r2/.
 R2.7 remains verified on hosted Supabase. R2 is still incomplete: no hosted R2 migration
 has been applied, leaked-password protection is unresolved on Free, and hosted T13/T14
 are not authorised/completed. No R2 or R3 pushes, merges or publications occurred.
+
+## R4 checklist
+
+- [x] Read-only server timing confirmation: hosted clock check retains five-second grace.
+- [x] Strict server deadline already prepared in R2 migration; local T8 verifies late answers marked wrong.
+- [x] Expired resume and next-question timeouts submit once after busy clears.
+- [x] Exit dialog preserves the original deadline, including expiry while open.
+- [x] All four Chromium regression cases fail before and pass after the page fix.
+- [ ] Entire companion complete: hosted T13/T14 remain not run, not waived.
+- [ ] Hosted R2 deadline fix and website deployment approved/completed.
+
+R4 page acceptance checks passed locally. Its overall checkbox remains open while
+the required companion run has outstanding tests and the hosted prerequisite is pending.
+
+Post-R4 companion rerun: T1–T12 passed; T13/T14 not run. Additional access checks
+and both-page smoke passed, including teacher register sorting. Evidence:
+`docs/r4/full-adversarial.json`. R2 and R3 remain incomplete.
