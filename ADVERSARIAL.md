@@ -119,17 +119,17 @@ The quiz questions and answers are not confidential. The things to protect are:
 
 | Test | Date | Result (pass, fail, not run) | Evidence | Fix task |
 | --- | --- | --- | --- | --- |
-| T1 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T2 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T3 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T4 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T5 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T6 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T7 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T8 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T9 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T10 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T11 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T12 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T13 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
-| T14 | 2026-11-15 | not run | No adversarial run; R1 CLI link pending | Pending |
+| T1 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T2 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T3 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T4 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T5 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T6 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T7 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T8 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T9 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T10 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T11 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T12 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T13 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |
+| T14 | 2026-11-15 | not run | Not run; post-R1 adversarial suite awaits hosted-test approval | Pending |

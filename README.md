@@ -67,11 +67,11 @@ Standard Supabase Auth schemas, roles, extensions and platform services must alr
 Platform Auth configuration, accounts, CAPTCHA/SMTP secrets and hosted migration history are
 not part of this schema-only export. The local config is for testing, not a hosted settings backup.
 
-CLI linking remains uncompleted: the existing token was refused `api_gateway_keys_read`.
-CLI 2.81.3 requests revealed keys and needs both API Keys Read and API Key Secrets Read.
-See `docs/R1-VERIFICATION.md` for the pinned source evidence.
-MCP schema access and a local rebuild do not require another token. No `db pull`, migration
-repair, hosted SQL changes, hosted test project creation, push or publication is authorised.
+CLI 2.81.3 successfully linked this local checkout to `inxsjdogxvqbvxydxmym` after the
+owner updated the environment token. No credentials were added to tracked files.
+See `docs/R1-VERIFICATION.md` for the completed R1 checks and permission evidence.
+No hosted database changes, hosted migration-history changes, hosted test project,
+GitHub push or website publication occurred.
 
 ## Database changes from now on
 

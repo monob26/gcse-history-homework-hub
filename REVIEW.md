@@ -38,7 +38,7 @@ Read the database through the Supabase MCP server (see R1). Do not ask the owner
 
 ## Now: before any real pupil data
 
-### [ ] R1. Put the Supabase backend under version control
+### [x] R1. Put the Supabase backend under version control
 
 - Severity: high. Effort: medium.
 - Evidence: both repositories contain only `README.md` and `index.html`. The pupil page depends on five functions (`gcse-history-homework-hub/index.html` line 42). The teacher page depends on two functions and three tables (`history-teacher-dashboard/index.html` lines 101, 102, 116, 122, 123).

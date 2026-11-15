@@ -6,7 +6,7 @@ No hosted database writes, hosted test project, pushes or website publication.
 
 | Order | Item | Status | Acceptance evidence / remaining work |
 | --- | --- | --- | --- |
-| 1 | R1 Backend under version control | In progress; CLI link blocked | Complete MCP schema export and local rebuild/page acceptance passed; see docs/R1-VERIFICATION.md. CLI 2.81.3 link needs both API Keys Read and API Key Secrets Read. No permissions changed. |
+| 1 | R1 Backend under version control | Complete | CLI 2.81.3 link succeeded (exit 0) after owner updated the environment token. Existing MCP export, catalog equality, SQL/secret checks and fresh local rebuild/two-page acceptance evidence retained without repeating tests. See docs/R1-VERIFICATION.md. |
 | 2 | R2 Outside access rules | Not started | All required external access checks, fixes and repeatable tests pending. |
 | 3 | R3 Unguessable pupil codes | Not started | Confirmation, independent codes, register field, throttling and tests pending. |
 | 4 | R4 Timer bugs | Not started | Confirmation and both browser regression tests pending. |
@@ -21,7 +21,7 @@ No hosted database writes, hosted test project, pushes or website publication.
 R1 details:
 
 - [x] Existing CLI 2.81.3 reused; authentication was not repeated.
-- [ ] Successful CLI link to the project (permission blocker; no token requested).
+- [x] Successful CLI 2.81.3 link to inxsjdogxvqbvxydxmym (exit 0; updated owner-provided token).
 - [x] Read-only MCP schema export of public and homework_api; no row data.
 - [x] Deterministic local migration and source snapshots prepared.
 - [x] SQL syntax/function lint, metadata equality and secret checks passed.
@@ -29,7 +29,7 @@ R1 details:
 - [x] Migration-only change workflow documented.
 - [x] Fresh local Supabase rebuild from migrations with fictional seed data.
 - [x] Both original pages served successfully against the rebuilt real local backend.
-- [ ] R1 marked complete: intentionally unchecked until every required step is satisfied.
+- [x] R1 complete: every required R1 step and its fresh-rebuild acceptance check has passed.
 
 ## All 14 adversarial tests
 

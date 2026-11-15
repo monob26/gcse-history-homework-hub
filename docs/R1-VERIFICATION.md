@@ -1,6 +1,6 @@
 # R1 evidence: schema export and local rebuild
 
-Date: 2026-11-15. R1 remains in progress because successful CLI linking is outstanding.
+Date: 2026-11-15. R1 is complete. All required steps and the fresh local rebuild/page acceptance check passed.
 
 ## Source and export
 
@@ -53,10 +53,17 @@ in memory. Neither index.html was edited. Its CDN test bundle resolved to supaba
 2.119.0, SHA256 71e670ca67ad5df7fe3d919f119f30267b44df80df27ac3ac63254a0ba2319df.
 The floating production script is unchanged and remains R5 work.
 
-## Remaining R1 step and exact CLI permission evidence
+## Successful CLI linking and exact permission evidence
 
-The existing CLI link was refused api_gateway_keys_read. No additional token/permissions
-were requested, and no link retry with broader access was attempted.
+The earlier CLI link was refused api_gateway_keys_read. The owner subsequently updated
+SUPABASE_ACCESS_TOKEN in the Codex environment with the read permissions and explicitly
+authorised retrying the link. The retry used the existing CLI 2.81.3:
+
+`supabase link --project-ref inxsjdogxvqbvxydxmym --workdir /workspace/gcse-history-homework-hub`
+
+Result: exit 0; "Finished supabase link." Linking updates local CLI metadata and reads
+remote configuration; it did not apply database migrations or change hosted configuration.
+All previously passed tests were retained as evidence and were not repeated.
 
 CLI 2.81.3 link calls GetApiKeys, which sets reveal=true. Therefore its key request needs
 BOTH API Keys Read (api_gateway_keys_read) and API Key Secrets Read
@@ -69,13 +76,13 @@ and the official documentation generator explains the same rule explicitly.
 - Permission rule: https://github.com/supabase/supabase/blob/ad6988956920b40a368b50288f11ac853a7480d5/apps/studio/lib/fga-refinements.ts
 - Documentation rule: https://github.com/supabase/supabase/blob/ad6988956920b40a368b50288f11ac853a7480d5/apps/docs/spec/sections/generateAccessControlPartials.mts
 
-This confirms the key-request requirements, not that every other link configuration read
-is already permitted. The earlier consolidated audit lists those separate read permissions.
+The earlier consolidated audit lists the separate configuration-read permissions.
+The successful retry confirms that the CLI link now completes with the supplied access.
 Secret-read is sensitive: retrieved server keys can themselves bypass database RLS.
 
-The R1 fresh local rebuild/page acceptance check passed. R1 is not ticked complete because
-the specification also requires linking. No fresh hosted test project is necessary for
-the demonstrated local acceptance check, and none was created.
+The R1 fresh local rebuild/page acceptance check passed, and successful CLI linking now
+satisfies the last outstanding step. R1 is ticked complete. No fresh hosted test project
+is necessary for the demonstrated local acceptance check, and none was created.
 
 ## Security observations carried forward, not marked passed
 
