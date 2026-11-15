@@ -33,10 +33,14 @@ const root = require("path").resolve(__dirname, "../..");
       "expired-next",
       "dialog-keeps-deadline",
       "dialog-expires",
+      "full-quiz",
+      "cooldown",
     ]) {
+      if (process.env.R6_SCENARIO && process.env.R6_SCENARIO !== scenario) continue;
       const page = await browser.newPage();
       let opens = 0,
-        answers = [];
+        answers = [],
+        completed = false;
       const errors = [];
       page.on("pageerror", (e) => errors.push(e.message));
       await page.route("**/*", async (route) => {
@@ -47,6 +51,18 @@ const root = require("path").resolve(__dirname, "../..");
         }
         const name = u.pathname.split("/").pop(),
           p = route.request().postDataJSON();
+        if (scenario === "cooldown") {
+          return route.fulfill({
+            status: 429,
+            headers: {
+              "Content-Type": "application/json",
+              "Retry-After": "7",
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Expose-Headers": "Retry-After",
+            },
+            body: JSON.stringify({ message: "Fictional cooldown" }),
+          });
+        }
         let data;
         if (name === "get_current_pupil_homework")
           data = {
@@ -58,6 +74,7 @@ const root = require("path").resolve(__dirname, "../..");
             total_questions: 25,
             pass_mark: 80,
             attempts_taken: 0,
+            passed: completed,
             unfinished_attempt_id: scenario === "expired-resume" ? "fictional-attempt" : null,
           };
         else if (name === "start_pupil_quiz")
@@ -76,7 +93,14 @@ const root = require("path").resolve(__dirname, "../..");
           };
         } else if (name === "submit_pupil_answer") {
           answers.push(p.entered_answer);
-          data = { answer_correct: false, correct_option: 0, feedback: "Fictional feedback" };
+          data = {
+            answer_correct: p.entered_answer === 0,
+            correct_option: 0,
+            feedback: "Fictional feedback",
+          };
+        } else if (name === "complete_pupil_quiz") {
+          completed = true;
+          data = { total_questions: 25, final_score: 25, passed: true };
         } else throw Error("Unexpected RPC " + name);
         await route.fulfill({ json: data });
       });
@@ -86,9 +110,36 @@ const root = require("path").resolve(__dirname, "../..");
         await page.goto(origin);
         await page.locator("#code").fill("ABCDEFGHJKLM");
         await page.locator("#loginForm button").click();
+        if (scenario === "cooldown") {
+          await page.locator("#loginError").filter({ hasText: "Please wait 7 seconds" }).waitFor();
+          assert.deepEqual(errors, []);
+          results.push({ scenario, status: "PASS" });
+          continue;
+        }
         await page.locator("#homeContent button").click();
         await page.locator(scenario === "expired-resume" ? "#resumeQuiz" : "#startQuiz").click();
         await page.locator("#question").waitFor({ state: "visible" });
+        if (scenario === "full-quiz") {
+          for (let n = 1; n <= 25; n++) {
+            await page
+              .locator("#qNumber")
+              .filter({ hasText: `Question ${n} of 25` })
+              .waitFor();
+            await page.locator("#options button").nth(0).click();
+            await page.locator("#submitAnswer").click();
+            await page.locator("#feedback").waitFor({ state: "visible" });
+            await page.locator("#nextQuestion").click();
+          }
+          await page.locator("#result").waitFor({ state: "visible" });
+          assert.equal(await page.locator("#resultScore").innerText(), "25/25");
+          assert.deepEqual(answers, Array(25).fill(0));
+          await page.locator("#resultAction").click();
+          await page.locator("#home").waitFor({ state: "visible" });
+          assert(await page.locator("#homeContent button").isDisabled());
+          assert.deepEqual(errors, []);
+          results.push({ scenario, status: "PASS" });
+          continue;
+        }
         if (scenario === "expired-next") {
           await page.locator("#options button").nth(1).click();
           await page.locator("#submitAnswer").click();
