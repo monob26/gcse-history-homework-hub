@@ -117,6 +117,16 @@ and check sign-in/results/sign-out. Compare public HTML/CSS/JS bytes with the ap
 for missing assets and JavaScript errors, and record release evidence in the PRs. Use existing
 fictional accounts only. See [R6 deployment notes](docs/R6.md) for packaging and rollback details.
 
+## R8 test-isolation preparation
+
+See [R8 isolation notes](docs/R8.md) and the
+[final acceptance review](docs/R8-outstanding-review.md). **R8 acceptance is complete:** separate
+TEST publication, core flows and genuine emailed recovery passed. Exact Auth URL/redirect/SMTP
+settings are owner-verified, not independently API-verified. Documented Free-plan and separate
+R2/R11 limitations remain. Live resources are unchanged; draft PR #4 remains unmerged.
+
+Offline checks for the new staging guards: `python3 tests/r8/staging.py`.
+
 ## Page-facing function contract
 
 This contract carries forward R1's API inventory and incorporates the later checked-in R2/R3

@@ -1,0 +1,28 @@
+{
+  "project_ref": "ohkpvuhzvshjglbqyepq",
+  "live_project_untouched": true,
+  "bootstrap_sources": [
+    {
+      "path": "supabase/migrations/20261115123856_remote_schema.sql",
+      "sha256": "2b161af87c17b326fcb93fe8176a625fb982e389946d31b6dda8f688d3748fc2"
+    },
+    {
+      "path": "supabase/migrations/20261115132031_harden_r2_access_rules.sql",
+      "sha256": "af7e40678ca457c67a430695dd435f1be8a4da2eaa07f5cba3a7c44f95880efd"
+    },
+    {
+      "path": "supabase/migrations/20261115140316_enforce_pupil_rpc_boundaries.sql",
+      "sha256": "b1b1c2a386458ecf8810646ec3ae88c58d555b5c6e6409c558f155c483b3a392"
+    },
+    {
+      "path": "supabase/migrations/20261115193842_independent_pupil_codes.sql",
+      "sha256": "494ce3a11945a739d03c6181b47b023ac2a91ac343d6783fc4662cf1c2b092c3"
+    }
+  ],
+  "bootstrap_bytes": 157359,
+  "fixture_source": "supabase/test-fixtures/r8_isolated_fictional_fixtures.sql",
+  "status": "R8 acceptance complete; core local/hosted and genuine recovery passed; exact Auth settings owner-verified",
+  "r8_acceptance": "COMPLETE",
+  "owner_verified_auth_settings": "owner-verified-auth-settings.json",
+  "remaining_r8_acceptance_blockers": []
+}
