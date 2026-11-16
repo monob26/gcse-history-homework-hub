@@ -5,6 +5,8 @@ const fs = require("node:fs");
 const path = require("node:path");
 const http = require("node:http");
 const crypto = require("node:crypto");
+const os = require("node:os");
+const { execFileSync } = require("node:child_process");
 const root = path.resolve(__dirname, "../..");
 (async () => {
   const html = fs.readFileSync(path.join(root, "teacher/index.html"), "utf8");
@@ -12,9 +14,11 @@ const root = path.resolve(__dirname, "../..");
   const integrity = "sha384-" + crypto.createHash("sha384").update(library).digest("base64");
   assert.ok(html.includes('integrity="' + integrity + '"'));
   assert.ok(html.includes('src="./vendor/supabase-2.119.0.min.js"'));
+  const packaged = fs.mkdtempSync(path.join(os.tmpdir(), "r10-teacher-package-"));
+  execFileSync("python3", [path.join(root, "scripts/prepare-pages.py"), "teacher", packaged]);
   const server = http.createServer((req, res) => {
     const file = path.join(
-      root,
+      packaged,
       new URL(req.url, "http://localhost").pathname.replace(/\/$/, "/index.html"),
     );
     res.setHeader(
@@ -51,7 +55,7 @@ const root = path.resolve(__dirname, "../..");
         window.policyFailures.push(e.effectiveDirective),
       );
     });
-    await page.goto(origin + "/teacher/");
+    await page.goto(origin + "/");
     await page.waitForFunction(() => !!window.supabase?.createClient && !!client);
     assert.equal(await page.locator("#email").isEnabled(), true);
     assert.deepEqual(await page.evaluate(() => window.policyFailures), []);
@@ -76,6 +80,7 @@ const root = path.resolve(__dirname, "../..");
   } finally {
     await browser.close();
     await new Promise((r) => server.close(r));
+    fs.rmSync(packaged, { recursive: true, force: true });
   }
 })().catch(() => {
   console.error("FAIL: R10 pinned assets/CSP (details suppressed)");
