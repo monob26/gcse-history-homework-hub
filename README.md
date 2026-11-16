@@ -119,8 +119,8 @@ fictional accounts only. See [R6 deployment notes](docs/R6.md) for packaging and
 
 ## R8 test-isolation preparation
 
-See [R8 isolation notes](docs/R8.md) for the prepared test-project staging mode, proposed branch
-protection and remaining approvals. R8 is not yet signed off; the current published sites still
+See [R8 isolation notes](docs/R8.md) for test-project staging, completed local browser acceptance
+and the remaining publication approval. R8 is not yet signed off; the current published sites still
 share one fictional-data project.
 
 Offline checks for the new staging guards: `python3 tests/r8/staging.py`.
