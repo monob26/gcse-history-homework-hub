@@ -30,6 +30,51 @@ let authGeneration = 0,
   loading = false,
   resultsError = "",
   classCodes = [];
+// UI backoff is courtesy to users, not a server-side abuse control.
+let authRequestPending = false,
+  authRetryAfter = null,
+  cooldownTimer = null;
+const authCooldowns = new Map();
+function retrySeconds(value) {
+  if (!value) return null;
+  const number = /^\d+$/.test(value) ? Number(value) : (Date.parse(value) - Date.now()) / 1000;
+  return Number.isFinite(number) && number > 0 ? Math.ceil(number) : null;
+}
+async function authAwareFetch(input, init) {
+  const response = await fetch(input, init);
+  const url = new URL(typeof input === "string" ? input : input.url);
+  if (
+    url.origin === SUPABASE_URL &&
+    url.pathname.startsWith("/auth/v1/") &&
+    response.status === 429
+  )
+    authRetryAfter = retrySeconds(response.headers.get("Retry-After"));
+  return response;
+}
+function syncAuthControls() {
+  const block = authCooldowns.get(mode);
+  const seconds = block ? Math.max(0, Math.ceil((block.until - Date.now()) / 1000)) : 0;
+  submitAuth.disabled = authRequestPending || seconds > 0;
+  forgot.disabled = authRequestPending;
+  back.disabled = authRequestPending;
+  if (seconds > 0) {
+    const action = mode === "forgot" ? "Password reset requests" : "Sign-in requests";
+    message(
+      `${action} are temporarily limited. ${block.exact ? "Try again in" : "Pause for at least"} ${seconds} seconds.${block.exact ? "" : " The server did not provide a retry time; its limit may last longer."} If this affects other teachers, contact school IT.`,
+      true,
+    );
+  }
+  if (block && seconds === 0 && !authRequestPending) {
+    authCooldowns.delete(mode);
+    message(
+      "The page's waiting period has ended. You can try again; the server may still apply a limit.",
+    );
+  }
+  if (![...authCooldowns.values()].some((b) => b.until > Date.now()) && cooldownTimer) {
+    clearInterval(cooldownTimer);
+    cooldownTimer = null;
+  }
+}
 function message(value, error = false) {
   authMsg.textContent = value;
   authMsg.className = "auth-msg " + (error ? "error" : "ok");
@@ -56,6 +101,7 @@ function setMode(next) {
   forgot.hidden = next !== "signin";
   back.hidden = next === "signin";
   message("");
+  syncAuthControls();
 }
 function option(select, value, label) {
   const o = document.createElement("option");
@@ -289,6 +335,7 @@ if (!window.supabase)
   message("The login library could not load. Check your internet connection.", true);
 else {
   client = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+    global: { fetch: authAwareFetch },
     auth: { detectSessionInUrl: true, autoRefreshToken: true, persistSession: true },
   });
   client.auth.onAuthStateChange((event, session) => {
@@ -311,13 +358,20 @@ forgot.addEventListener("click", () => setMode("forgot"));
 back.addEventListener("click", () => setMode("signin"));
 authForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  if (authRequestPending || (authCooldowns.get(mode)?.until || 0) > Date.now()) {
+    syncAuthControls();
+    return;
+  }
   if (!client) {
     message("Supabase configuration is not complete.", true);
     return;
   }
   const email = el("email").value.trim(),
     password = el("password").value;
-  submitAuth.disabled = true;
+  const requestMode = mode;
+  authRequestPending = true;
+  authRetryAfter = null;
+  syncAuthControls();
   message("Please wait…");
   try {
     let result;
@@ -335,9 +389,19 @@ authForm.addEventListener("submit", async (e) => {
       message("Password saved. Please sign in.");
     } else if (result.data?.user) showSignedIn(result.data.user);
   } catch (e) {
-    message(e.message || "Something went wrong.", true);
+    if (
+      e.status === 429 ||
+      ["over_request_rate_limit", "over_email_send_rate_limit"].includes(e.code)
+    ) {
+      authCooldowns.set(requestMode, {
+        until: Date.now() + (authRetryAfter || 60) * 1000,
+        exact: authRetryAfter !== null,
+      });
+      if (!cooldownTimer) cooldownTimer = setInterval(syncAuthControls, 1000);
+    } else message(e.message || "Something went wrong.", true);
   } finally {
-    submitAuth.disabled = false;
+    authRequestPending = false;
+    syncAuthControls();
   }
 });
 el("signOut").addEventListener("click", async () => {
