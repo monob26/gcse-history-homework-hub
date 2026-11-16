@@ -1,6 +1,6 @@
 {
   "date": "2026-11-16",
-  "result": "CORE AND GENUINE EMAIL RECOVERY PASS; exact Auth settings inspection remains blocked",
+  "result": "R8 COMPLETE; core and genuine emailed recovery passed; exact Auth settings owner-verified",
   "runner_source_commit": "573cd391ad3883130e9d86e8a63ae1e128279eb1",
   "command": "node tests/r8/browser.cjs --hosted",
   "test_project_ref": "ohkpvuhzvshjglbqyepq",
@@ -70,7 +70,7 @@
     "affected_teacher_regressions": "6 PASS",
     "hosted_auth_after_fix": "PASS",
     "full_recovery_token_consumption": "PASS; actual received link, password update, old/new sign-in and replay rejection",
-    "exact_auth_allow_list": "owner-confirmed; independent enumeration blocked",
+    "exact_auth_allow_list": "owner manually verified exactly one matching TEST URL; no wildcards/live URLs; not API-verified",
     "effective_site_url": "independently verified by invalid-link fallback",
     "updated_teacher_package": "3920b4a092ad5b505a7ce270133e04f06db05895",
     "updated_teacher_source": "285a225",
@@ -82,5 +82,8 @@
     "dedicated_deliverable_teacher": "created and approved in TEST; dedicated owner-authorized Gmail alias; no class allocations",
     "test_auth_admin_credential": "verified privately against TEST Auth admin endpoint HTTP 200; never sent to live",
     "current_recovery_evidence": "recovery-acceptance.json"
-  }
+  },
+  "r8_acceptance": "COMPLETE",
+  "owner_verified_auth_settings": "owner-verified-auth-settings.json",
+  "remaining_r8_acceptance_blockers": []
 }

@@ -1,0 +1,12 @@
+{
+  "project": "ohkpvuhzvshjglbqyepq",
+  "verified_on": "2026-11-16",
+  "verification_method": "owner manual inspection of TEST Supabase authentication settings; reported in conversation",
+  "independently_api_verified": false,
+  "site_url": "https://monob26.github.io/history-teacher-dashboard-test/",
+  "redirect_allow_list": ["https://monob26.github.io/history-teacher-dashboard-test/"],
+  "wildcards_present": false,
+  "live_urls_present": false,
+  "custom_smtp_enabled": false,
+  "email_service": "Supabase default email service"
+}

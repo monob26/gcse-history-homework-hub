@@ -1,9 +1,9 @@
-# R8 core hosted publication and acceptance — passed; full R8 incomplete
+# R8 hosted publication and acceptance — complete
 
-Current status: **core hosted flows and genuine emailed recovery PASSED; full R8 sign-off awaits
-exact Auth settings inspection or explicit acceptance of that limitation.** The
-[current review](R8-outstanding-review.md) and [recovery evidence](r8/recovery-acceptance.json)
-supersede earlier blocked-recovery statements below. The original core results remain valid.
+**R8 acceptance COMPLETE on 16 November 2026.** The [final review](R8-outstanding-review.md)
+combines the original core run below, [genuine emailed recovery](r8/recovery-acceptance.json) and
+[owner-verified exact Auth settings](r8/owner-verified-auth-settings.json). No independent API
+verification of those settings is claimed. PR #4 remains draft and unmerged.
 
 ## Published releases
 
@@ -69,24 +69,18 @@ The owner authorized publication, test data, routine test fixes, commits and tes
 merge, live deployment, production data access, real pupil data, plan upgrade or broader security
 change occurred. Draft PR #4 stays open/draft.
 
-## Explicit outstanding limitations
+## Final recovery and settings disposition
 
-- **Exact Auth URL settings:** Site URL and the allowed redirect list remain owner-confirmed. The
-  existing Supabase Management API 403 is documented; it was not retried. Successful hosted sign-in
-  and the correct recovery request target are behavioural evidence, not independent enumeration of
-  those settings.
-- **Recovery email/link:** No controlled inbox exists for the fictional `.test` account. Email
-  delivery, actual recovery-link redirection, link consumption and password change were not tested.
-  The successful recovery request does not prove the exact allow-list or a complete recovery flow.
-  Track this as deferred Auth acceptance, not as a passed check. Ordinary password sign-in needs no
-  callback.
-- **Supabase Free:** Leaked-password protection remains disabled as an outstanding plan limitation;
-  no enablement or upgrade was attempted.
-- Detailed branch-protection settings remain integration-unreadable, with prior owner confirmation
-  retained. Existing R2/R11 limitations and the known pass-mark presentation discrepancy remain
-  outside this isolated release-verification change. They are not resolved by this acceptance run.
+The original run above tested a nonexistent address, which did not establish email delivery.
+Subsequent acceptance used a dedicated approved fictional TEST teacher and the actual received
+recovery email. Link consumption, password change, old-password rejection, new-password sign-in,
+sign-out and link replay rejection all passed; see [recovery evidence](r8/recovery-acceptance.json).
+The owner then manually verified the exact Site URL, sole matching redirect (no wildcards/live URLs)
+and default email service with custom SMTP disabled. See
+[owner settings](r8/owner-verified-auth-settings.json). These later records resolve the earlier
+acceptance blockers; no passed checks were rerun.
 
-The core results above remain valid. They do not complete password-recovery acceptance. **Keep R8
-open**; follow the outstanding-item review for the remaining real recovery sequence and
-exact-settings evidence. No full sign-off or closure is recommended until those requirements are
-addressed.
+Supabase Free leaked-password protection remains disabled as documented. Detailed branch protection
+and private account security remain owner-confirmed. Existing R2/R11 limitations and pass-mark
+presentation remain separate unresolved work. R8 completion does not resolve those items or approve
+real pupil data, a merge or live changes.

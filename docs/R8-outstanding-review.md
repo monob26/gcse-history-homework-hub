@@ -1,7 +1,40 @@
 # R8 outstanding-item review — 16 November 2026
 
-**Genuine recovery acceptance now PASSED. R8 remains open only for independent exact-settings
-verification (or explicit owner acceptance of that limitation).** PR #4 stays draft and unmerged.
+**R8 acceptance COMPLETE on 16 November 2026. No genuine R8 acceptance blocker remains.** PR #4
+remains draft and unmerged. Completion does not authorize a merge or any live change.
+
+## Final acceptance review
+
+The owner manually checked the TEST Supabase Auth settings and reported:
+
+- Site URL: `https://monob26.github.io/history-teacher-dashboard-test/`.
+- Redirect allow-list: exactly that one URL; no wildcards or live URLs.
+- Custom SMTP disabled; Supabase default email service in use.
+
+These settings are **owner-verified, not independently API-verified**. The
+[settings record](r8/owner-verified-auth-settings.json) preserves that provenance. The previous
+Management API 403 remains an inspection limitation, but the requested owner evidence resolves the
+settings acceptance gap. No settings were changed or API reads retried.
+
+| Acceptance criterion                                                                                                                 | Final disposition and existing evidence                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| Separate TEST project, repositories and public configuration                                                                         | Passed; provisioning and staging evidence in [R8](R8.md)                                         |
+| Published TEST sites, asset bytes and backend isolation                                                                              | Passed; [hosted publication](R8-hosted-publication.md) and [manifest](r8/hosted-acceptance.json) |
+| Teacher sign-in, allocated-class access, denial of unallocated class, reload and sign-out                                            | Passed; local and hosted acceptance                                                              |
+| Pupil lookup, server marking, quiz completion and matching saved teacher results                                                     | Passed; local 24/25 including timeout, hosted 25/25                                              |
+| Timers, timeout, exit/reload/resume                                                                                                  | Passed; existing local acceptance and regression evidence                                        |
+| Signup/anonymous sign-in restrictions, RLS and schema exposure                                                                       | Passed; existing checks and bounded hosted schema denial                                         |
+| Recovery form and expired-session failure handling                                                                                   | Passed; focused UI regressions and affected teacher regressions                                  |
+| Recovery email receipt, genuine link redirect, password save, old-password rejection, new-password sign-in and link replay rejection | Passed; [real emailed recovery evidence](r8/recovery-acceptance.json)                            |
+| Exact TEST Site URL, sole redirect and SMTP mode                                                                                     | Owner-verified as above; independent API inspection not claimed                                  |
+| Release protection and account 2FA/privacy                                                                                           | Prior owner confirmations retained; independent detailed-rule/account inspection not claimed     |
+| Leaked-password protection                                                                                                           | Documented accepted Supabase Free limitation; not claimed enabled                                |
+| Existing R2/R11 limitations and pass-mark presentation                                                                               | Separate unresolved work retained; not relabelled as passed or fixed by R8                       |
+
+All R8 acceptance requirements are satisfied by the existing behavioural evidence and explicitly
+labelled owner verification. No previously passed test was repeated for this final review. Only
+documentation, evidence consistency, links, formatting and secret checks were performed. No live
+resources, deployments, Auth settings or test data were changed during finalisation.
 
 ## Current continuation: genuine emailed recovery passed
 
@@ -36,21 +69,16 @@ Evidence: [recovery acceptance](r8/recovery-acceptance.json). Secrets, passwords
 email contents, recovery links and sessions are excluded from the evidence. The dedicated account
 remains in TEST; sessions were signed out. No live resource or application deployment changed.
 
-**Remaining exact blocker:** The full Auth URL allow-list and SMTP configuration cannot be
-independently inspected with current access. The existing Management API settings read returned 403;
-it was not retried. The newly supplied project Auth secret enables Auth administration, not
-Management API configuration reads. Email receipt establishes successful delivery to this approved
-alias, but does not enumerate SMTP settings or prove delivery to arbitrary addresses. To finish
-sign-off, provide settings-read access or an authoritative redacted export of TEST Site URL,
-redirect allow-list and SMTP configuration (exclude credentials), or explicitly accept that exact
-inspection remains a verification limitation. Existing owner-confirmed account/branch protection and
-the accepted Free leaked-password limitation remain documented separately.
+The former exact-settings blocker is resolved by the owner-verified settings recorded above.
+Successful delivery to the approved alias is demonstrated; delivery to arbitrary addresses is not
+claimed. The default email service remains subject to its normal restrictions.
 
 ## Historical pre-key review (superseded where noted above)
 
 The following records explain earlier blockers and prior checks. Their statements about unavailable
 admin access, absence of an authorized alias, and untested genuine recovery are historical; the
-current continuation above supersedes them.
+final acceptance review and recovery continuation above supersede them. All sections below are
+historical.
 
 ## Gmail connection follow-up
 
@@ -78,25 +106,6 @@ organization solely to bypass mailer restrictions would unnecessarily broaden ac
 proposed.
 
 Full recovery remains blocked; Gmail connection alone is not a recovery pass.
-
-## Requirement-by-requirement disposition
-
-| Item                                                                                         | Evidence/status                                                                                                              | Sign-off impact and resolution                                                                                            |
-| -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Separate test project, repositories and public configurations                                | Passed in prior evidence; no repeat needed                                                                                   | Complete                                                                                                                  |
-| Both published sites, asset bytes, backend isolation                                         | Passed; teacher recovery-fix build also verified as below                                                                    | Complete                                                                                                                  |
-| Teacher sign-in, class isolation, sign-out, saved quiz/results                               | Prior hosted acceptance passed at 25/25; affected teacher auth regressions passed after fix                                  | Complete                                                                                                                  |
-| Local timers, timeout, exit/reload/resume                                                    | Passed in prior local run; unchanged pupil app                                                                               | Complete; not repeated                                                                                                    |
-| Signup/anonymous sign-in restrictions, RLS, schema exposure                                  | Passed prior checks                                                                                                          | Complete; not repeated                                                                                                    |
-| Recovery UI and failure handling                                                             | New mocked recovery success/expired-session regressions passed after a real form fix                                         | UI boundary passed; not email/token end-to-end acceptance                                                                 |
-| Effective default recovery destination                                                       | Two invalid-link probes independently returned the intended test teacher URL                                                 | Behaviour verified, including rejection of one unlisted destination; not an exhaustive allow-list audit                   |
-| Actual recovery email delivery                                                               | PASSED for the new approved alias; original .test address remains undeliverable                                              | Blocks full recovery acceptance; needs a valid controlled inbox and a matching test Auth user                             |
-| Genuine recovery-link consumption, password reset, new-password sign-in and replay rejection | Passed using the actual received email link; see current continuation                                                        | Blocks full recovery acceptance; needs received email or legitimate admin-generated recovery link                         |
-| Exact Auth redirect allow-list and mail settings                                             | Owner-confirmed URL settings; Management API settings read previously 403, no DB-stored configuration, dashboard unavailable | Independent exact inspection blocked; needs permitted settings-read access or a redacted authoritative settings export    |
-| Detailed branch-protection rules                                                             | Owner-confirmed; alternative CLI credential read returned 403                                                                | Independent rule inspection blocked; needs rules-read permission or authoritative export; no rule changes made            |
-| Account 2FA/privacy settings                                                                 | Owner-confirmed                                                                                                              | Cannot independently inspect private account settings through the current connections; no account/security changes needed |
-| Leaked-password protection                                                                   | Disabled, Supabase Free limitation explicitly accepted for documentation                                                     | Outstanding known limitation; no enablement attempts or plan changes                                                      |
-| Existing R2/R11 and pass-mark presentation items                                             | Remain in the existing records                                                                                               | Separate unresolved work; no claim they passed or were fixed by R8                                                        |
 
 ## Work completed in this review
 

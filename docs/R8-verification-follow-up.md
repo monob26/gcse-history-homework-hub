@@ -3,7 +3,8 @@
 Historical pre-acceptance note: local browser acceptance has since passed; see [R8 status](R8.md)
 for current evidence and publication readiness.
 
-R8 remains open. This note supplements draft PR #4; it does not authorize merging, publication or
+Historical status: R8 was open at this follow-up; the [final review](R8-outstanding-review.md) now
+records completion. This note supplements draft PR #4; it does not authorize merging, publication or
 changes to either live site or the live Supabase project.
 
 ## Evidence carried forward

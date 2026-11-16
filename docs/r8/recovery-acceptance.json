@@ -29,8 +29,11 @@
   },
   "account": "dedicated fictional approved teacher; owner-authorized Gmail plus-alias; no class allocations",
   "limitations": [
-    "Exact Auth redirect allow-list and SMTP configuration remain independently unreadable; previously denied settings endpoint not retried.",
+    "Exact Auth settings are owner-verified, not independently API-verified; historical settings-read 403 retained.",
     "Account security and detailed branch protection remain owner-confirmed rather than independently inspected."
   ],
-  "runner_note": "First run completed emailed-link consumption and password save; runner assertion expected error_code but Auth returned code. Corrected runner resumed only remaining checks; old password returned HTTP 400 invalid_credentials. No recovery request or password reset repeated."
+  "runner_note": "First run completed emailed-link consumption and password save; runner assertion expected error_code but Auth returned code. Corrected runner resumed only remaining checks; old password returned HTTP 400 invalid_credentials. No recovery request or password reset repeated.",
+  "r8_acceptance": "COMPLETE",
+  "owner_verified_auth_settings": "owner-verified-auth-settings.json",
+  "remaining_r8_acceptance_blockers": []
 }
