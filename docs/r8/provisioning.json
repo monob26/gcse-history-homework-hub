@@ -21,5 +21,5 @@
   ],
   "bootstrap_bytes": 157359,
   "fixture_source": "supabase/test-fixtures/r8_isolated_fictional_fixtures.sql",
-  "status": "local browser acceptance passed; test-site publication and hosted acceptance pending separate approval"
+  "status": "local and hosted acceptance passed; both isolated test sites published; R8 closure recommended with documented limitations"
 }

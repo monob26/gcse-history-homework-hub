@@ -119,9 +119,11 @@ fictional accounts only. See [R6 deployment notes](docs/R6.md) for packaging and
 
 ## R8 test-isolation preparation
 
-See [R8 isolation notes](docs/R8.md) for test-project staging, completed local browser acceptance
-and the remaining publication approval. R8 is not yet signed off; the current published sites still
-share one fictional-data project.
+See [R8 isolation notes](docs/R8.md) and the
+[hosted acceptance record](docs/R8-hosted-publication.md). Both separate test sites are published
+and local/hosted acceptance passed. R8 is recommended for sign-off for isolated fictional-data
+release testing, with the recorded Auth, Free-plan and existing limitations carried forward.
+Existing live websites and the live Supabase project were unchanged; draft PR #4 remains unmerged.
 
 Offline checks for the new staging guards: `python3 tests/r8/staging.py`.
 

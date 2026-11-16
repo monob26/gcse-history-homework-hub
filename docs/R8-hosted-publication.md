@@ -1,76 +1,93 @@
-# R8 hosted publication — blocked on GitHub Pages access
+# R8 hosted publication and acceptance — passed
 
-Status on 16 November 2026: publication explicitly approved by the owner; both isolated packages
-pushed successfully. **Neither test site has been published or hosted-browser accepted. R8 remains
-open.**
+Status on 16 November 2026: **both separate test websites are published and hosted acceptance
+passed. Recommend signing off/closing R8 for isolated fictional-data release testing, with the
+limitations below carried forward explicitly.** No live website/database was changed; draft PR #4
+remains unmerged.
 
-## Completed work
+## Published releases
 
-- Pushed local acceptance commit `a5abe3c` to the existing `chore/r8-release-isolation` branch of
-  the canonical hub. Draft PR #4 remains unmerged; no writes were made to either live repository's
-  main branch.
-- Regenerated each static package with the test-only config. Scanned deployment files for configured
-  runtime credential values; none were present. Added `.nojekyll` and public source provenance
-  (`r8-release.json`). No pupil codes, tokens, credentials or fixture records are included in either
-  public package.
-- Pushed pupil package to `monob26/gcse-history-homework-hub-test:r8-pages` and teacher package to
-  `monob26/history-teacher-dashboard-test:r8-pages`.
-- Added one fresh fictional pupil for hosted acceptance through the approved test-only DML. It has
-  not been used for a hosted quiz. Existing class allocation and completed local acceptance data
-  remain intact.
-- Prepared `node tests/r8/browser.cjs --hosted`. It permits only the two exact test URL prefixes,
-  the isolated Supabase origin and the pinned CDN asset. In particular, sharing the
-  `monob26.github.io` origin does not allow live site paths. No hosted browser acceptance results
-  are claimed for this unrun mode.
+| Page    | Verified public URL                                         | Test repository branch                            | Package commit |
+| ------- | ----------------------------------------------------------- | ------------------------------------------------- | -------------- |
+| Pupil   | <https://monob26.github.io/gcse-history-homework-hub-test/> | `monob26/gcse-history-homework-hub-test:r8-pages` | `5a230b2`      |
+| Teacher | <https://monob26.github.io/history-teacher-dashboard-test/> | `monob26/history-teacher-dashboard-test:r8-pages` | `41fdc9d`      |
 
-## Concrete blocker
+The owner enabled Pages from `r8-pages:/` after the integration could not create Pages sites.
+Read-only Pages API responses now report `status: built`, `build_type: legacy` and the intended
+branch/root source for both repositories. Both public URLs returned HTTP 200. All seven deployed
+content files per site (HTML, JS, CSS and release provenance) matched the reviewed package byte for
+byte. The `.nojekyll` build marker was not included in the HTTP byte comparison. Asset hashes and
+release provenance are in [the evidence manifest](r8/hosted-acceptance.json).
 
-Repository metadata reported admin/push access. The integration accepted both branch pushes, but
-`POST /repos/{owner}/{repo}/pages` with legacy branch-based publication, source `r8-pages:/`,
-returned **HTTP 403, Resource not accessible by integration** for each test repository. Repository
-push permission does not confer Pages configuration permission. The Pages MCP action is not
-available.
+Both packages record source commit `a5abe3c`; later source commits only added test
+runner/documentation changes, so application redeployment was unnecessary. The public configuration
+points exclusively to test Supabase project `ohkpvuhzvshjglbqyepq`. No credentials, pupil codes or
+attempt tokens are included.
 
-The shared browser was tried for the unsupported Pages settings operation, using the cloud-desktop
-skill. Browser navigation/observation failed; the documented fallback returned an explicit browser
-URL security-policy rejection and instructed against workarounds. No alternative browser surface or
-policy bypass was tried. This is separate from the Supabase Management API 403 and was not an
-automatic approval-review rejection.
+## Hosted browser results
 
-No Pages site was created by these failed requests. No build or deployment success is claimed. Do
-not infer website publication merely from the pushed package branches.
+Ran `node tests/r8/browser.cjs --hosted` using headless system Chromium, separate pupil/teacher
+browser contexts, actual published assets and the actual isolated Supabase backend. No backend
+mocking, saved browser state, screenshots, traces or payload logging were used. All checks below
+passed:
 
-## Required access and continuation
+- Teacher password sign-in, Class A display and session persistence after reload.
+- RLS excluded unallocated Class B; a direct results RPC for Class B was refused.
+- Data API rejected `homework_private` with HTTP 406/PGRST106. Public teacher reads and
+  `homework_api` pupil calls succeeded.
+- Pupil code lookup, quiz start and all 25 submitted answers were marked by the server. Final score
+  **25/25, passed** was saved; the completed-homework button prevented another attempt through the
+  pupil page.
+- After reload, the teacher displayed the same pupil's saved score and passed status. Sign-out hid
+  the dashboard and remained effective after another reload.
+- Forgot-password UI sent a real recovery request with `redirect_to` equal to the published **test
+  teacher URL**, received a successful response and displayed the expected non-enumerating
+  confirmation. The probe used a nonexistent fictional email; a read-only Auth-user existence query
+  confirmed no account for that address. No existing account was sent a recovery email or had its
+  password changed. Back-to-sign-in stayed on the published test URL.
+- Requests were confined to the two exact test URL prefixes, the isolated Supabase origin and the
+  exact pinned CDN script. Sharing the `monob26.github.io` origin did not permit live website paths.
+  No unexpected-origin request was observed.
+- Page/CDN assets loaded and no uncaught exceptions or application console errors occurred.
+  Deliberate class/schema-denial HTTP errors are expected. One request was cancelled (`ERR_ABORTED`)
+  during sign-out/navigation; subsequent state checks passed, so no application fix was required.
 
-The GitHub connection must have Pages write permission for both test repositories, or the owner can
-enable Pages in each test repository's Settings > Pages using **Deploy from a branch**, branch
-**r8-pages**, folder **/ (root)**. No broader production permissions or changes are needed. Do not
-change either live site. This is an access prerequisite; publication already has owner approval.
+A fresh fictional pupil prepared during the preceding publication attempt was used. Its completed
+attempt and 25 answers remain in the test project. Previously passed local timer, timeout and resume
+evidence was reused rather than rerun; hosted completion covered all-correct marking. No new fixture
+provisioning or permissions changes were necessary in this continuation.
 
-Once access is available, continue without requesting publication approval again:
+## Fixes and access history
 
-1. Enable/verify Pages for the two test repositories and wait for successful builds.
-2. Fetch every deployed artifact and compare its bytes with its reviewed package; verify the test
-   public configuration and source provenance.
-3. Run the prepared hosted suite with the runtime teacher password. The new origin requires actual
-   teacher sign-in/class-boundary checks, quiz completion and matching saved results, reload and
-   sign-out checks, and asset/network checks. Reuse local timer/resume evidence rather than
-   repeating those unchanged tests.
-4. Exercise the recovery request using a nonexistent fictional email and verify its `redirect_to` is
-   the published test teacher URL. This does not send mail to an existing user or prove email
-   delivery, consumption of a real recovery link, or the exact server allow-list. Successful
-   password sign-in needs no redirect.
-5. Record hosted evidence and reassess closure. Keep PR #4 unmerged and all live resources
-   unchanged.
+No application problem was found in hosted acceptance. Earlier runner corrections (proxy/CA
+handling, hidden-field cleanup and the schema probe) are recorded in [R8](R8.md). The previous
+GitHub Pages creation HTTP 403 was an integration-access limitation; the owner enabling Pages
+resolved publication. The earlier shared browser fallback was blocked by its URL security policy; no
+workaround was used. Those historical blockers no longer prevent the published-site runner.
 
-## Continuing limitations
+The owner authorized publication, test data, routine test fixes, commits and test deployments. No
+merge, live deployment, production data access, real pupil data, plan upgrade or broader security
+change occurred. Draft PR #4 stays open/draft.
 
-Local browser acceptance passed, as recorded in [R8](R8.md). The test Auth URL settings remain
-owner-confirmed; the Supabase Management API 403 prevents exact independent settings inspection.
-Schema exposure was verified through the Data API. Supabase Free leaked-password protection remains
-an outstanding limitation; no enablement attempt was repeated. Recovery-link delivery/consumption
-requires an appropriate controlled inbox, which the fictional `.test` account does not provide.
-Existing R2/R11 limitations remain separate.
+## Explicit outstanding limitations
 
-**Recommendation: keep R8 open until both test sites are actually published and hosted acceptance
-passes.** Do not close it on the strength of local acceptance or branch publication alone.
+- **Exact Auth URL settings:** Site URL and the allowed redirect list remain owner-confirmed. The
+  existing Supabase Management API 403 is documented; it was not retried. Successful hosted sign-in
+  and the correct recovery request target are behavioural evidence, not independent enumeration of
+  those settings.
+- **Recovery email/link:** No controlled inbox exists for the fictional `.test` account. Email
+  delivery, actual recovery-link redirection, link consumption and password change were not tested.
+  The successful recovery request does not prove the exact allow-list or a complete recovery flow.
+  Track this as deferred Auth acceptance, not as a passed check. Ordinary password sign-in needs no
+  callback.
+- **Supabase Free:** Leaked-password protection remains disabled as an outstanding plan limitation;
+  no enablement or upgrade was attempted.
+- Detailed branch-protection settings remain integration-unreadable, with prior owner confirmation
+  retained. Existing R2/R11 limitations and the known pass-mark presentation discrepancy remain
+  outside this isolated release-verification change. They are not resolved by this acceptance run.
+
+These limits do not invalidate the observed separation of the test releases and backend, class
+access controls or saved quiz/results flow. **R8's test isolation and release-verification scope has
+passed; recommend closure with these explicit carry-forward limitations.** Full recovery-flow
+acceptance remains outstanding, and no approval for real pupil data, live release or PR merge is
+implied.

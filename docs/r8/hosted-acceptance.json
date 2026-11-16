@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-16",
+  "result": "PASS within isolated fictional-data release scope",
+  "runner_source_commit": "573cd391ad3883130e9d86e8a63ae1e128279eb1",
+  "command": "node tests/r8/browser.cjs --hosted",
+  "test_project_ref": "ohkpvuhzvshjglbqyepq",
+  "completed_score": 25,
+  "total_questions": 25,
+  "live_resources_unchanged": true,
+  "recovery_request_target_verified": true,
+  "recovery_delivery_and_link_consumption_tested": false,
+  "sites": [
+    {
+      "page": "pupil",
+      "url": "https://monob26.github.io/gcse-history-homework-hub-test/",
+      "pages_status": "built",
+      "branch": "r8-pages",
+      "package_commit": "5a230b239b7cfcca91b1959a4ce138d7765b1629",
+      "deployed_files_byte_equal": true,
+      "sha256": {
+        "index.html": "52a421cad1cd5c6d17109ec0f101ace6b6488c535fff8f61edbf53f2daa800d2",
+        "pupil/app.js": "05899819648f6371ccb52d7706c69eb9fb2b381de26b7bce818c3ed99e57a960",
+        "pupil/index.html": "731ad81b702e0dba01438aac80b2706b5065200431d2a94684154880e2dc251d",
+        "pupil/styles.css": "440625a2391392da9c4a59173131e1017e0b9a89888bbe442e7fc033b9463d11",
+        "r8-release.json": "c0a6e4d56b056dc674a4bb517ffde670e193b09da422b21a428f69aa5b3e1cd3",
+        "shared/colors.css": "ea25b892c8171b08f5b7eeae94895ca629a37e525e75476d9eb94fc527eceea2",
+        "shared/config.js": "85b7a4077a1340f2e2df30e0deba7888744500015be62803c15695143debe90f"
+      }
+    },
+    {
+      "page": "teacher",
+      "url": "https://monob26.github.io/history-teacher-dashboard-test/",
+      "pages_status": "built",
+      "branch": "r8-pages",
+      "package_commit": "41fdc9d53ce82010d2772ac4de124f8f2fd7057d",
+      "deployed_files_byte_equal": true,
+      "sha256": {
+        "index.html": "3183769acc270d5050037e110f20c7848302279ae7649905095b47d7b694c71e",
+        "r8-release.json": "bb8d43cb366bc9fc6e00768c3e2654483ee4405b6aaf1ba4acc16586f54306dd",
+        "shared/colors.css": "ea25b892c8171b08f5b7eeae94895ca629a37e525e75476d9eb94fc527eceea2",
+        "shared/config.js": "85b7a4077a1340f2e2df30e0deba7888744500015be62803c15695143debe90f",
+        "teacher/app.js": "46a28cd2bb1909e9ab835e3e7f1b8a51fbe512240c8fd24c8cb1f753dd2781e4",
+        "teacher/index.html": "c5bb9b148704db1c117d845d17213fc859e99414365ddcb02f65573b60d63ca1",
+        "teacher/styles.css": "7f35892630976b2c735c0e34fa0b860040d1ad74670babab5734e9b3fa8b4d89"
+      }
+    }
+  ]
+}
