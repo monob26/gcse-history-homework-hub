@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-16T21:56:14.145Z",
+  "project": "ohkpvuhzvshjglbqyepq",
+  "passes": [
+    "hosted teacher signs in using local integrity-checked library under CSP",
+    "teacher uses class IDs and pressed year controls",
+    "teacher includes existing pupils with no attempts",
+    "hosted instruction durations come from current TEST quiz rows",
+    "hosted radio selection exposes checked state",
+    "hosted modal enters focus and reports zero saved answers",
+    "hosted modal traps reverse tab",
+    "hosted Escape restores quiz focus",
+    "saved final answer response deliberately lost after real server success",
+    "retry completes saved final question without another submission",
+    "lost completion response recovers to authoritative saved homework summary",
+    "class-ID results show genuinely saved completed pupil",
+    "no outside requests, browser exceptions or CSP violations"
+  ],
+  "backend": "real hosted TEST Supabase; no mocked payloads",
+  "fault_injection": "final answer and completion responses deliberately dropped only after real server success",
+  "new_fixtures": false,
+  "existing_fictional_pupil_used": true,
+  "completed_score": "25/25",
+  "live_resources_changed": false,
+  "migration": {
+    "project": "ohkpvuhzvshjglbqyepq",
+    "name": "r10_class_ids_and_final_answer_resume",
+    "local_file": "20261116214132_r10_class_ids_and_final_answer_resume.sql",
+    "hosted_version": "20261116215021",
+    "legacy_results_api_retained": true
+  },
+  "ci": {
+    "source_commit": "87f3282",
+    "run": "https://github.com/monob26/gcse-history-homework-hub/actions/runs/43964833240",
+    "database": "success",
+    "browser": "success"
+  },
+  "security_advisor": "only previously documented Free-plan leaked-password-protection warning; no new schema findings",
+  "packaging_fix": "Generated teacher root initially used wrong local library path; fixed in 87f3282 and TEST teacher package 78690df. Generated-package CSP/SRI regression added."
+}

@@ -1,0 +1,110 @@
+{
+  "packages": [
+    {
+      "page": "pupil",
+      "repository": "monob26/gcse-history-homework-hub-test",
+      "branch": "r8-pages",
+      "package_commit": "26307664e6c2a88d0e51603f21931537c2e99570",
+      "source_commit": "795cd44f426060370bddd562b69c89d481229d57"
+    },
+    {
+      "page": "teacher",
+      "repository": "monob26/history-teacher-dashboard-test",
+      "branch": "r8-pages",
+      "package_commit": "78690df1686f098de6a32434035ac7beae71e54b",
+      "source_commit": "87f32828dd12fa89be2b052f8d8519ba07e0699c"
+    }
+  ],
+  "files": [
+    {
+      "page": "pupil",
+      "path": "index.html",
+      "byte_equal": true,
+      "sha256": "6dc853ed8b111bc0e6a492ddc8c781c06af280d3c6a42109e2c033fc16bcccaa"
+    },
+    {
+      "page": "pupil",
+      "path": "pupil/index.html",
+      "byte_equal": true,
+      "sha256": "7d600c536918d3cea065849fc5493b1b7a5ebb5445e51b9000cd9b011ec7d876"
+    },
+    {
+      "page": "pupil",
+      "path": "pupil/app.js",
+      "byte_equal": true,
+      "sha256": "70f89f0c6c7f4c77ff3861a56b046622c1efd9e0187710840da5f777eed0faab"
+    },
+    {
+      "page": "pupil",
+      "path": "pupil/styles.css",
+      "byte_equal": true,
+      "sha256": "10ba899a462e437b99a1903d67facdf76694d95a0c30a5564a8493172fd6611b"
+    },
+    {
+      "page": "pupil",
+      "path": "shared/config.js",
+      "byte_equal": true,
+      "sha256": "85b7a4077a1340f2e2df30e0deba7888744500015be62803c15695143debe90f"
+    },
+    {
+      "page": "pupil",
+      "path": "shared/colors.css",
+      "byte_equal": true,
+      "sha256": "ea25b892c8171b08f5b7eeae94895ca629a37e525e75476d9eb94fc527eceea2"
+    },
+    {
+      "page": "pupil",
+      "path": "r10-release.json",
+      "byte_equal": true,
+      "sha256": "76f8840f73408426bca2787b94aea34625766b1acb9d6f2e4c61888e7e7615a3"
+    },
+    {
+      "page": "teacher",
+      "path": "index.html",
+      "byte_equal": true,
+      "sha256": "ea2f778fc286a01e566ea91de2d4ed7c63c50010785b1976ec69aebb6751f7a0"
+    },
+    {
+      "page": "teacher",
+      "path": "teacher/index.html",
+      "byte_equal": true,
+      "sha256": "436826222754886ceae119cb7060f72586dd1ec464598e006667a4cb936af0f6"
+    },
+    {
+      "page": "teacher",
+      "path": "teacher/app.js",
+      "byte_equal": true,
+      "sha256": "425c241901ba1cc1a1e94ebbe92086720313febc72353c16528871579b2ab37c"
+    },
+    {
+      "page": "teacher",
+      "path": "teacher/styles.css",
+      "byte_equal": true,
+      "sha256": "45aaac55e10f22f2926458f05e6a1c4fdab5dc4c6e1fa181b40dcd084c9229b6"
+    },
+    {
+      "page": "teacher",
+      "path": "shared/config.js",
+      "byte_equal": true,
+      "sha256": "85b7a4077a1340f2e2df30e0deba7888744500015be62803c15695143debe90f"
+    },
+    {
+      "page": "teacher",
+      "path": "shared/colors.css",
+      "byte_equal": true,
+      "sha256": "ea25b892c8171b08f5b7eeae94895ca629a37e525e75476d9eb94fc527eceea2"
+    },
+    {
+      "page": "teacher",
+      "path": "r10-release.json",
+      "byte_equal": true,
+      "sha256": "e610920cdda3de46512af9b53f1fcfda79e52b99bb88bf4ba8f310d4f0a615c0"
+    },
+    {
+      "page": "teacher",
+      "path": "teacher/vendor/supabase-2.119.0.min.js",
+      "byte_equal": true,
+      "sha256": "71e670ca67ad5df7fe3d919f119f30267b44df80df27ac3ac63254a0ba2319df"
+    }
+  ]
+}

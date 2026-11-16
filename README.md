@@ -143,7 +143,8 @@ R9 is complete.
 See [R10 coverage and release boundaries](docs/R10.md). Keyboard/focus behavior, timing information,
 connection recovery, class-ID results and a restrictive CSP are prepared on the R10 branch. The
 library is local with its original R5 integrity hash. The new timing and class-ID RPCs require the
-reviewed R10 migration **before** frontend publication. No hosted R10 changes have been applied.
+reviewed R10 migration **before** frontend publication. TEST migration/publication and hosted
+acceptance passed; live migration/publication remains unapproved and PR #6 stays draft.
 
 ## Page-facing function contract
 
