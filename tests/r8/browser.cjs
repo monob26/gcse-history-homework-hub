@@ -10,6 +10,7 @@ const TEST = "https://ohkpvuhzvshjglbqyepq.supabase.co";
 const CDN = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0/dist/umd/supabase.min.js";
 let phase = "setup";
 const passed = [];
+const hosted = process.argv.includes("--hosted");
 const afterTeacher = process.argv.includes("--after-teacher");
 function check(name, condition) {
   if (!condition) throw new Error("Assertion failed");
@@ -52,8 +53,12 @@ function check(name, condition) {
     return "http://127.0.0.1:" + server.address().port;
   }
   try {
-    const pupilOrigin = await serve(path.join(ROOT, "work/r8-pupil"));
-    const teacherOrigin = await serve(path.join(ROOT, "work/r8-teacher"));
+    const pupilOrigin = hosted
+      ? "https://monob26.github.io/gcse-history-homework-hub-test/"
+      : await serve(path.join(ROOT, "work/r8-pupil"));
+    const teacherOrigin = hosted
+      ? "https://monob26.github.io/history-teacher-dashboard-test/"
+      : await serve(path.join(ROOT, "work/r8-teacher"));
     // Trust only the public-key pins from the environment's supplied proxy CA bundle.
     // No blanket ignoreHTTPSErrors; request allow-list remains enforced.
     const caBundle = process.env.NODE_EXTRA_CA_CERTS
@@ -88,7 +93,13 @@ function check(name, condition) {
       await c.route("**/*", (route) => {
         const url = new URL(route.request().url());
         if (url.origin === TEST) backendPaths.add(url.pathname);
-        if ([pupilOrigin, teacherOrigin, TEST].includes(url.origin) || url.href === CDN)
+        if (
+          url.origin === TEST ||
+          (hosted
+            ? [pupilOrigin, teacherOrigin].some((base) => url.href.startsWith(base))
+            : [pupilOrigin, teacherOrigin].includes(url.origin)) ||
+          url.href === CDN
+        )
           return route.continue();
         violations.push(url.hostname);
         return route.abort();
@@ -112,7 +123,13 @@ function check(name, condition) {
             pageErrors.push("console");
         });
         p.on("response", (r) => {
-          if ((r.url().startsWith("http://127.0.0.1:") || r.url() === CDN) && r.status() >= 400)
+          if (
+            ((hosted
+              ? [pupilOrigin, teacherOrigin].some((base) => r.url().startsWith(base))
+              : r.url().startsWith("http://127.0.0.1:")) ||
+              r.url() === CDN) &&
+            r.status() >= 400
+          )
             assetFailures.push(true);
         });
       });
@@ -212,26 +229,32 @@ function check(name, condition) {
         document.querySelector("#qNumber").textContent === "Question 2 of 25" &&
         !document.querySelector("#question").classList.contains("hidden"),
     );
-    phase = "pupil resume";
-    await p.locator("#exitQuiz").click();
-    await p.locator("#saveExit").click();
-    await p.reload();
-    await p.locator("#code").fill(pupilCode);
-    await p.locator("#loginForm button").click();
-    await p.locator("#homeContent button").click();
-    await p.locator("#resumeQuiz").click();
-    await p.locator("#question").waitFor({ state: "visible" });
-    check(
-      "saved answer and current question survive exit/reload/resume",
-      (await p.locator("#qNumber").innerText()) === "Question 2 of 25",
-    );
-    phase = "server deadline";
-    // Wait for the actual backend deadline; no browser clock or timer mocking.
-    await p.locator("#feedback").waitFor({ state: "visible", timeout: 55000 });
-    check(
-      "actual question timeout is submitted and marked",
-      /Time is up/.test(await p.locator("#feedback").innerText()),
-    );
+    if (!hosted) {
+      phase = "pupil resume";
+      await p.locator("#exitQuiz").click();
+      await p.locator("#saveExit").click();
+      await p.reload();
+      await p.locator("#code").fill(pupilCode);
+      await p.locator("#loginForm button").click();
+      await p.locator("#homeContent button").click();
+      await p.locator("#resumeQuiz").click();
+      await p.locator("#question").waitFor({ state: "visible" });
+      check(
+        "saved answer and current question survive exit/reload/resume",
+        (await p.locator("#qNumber").innerText()) === "Question 2 of 25",
+      );
+      phase = "server deadline";
+      // Wait for the actual backend deadline; no browser clock or timer mocking.
+      await p.locator("#feedback").waitFor({ state: "visible", timeout: 55000 });
+      check(
+        "actual question timeout is submitted and marked",
+        /Time is up/.test(await p.locator("#feedback").innerText()),
+      );
+    } else {
+      phase = "hosted answer submission";
+      await answer();
+      check("hosted second answer marked by real backend", true);
+    }
     phase = "remaining questions";
     for (let q = 3; q <= 25; q++) {
       await p.locator("#nextQuestion").click();
@@ -246,8 +269,10 @@ function check(name, condition) {
     await p.locator("#nextQuestion").click();
     await p.locator("#result").waitFor({ state: "visible" });
     check(
-      "server marking and full quiz completion (24/25, passed)",
-      (await p.locator("#resultScore").innerText()) === "24/25" &&
+      hosted
+        ? "hosted full quiz completion (25/25, passed)"
+        : "server marking and full quiz completion (24/25, passed)",
+      (await p.locator("#resultScore").innerText()) === (hosted ? "25/25" : "24/25") &&
         (await p.locator("#resultHeading").innerText()) === "Homework Complete!",
     );
     await p.locator("#resultAction").click();
@@ -259,14 +284,14 @@ function check(name, condition) {
     phase = "teacher saved result";
     await t.reload();
     await t.waitForFunction(
-      (register) =>
+      ({ register, expected }) =>
         [...document.querySelectorAll("#results tr")].some(
           (r) =>
             r.cells[0]?.textContent === register &&
-            r.cells[3]?.textContent === "24/25" &&
+            r.cells[3]?.textContent === expected &&
             r.cells[4]?.textContent === "Passed",
         ),
-      register,
+      { register, expected: hosted ? "25/25" : "24/25" },
     );
     check("teacher displays the same persisted pupil result", true);
     phase = "sign-out";
@@ -278,16 +303,44 @@ function check(name, condition) {
       "sign-out persists after reload and removes dashboard access",
       await t.locator("#dashboard").isHidden(),
     );
+    if (hosted) {
+      phase = "hosted recovery request target";
+      await t.locator("#forgot").click();
+      // No account exists for this address: exercise the request without emailing a user.
+      await t.locator("#email").fill("r8-no-account-recovery@example.test");
+      const recoveryRequest = t.waitForRequest(
+        (r) => new URL(r.url()).pathname === "/auth/v1/recover",
+      );
+      const recoveryResponse = t.waitForResponse(
+        (r) => new URL(r.url()).pathname === "/auth/v1/recover",
+      );
+      await t.locator("#submitAuth").click();
+      const request = await recoveryRequest;
+      const response = await recoveryResponse;
+      check(
+        "recovery request targets the published test teacher URL",
+        new URL(request.url()).searchParams.get("redirect_to") === teacherOrigin && response.ok(),
+      );
+      await t.waitForFunction(() =>
+        document.querySelector("#authMsg").textContent.includes("If the address belongs"),
+      );
+      await t.locator("#back").click();
+      check("hosted sign-in stays on the test URL", t.url() === teacherOrigin);
+    }
     check(
       "all backend traffic confined to isolated project",
       violations.length === 0 &&
         [...backendPaths].some((x) => x.includes("/auth/v1/token")) &&
         [...backendPaths].some((x) => x.endsWith("/complete_pupil_quiz")),
     );
-    check("all local and CDN assets load", assetFailures.length === 0);
+    check("all page and CDN assets load", assetFailures.length === 0);
     // Expected denied API probes can generate browser HTTP console errors. Count separately.
     check("no uncaught browser exceptions", pageErrors.length === 0);
-    console.log("Local R8 acceptance completed; no publication performed.");
+    console.log(
+      hosted
+        ? "Hosted R8 acceptance completed."
+        : "Local R8 acceptance completed; no publication performed.",
+    );
   } finally {
     for (const c of contexts) await c.close();
     if (browser) await browser.close();
