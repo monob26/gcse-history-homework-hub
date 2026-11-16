@@ -35,9 +35,14 @@ const ROOT = path.resolve(__dirname, "../..");
       const exceptions = [];
       page.on("pageerror", () => exceptions.push(true));
       await page.route("**/*", (r) =>
-        new URL(r.request().url()).origin === origin && !r.request().url().includes("/vendor/")
-          ? r.continue()
-          : r.abort(),
+        new URL(r.request().url()).pathname.endsWith("/shared/auth-captcha.js")
+          ? r.fulfill({
+              contentType: "application/javascript",
+              body: "window.HISTORY_CAPTCHA = {};",
+            })
+          : new URL(r.request().url()).origin === origin && !r.request().url().includes("/vendor/")
+            ? r.continue()
+            : r.abort(),
       );
       await page.addInitScript(
         ({ scenario }) => {

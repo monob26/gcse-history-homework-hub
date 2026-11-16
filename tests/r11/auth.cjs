@@ -33,6 +33,11 @@ const root = path.resolve(__dirname, "../..");
       await p.clock.install();
       await p.route("**/*", (route) => {
         const u = new URL(route.request().url());
+        if (u.pathname.endsWith("/shared/auth-captcha.js"))
+          return route.fulfill({
+            contentType: "application/javascript",
+            body: "window.HISTORY_CAPTCHA = {};",
+          });
         if (u.origin === origin) return route.continue();
         assert.ok(
           u.origin === "https://inxsjdogxvqbvxydxmym.supabase.co" &&

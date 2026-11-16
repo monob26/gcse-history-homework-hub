@@ -79,6 +79,9 @@ if __name__ == '__main__':
         shutil.copytree(ROOT / folder, destination / folder, dirs_exist_ok=True)
     if override is not None:
         (destination / 'shared/config.js').write_text(override)
+        # TEST must never inherit the LIVE widget, including when CAPTCHA is off.
+        (destination / 'shared/auth-captcha.js').write_text(
+            'window.HISTORY_CAPTCHA = Object.freeze({});\n')
     generated = entry(args.page)
     if override:
         live_origin = re.search(r'supabaseUrl:\s*"([^"]+)"', (ROOT / 'shared/config.js').read_text()).group(1)
@@ -92,9 +95,12 @@ if __name__ == '__main__':
             'window.HISTORY_CAPTCHA = Object.freeze(' + json.dumps(captcha_config) + ');\n')
         provider = 'https://challenges.cloudflare.com'
         def captcha_policy(html):
-            return html.replace("script-src 'self';", "script-src 'self' " + provider + ";").replace(
-                'img-src', 'frame-src ' + provider + '; img-src').replace(
-                'connect-src ' + test_origin + ';', 'connect-src ' + test_origin + ' ' + provider + ';')
+            # Replace each existing directive: source may already allow LIVE Turnstile.
+            html = re.sub(r"script-src [^;]+;", "script-src 'self' " + provider + ";", html)
+            html = re.sub(r'connect-src [^;]+;',
+                          'connect-src ' + test_origin + ' ' + provider + ';', html)
+            html = re.sub(r'frame-src [^;]+;\s*', '', html)
+            return html.replace('img-src', 'frame-src ' + provider + '; img-src')
         page_file = destination / args.page / 'index.html'
         page_file.write_text(captcha_policy(page_file.read_text()))
         generated = captcha_policy(generated)
