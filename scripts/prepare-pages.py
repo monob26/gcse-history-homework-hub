@@ -1,10 +1,44 @@
 """Copy plain static assets for either existing Pages URL; no application build."""
 
 import argparse
+import json
 from pathlib import Path
+import re
 import shutil
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_config(filename):
+    config = json.loads(filename.read_text())
+    required = {'supabaseUrl', 'publishableKey', 'teacherRedirectUrl'}
+    if not isinstance(config, dict) or set(config) != required:
+        raise ValueError('Test config must contain exactly ' + ', '.join(sorted(required)))
+    if not all(isinstance(value, str) for value in config.values()):
+        raise ValueError('Test config values must be strings')
+    project = urlsplit(config['supabaseUrl'])
+    current = (ROOT / 'shared/config.js').read_text()
+    if (project.scheme != 'https' or not project.hostname
+            or not re.fullmatch(r'[a-z0-9]{20}\.supabase\.co', project.hostname)
+            or project.username or project.password or project.port
+            or project.path not in ('', '/') or project.query or project.fragment):
+        raise ValueError('Test Supabase URL must be a hosted project HTTPS origin')
+    if project.hostname in current:
+        raise ValueError('Test deployment must use a different Supabase project')
+    if not re.fullmatch(r'sb_publishable_[A-Za-z0-9_-]+', config['publishableKey']):
+        raise ValueError('Use a public sb_publishable_ key; never a secret/service-role key')
+    if config['publishableKey'] in current:
+        raise ValueError('Test deployment must use its own project publishable key')
+    redirect = urlsplit(config['teacherRedirectUrl'])
+    if (redirect.scheme != 'https' or not redirect.hostname or redirect.username
+            or redirect.password or redirect.query or redirect.fragment):
+        raise ValueError('Test teacher redirect must be an HTTPS URL without credentials')
+    if config['teacherRedirectUrl'].rstrip('/') in current:
+        raise ValueError('Test teacher redirect must differ from the current teacher URL')
+    return '// Public test-project configuration; generated during staging.\n' + (
+        'window.HISTORY_CONFIG = Object.freeze(' + json.dumps(config, indent=2) + ');\n'
+    )
 
 
 def entry(page):
@@ -19,11 +53,23 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('page', choices=['pupil', 'teacher'])
     parser.add_argument('destination', type=Path)
+    parser.add_argument('--environment', choices=['current', 'test'], default='current')
+    parser.add_argument('--test-config', type=Path, help='Public test-project JSON; required for test')
     args = parser.parse_args()
+    if (args.environment == 'test') != bool(args.test_config):
+        parser.error('--environment test and --test-config must be used together')
+    override = None
+    if args.test_config:
+        try:
+            override = test_config(args.test_config)
+        except (OSError, ValueError) as error:
+            parser.error(str(error))
     destination = args.destination.resolve()
     if destination == ROOT or ROOT in destination.parents and 'work' not in destination.relative_to(ROOT).parts:
         parser.error('Use a separate staging directory or work/; do not overwrite source files')
     destination.mkdir(parents=True, exist_ok=True)
     for folder in [args.page, 'shared']:
         shutil.copytree(ROOT / folder, destination / folder, dirs_exist_ok=True)
+    if override is not None:
+        (destination / 'shared/config.js').write_text(override)
     (destination / 'index.html').write_text(entry(args.page))

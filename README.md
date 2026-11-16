@@ -117,6 +117,14 @@ and check sign-in/results/sign-out. Compare public HTML/CSS/JS bytes with the ap
 for missing assets and JavaScript errors, and record release evidence in the PRs. Use existing
 fictional accounts only. See [R6 deployment notes](docs/R6.md) for packaging and rollback details.
 
+## R8 test-isolation preparation
+
+See [R8 isolation notes](docs/R8.md) for the prepared test-project staging mode, proposed branch
+protection and remaining approvals. R8 is not yet signed off; the current published sites still
+share one fictional-data project.
+
+Offline checks for the new staging guards: `python3 tests/r8/staging.py`.
+
 ## Page-facing function contract
 
 This contract carries forward R1's API inventory and incorporates the later checked-in R2/R3

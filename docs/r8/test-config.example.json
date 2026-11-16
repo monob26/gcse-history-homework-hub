@@ -1,0 +1,5 @@
+{
+  "supabaseUrl": "https://REPLACE_WITH_TEST_PROJECT_REF.supabase.co",
+  "publishableKey": "REPLACE_WITH_TEST_PROJECT_PUBLISHABLE_KEY",
+  "teacherRedirectUrl": "https://REPLACE_WITH_TEST_TEACHER_HOST/"
+}
