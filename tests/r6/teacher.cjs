@@ -45,10 +45,15 @@ const assert = require("node:assert/strict"),
       const errors = [];
       page.on("pageerror", (e) => errors.push(e.message));
       await page.route("**/*", (route) =>
-        new URL(route.request().url()).origin === origin &&
-        !route.request().url().includes("/vendor/")
-          ? route.continue()
-          : route.abort(),
+        new URL(route.request().url()).pathname.endsWith("/shared/auth-captcha.js")
+          ? route.fulfill({
+              contentType: "application/javascript",
+              body: "window.HISTORY_CAPTCHA = {};",
+            })
+          : new URL(route.request().url()).origin === origin &&
+              !route.request().url().includes("/vendor/")
+            ? route.continue()
+            : route.abort(),
       );
       await page.addInitScript(
         ({ scenario }) => {

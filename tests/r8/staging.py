@@ -66,6 +66,12 @@ class Staging(unittest.TestCase):
 
         self.assertEqual((ROOT / 'shared/config.js').read_bytes(), before)
 
+    def test_test_without_captcha_never_inherits_live_widget(self):
+        result = self.run_stage('teacher', '--environment', 'test', '--test-config', str(self.write()))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual((self.folder / 'teacher/shared/auth-captcha.js').read_text(),
+                         'window.HISTORY_CAPTCHA = Object.freeze({});\n')
+
     def test_test_mode_requires_explicit_config_before_writing(self):
         for args in [('--environment', 'test'), ('--test-config', str(self.write()))]:
             self.assertNotEqual(self.run_stage('pupil', *args).returncode, 0)
@@ -82,6 +88,31 @@ class Staging(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertFalse((self.folder / 'teacher').exists())
         self.assertNotIn(self.config['publishableKey'], result.stderr)
+
+    def test_captcha_only_allowed_for_explicit_test_teacher(self):
+        result = self.run_stage('teacher', '--test-captcha-site-key', 'fictional-public-site-key')
+        self.assertNotEqual(result.returncode, 0)
+        result = self.run_stage('pupil', '--environment', 'test', '--test-config', str(self.write()),
+                                '--test-captcha-site-key', 'fictional-public-site-key')
+        self.assertNotEqual(result.returncode, 0)
+        result = self.run_stage('teacher', '--environment', 'test', '--test-config', str(self.write()),
+                                '--test-captcha-site-key', 'sb_secret_fictional_never_publish')
+        self.assertNotEqual(result.returncode, 0)
+        self.assertNotIn('sb_secret_fictional_never_publish', result.stderr)
+
+    def test_captcha_test_package_has_scoped_policy_and_public_key(self):
+        result = self.run_stage('teacher', '--environment', 'test', '--test-config', str(self.write()),
+                                '--test-captcha-site-key', 'fictional-public-site-key')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        for file in ['index.html', 'teacher/index.html']:
+            html = (self.folder / 'teacher' / file).read_text()
+            self.assertIn("script-src 'self' https://challenges.cloudflare.com;", html)
+            self.assertIn('frame-src https://challenges.cloudflare.com;', html)
+            self.assertIn('connect-src ' + self.config['supabaseUrl'] + ' https://challenges.cloudflare.com;', html)
+        self.assertIn('fictional-public-site-key', (self.folder / 'teacher/shared/auth-captcha.js').read_text())
+        self.assertEqual(html.count('frame-src '), 1)
+        self.assertNotIn((ROOT / 'shared/auth-captcha.js').read_text(),
+                         (self.folder / 'teacher/shared/auth-captcha.js').read_text())
 
     def test_live_redirect_is_rejected(self):
         self.config['teacherRedirectUrl'] = 'https://monob26.github.io/history-teacher-dashboard/'

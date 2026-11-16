@@ -1,0 +1,47 @@
+{
+  "project": "ohkpvuhzvshjglbqyepq",
+  "started_at": "2026-11-16T22:58:45.627127+00:00",
+  "captcha": "temporarily disabled by owner for isolated rate baseline",
+  "failed_request_budget": 40,
+  "failed_requests": 39,
+  "rate_limit_observed": true,
+  "checks": [
+    {
+      "check": "other_teacher_immediate",
+      "status": 429,
+      "error_code": "over_request_rate_limit",
+      "seconds_after_first_429": 0.2
+    },
+    {
+      "check": "other_teacher_recovery",
+      "status": 200,
+      "error_code": null,
+      "seconds_after_first_429": 5.47,
+      "session_signed_out": true
+    }
+  ],
+  "live_requests": 0,
+  "emails_sent": 0,
+  "passwords_changed": false,
+  "first_429_request": 39,
+  "first_429_error_code": "over_request_rate_limit",
+  "seconds_to_first_429": 17.44,
+  "retry_after": null,
+  "observed_recovery": true,
+  "finished_at": "2026-11-16T22:59:08.731206+00:00",
+  "endpoint": "/auth/v1/token?grant_type=password",
+  "same_execution_network": true,
+  "session_cleanup": "successful recovery login signed out locally",
+  "captcha_restored": "owner confirmed; missing-token request returned captcha_failed",
+  "limiter_identification": "Password-grant token endpoint returned over_request_rate_limit; internal setting cannot be established solely from this response",
+  "policy_recommendation": "Retain owner-provided TEST values for four teachers; no rate increases",
+  "t13_technical_result": "PASS: shared-network block and recovery observed in bounded TEST baseline with CAPTCHA temporarily off",
+  "corroborating_auth_logs": {
+    "window_start": "2026-11-16T22:58:40Z",
+    "window_end": "2026-11-16T22:59:20Z",
+    "invalid_credentials_400": 38,
+    "over_request_rate_limit_429": 2,
+    "successful_password_grant_200": 1,
+    "logout_204": 1
+  }
+}

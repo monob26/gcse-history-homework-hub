@@ -1,0 +1,23 @@
+{
+  "scope": "Local candidate only; not published or hosted-verified",
+  "public_site_key": "0x4AAAAAAGEORsplsi05500V",
+  "test_browser_suite": "PASS; includes TEST/current CAPTCHA token lifecycle and provider failure",
+  "staging_guards": "PASS; 11 checks, including no inherited LIVE widget in TEST",
+  "teacher_mirror_byte_match": true,
+  "pupil_entry_unchanged": true,
+  "live_supabase_changes": false,
+  "published": false,
+  "files_sha256": {
+    "index.html": "ca6aa75734838e1e9582e61a565040da2d735cf7b0e576a94c669e5c40c47b38",
+    "teacher/app.js": "679ede448d6432c0e38fab78173c41bcf48c2768521b737025fdcbcd6bd1fdc8",
+    "teacher/captcha.js": "5248ef5c9af3763e9e10cfee45f7d04457f3a4599fbba2e0bf26a857b4ce9946",
+    "teacher/index.html": "22026d11ccb3dfb73d3ec860c09c6bccde46070f9aeb461028fe4a9977742d90",
+    "teacher/styles.css": "45aaac55e10f22f2926458f05e6a1c4fdab5dc4c6e1fa181b40dcd084c9229b6",
+    "teacher/vendor/LICENSE.supabase-js": "334dd6820e2eaeab2064e7c59001b810566728a28a41a7c1dbf69bbee17d0936",
+    "teacher/vendor/README.md": "cd2df936704080a78de7289b0e38d0120ab1ec926c7371506a05161a49e31f97",
+    "teacher/vendor/supabase-2.119.0.min.js": "71e670ca67ad5df7fe3d919f119f30267b44df80df27ac3ac63254a0ba2319df",
+    "shared/auth-captcha.js": "09ce4781fb7fdd0f9f3d63b2f709f154757e2436948a389667c2a5cc812a78cc",
+    "shared/colors.css": "ea25b892c8171b08f5b7eeae94895ca629a37e525e75476d9eb94fc527eceea2",
+    "shared/config.js": "7ad56623ee7627900f216b7f3da66f657d892ae547f28530601dac2196d3f58c"
+  }
+}
