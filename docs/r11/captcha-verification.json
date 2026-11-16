@@ -16,11 +16,24 @@
     }
   ],
   "requests": 2,
-  "real_solved_challenge": "pending human browser check",
+  "real_solved_challenge": {
+    "result": "PASS: owner completed real Turnstile and signed in to TEST dashboard",
+    "source": "owner confirmation in conversation; server missing/invalid-token rejections separately verified",
+    "credentials_or_tokens_recorded": false
+  },
   "environment_limitation": "Managed execution network blocks challenges.cloudflare.com; provider verification not fabricated or bypassed.",
   "smtp_changes": false,
   "live_changes": false,
   "user_observed_loader_error": "Turnstile rejects ready() with an async/defer API script",
   "loader_fix": "Render directly from the loaded script event; do not call ready()",
-  "regression": "Mock provider ready() throws for async loading: failed before fix; passes after fix with zero page exceptions"
+  "regression": "Mock provider ready() throws for async loading: failed before fix; passes after fix with zero page exceptions",
+  "restored_after_t13": {
+    "owner_confirmed": true,
+    "server_probe": {
+      "status": 400,
+      "error_code": "captcha_failed",
+      "purpose": "single missing-token probe after owner restored TEST CAPTCHA"
+    },
+    "result": "PASS"
+  }
 }
