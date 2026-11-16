@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-16T21:09:46.583Z",
+  "project": "ohkpvuhzvshjglbqyepq",
+  "method": "genuine received recovery email; published TEST teacher UI; real hosted Auth",
+  "passes": [
+    "emailed genuine recovery link redirects to published TEST reset form",
+    "reset identity comes from recovery session without retyping email",
+    "real password update succeeds and clears password",
+    "password reset signs recovery session out",
+    "old password rejected by real Auth",
+    "new password signs in approved fictional teacher",
+    "new-password session signs out",
+    "same emailed recovery link rejected on replay",
+    "replay cannot obtain a recovery session or reset form",
+    "all requests restricted to TEST paths and no browser exceptions"
+  ],
+  "email_delivery": true,
+  "mocked": false,
+  "live_resources_changed": false,
+  "admin_key_verification": {
+    "test_auth_admin_http_status": 200,
+    "live_project_probed": false
+  },
+  "recovery_request": {
+    "source": "published-test-teacher-page",
+    "status": 200,
+    "error_code": null,
+    "redirect_correct": true
+  },
+  "account": "dedicated fictional approved teacher; owner-authorized Gmail plus-alias; no class allocations",
+  "limitations": [
+    "Exact Auth redirect allow-list and SMTP configuration remain independently unreadable; previously denied settings endpoint not retried.",
+    "Account security and detailed branch protection remain owner-confirmed rather than independently inspected."
+  ],
+  "runner_note": "First run completed emailed-link consumption and password save; runner assertion expected error_code but Auth returned code. Corrected runner resumed only remaining checks; old password returned HTTP 400 invalid_credentials. No recovery request or password reset repeated."
+}

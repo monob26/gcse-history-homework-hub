@@ -1,10 +1,9 @@
 # R8 core hosted publication and acceptance — passed; full R8 incomplete
 
-Current status: **core hosted flows passed, but full R8 sign-off is withheld.** The
-[outstanding-item review](R8-outstanding-review.md) supersedes the prior closure recommendation and
-records the recovery-form fix deployed as teacher package `3920b4a`. Genuine email delivery and
-recovery-link use remain untested/blocked. The results below preserve the original core run against
-the listed packages.
+Current status: **core hosted flows and genuine emailed recovery PASSED; full R8 sign-off awaits
+exact Auth settings inspection or explicit acceptance of that limitation.** The
+[current review](R8-outstanding-review.md) and [recovery evidence](r8/recovery-acceptance.json)
+supersede earlier blocked-recovery statements below. The original core results remain valid.
 
 ## Published releases
 

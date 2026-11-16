@@ -1,9 +1,56 @@
 # R8 outstanding-item review — 16 November 2026
 
-**R8 remains incomplete. The previous closure recommendation is withdrawn.** Core
-isolation/publication/quiz acceptance passed, but real password-recovery email delivery and
-successful use of a genuine recovery link have not passed. They must not be relabelled as complete
-by narrowing the sign-off scope.
+**Genuine recovery acceptance now PASSED. R8 remains open only for independent exact-settings
+verification (or explicit owner acceptance of that limitation).** PR #4 stays draft and unmerged.
+
+## Current continuation: genuine emailed recovery passed
+
+The owner supplied `R8_TEST_ADMIN_KEY` privately and explicitly authorized a dedicated Gmail
+plus-alias for the fictional TEST teacher. The key returned HTTP 200 from the TEST Auth admin users
+endpoint. It was never sent to the live project, browser, repository or logs. No negative probe
+against live was performed; this verifies its TEST operation without making a cross-project claim.
+
+Created one confirmed fictional Auth account and approved that same account in
+`public.history_teachers` in TEST only, with no class allocations. The original teacher account and
+`R8_TEST_A_PASSWORD` remain unchanged. Recovery was requested from the actual published TEST teacher
+page. The request returned HTTP 200 with the correct TEST redirect, and the connected Gmail inbox
+received its recovery email. The actual received link was privately consumed in a clean browser
+context; no admin-generated link, mocked Auth response or fabricated session was substituted.
+
+All remaining recovery checks passed against real hosted Auth:
+
+- Emailed link redirected to the published TEST teacher reset form.
+- Recovery identity populated the disabled email field; no email re-entry was needed.
+- A newly generated private password was saved and the recovery session signed out.
+- The old password returned HTTP 400 `invalid_credentials`.
+- The new password signed in the approved fictional teacher; sign-out succeeded.
+- The same emailed link was rejected in a fresh context with `otp_expired`, no session and no reset
+  form.
+- Requests stayed within the TEST backend, exact TEST teacher path and pinned CDN; no browser
+  exceptions.
+
+The first runner completed password saving, then stopped because its assertion expected the
+`error_code` response field while this Auth response used `code`. The corrected runner resumed the
+remaining checks only. No recovery email, consumed-link success or password save was repeated.
+Evidence: [recovery acceptance](r8/recovery-acceptance.json). Secrets, passwords, mailbox identity,
+email contents, recovery links and sessions are excluded from the evidence. The dedicated account
+remains in TEST; sessions were signed out. No live resource or application deployment changed.
+
+**Remaining exact blocker:** The full Auth URL allow-list and SMTP configuration cannot be
+independently inspected with current access. The existing Management API settings read returned 403;
+it was not retried. The newly supplied project Auth secret enables Auth administration, not
+Management API configuration reads. Email receipt establishes successful delivery to this approved
+alias, but does not enumerate SMTP settings or prove delivery to arbitrary addresses. To finish
+sign-off, provide settings-read access or an authoritative redacted export of TEST Site URL,
+redirect allow-list and SMTP configuration (exclude credentials), or explicitly accept that exact
+inspection remains a verification limitation. Existing owner-confirmed account/branch protection and
+the accepted Free leaked-password limitation remain documented separately.
+
+## Historical pre-key review (superseded where noted above)
+
+The following records explain earlier blockers and prior checks. Their statements about unavailable
+admin access, absence of an authorized alias, and untested genuine recovery are historical; the
+current continuation above supersedes them.
 
 ## Gmail connection follow-up
 
@@ -43,8 +90,8 @@ Full recovery remains blocked; Gmail connection alone is not a recovery pass.
 | Signup/anonymous sign-in restrictions, RLS, schema exposure                                  | Passed prior checks                                                                                                          | Complete; not repeated                                                                                                    |
 | Recovery UI and failure handling                                                             | New mocked recovery success/expired-session regressions passed after a real form fix                                         | UI boundary passed; not email/token end-to-end acceptance                                                                 |
 | Effective default recovery destination                                                       | Two invalid-link probes independently returned the intended test teacher URL                                                 | Behaviour verified, including rejection of one unlisted destination; not an exhaustive allow-list audit                   |
-| Actual recovery email delivery                                                               | Existing fictional teacher's real recovery request failed HTTP 400 `email_address_invalid`                                   | Blocks full recovery acceptance; needs a valid controlled inbox and a matching test Auth user                             |
-| Genuine recovery-link consumption, password reset, new-password sign-in and replay rejection | No genuine link available; not run                                                                                           | Blocks full recovery acceptance; needs received email or legitimate admin-generated recovery link                         |
+| Actual recovery email delivery                                                               | PASSED for the new approved alias; original .test address remains undeliverable                                              | Blocks full recovery acceptance; needs a valid controlled inbox and a matching test Auth user                             |
+| Genuine recovery-link consumption, password reset, new-password sign-in and replay rejection | Passed using the actual received email link; see current continuation                                                        | Blocks full recovery acceptance; needs received email or legitimate admin-generated recovery link                         |
 | Exact Auth redirect allow-list and mail settings                                             | Owner-confirmed URL settings; Management API settings read previously 403, no DB-stored configuration, dashboard unavailable | Independent exact inspection blocked; needs permitted settings-read access or a redacted authoritative settings export    |
 | Detailed branch-protection rules                                                             | Owner-confirmed; alternative CLI credential read returned 403                                                                | Independent rule inspection blocked; needs rules-read permission or authoritative export; no rule changes made            |
 | Account 2FA/privacy settings                                                                 | Owner-confirmed                                                                                                              | Cannot independently inspect private account settings through the current connections; no account/security changes needed |

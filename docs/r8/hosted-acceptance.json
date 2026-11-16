@@ -1,6 +1,6 @@
 {
   "date": "2026-11-16",
-  "result": "CORE PASS; full R8 incomplete; closure recommendation withdrawn",
+  "result": "CORE AND GENUINE EMAIL RECOVERY PASS; exact Auth settings inspection remains blocked",
   "runner_source_commit": "573cd391ad3883130e9d86e8a63ae1e128279eb1",
   "command": "node tests/r8/browser.cjs --hosted",
   "test_project_ref": "ohkpvuhzvshjglbqyepq",
@@ -8,7 +8,7 @@
   "total_questions": 25,
   "live_resources_unchanged": true,
   "recovery_request_target_verified": true,
-  "recovery_delivery_and_link_consumption_tested": false,
+  "recovery_delivery_and_link_consumption_tested": true,
   "sites": [
     {
       "page": "pupil",
@@ -69,7 +69,7 @@
     "mocked_recovery_ui_success_and_expiry": "PASS; not end-to-end token/email acceptance",
     "affected_teacher_regressions": "6 PASS",
     "hosted_auth_after_fix": "PASS",
-    "full_recovery_token_consumption": "BLOCKED, not run",
+    "full_recovery_token_consumption": "PASS; actual received link, password update, old/new sign-in and replay rejection",
     "exact_auth_allow_list": "owner-confirmed; independent enumeration blocked",
     "effective_site_url": "independently verified by invalid-link fallback",
     "updated_teacher_package": "3920b4a092ad5b505a7ce270133e04f06db05895",
@@ -78,8 +78,9 @@
       "teacher/app.js": "5d85f52b1b052efba7b3e2adf8db8fd87d0943fcdb227b424a505160fbbb8176",
       "r8-release.json": "d6bdaf0bafa5f692e6ae8434353948bba85929c95fe4ef305900085524dc8203"
     },
-    "gmail_connection": "available; profile and narrowly scoped R8 search succeeded; no recovery email was found",
-    "dedicated_deliverable_teacher": "not configured; personal Gmail identity and aliases not used",
-    "test_auth_admin_credential": "not available; existing key/settings 403s not retried"
+    "gmail_connection": "available; dedicated authorized alias received recovery email",
+    "dedicated_deliverable_teacher": "created and approved in TEST; dedicated owner-authorized Gmail alias; no class allocations",
+    "test_auth_admin_credential": "verified privately against TEST Auth admin endpoint HTTP 200; never sent to live",
+    "current_recovery_evidence": "recovery-acceptance.json"
   }
 }

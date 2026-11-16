@@ -121,9 +121,10 @@ fictional accounts only. See [R6 deployment notes](docs/R6.md) for packaging and
 
 See [R8 isolation notes](docs/R8.md) and the
 [outstanding-item review](docs/R8-outstanding-review.md). Both separate test sites are published and
-core local/hosted acceptance passed. **R8 remains incomplete:** real recovery email/link acceptance
-is blocked; the earlier sign-off recommendation is withdrawn. A recovery-form fix is deployed only
-to the test teacher site. Live websites and database remain unchanged; draft PR #4 is unmerged.
+core local/hosted acceptance passed. **Genuine emailed recovery now passed:** full R8 sign-off
+awaits independent exact Auth settings inspection or explicit acceptance of that limitation. A
+recovery-form fix is deployed only to the test teacher site. Live websites and database remain
+unchanged; draft PR #4 is unmerged.
 
 Offline checks for the new staging guards: `python3 tests/r8/staging.py`.
 
