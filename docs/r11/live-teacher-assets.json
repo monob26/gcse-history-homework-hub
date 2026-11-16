@@ -1,0 +1,84 @@
+{
+  "site": "https://monob26.github.io/history-teacher-dashboard/",
+  "scope": "Public static bytes only; no hosted Auth or database request",
+  "passed": true,
+  "files": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "match": true,
+      "expected_sha256": "ca6aa75734838e1e9582e61a565040da2d735cf7b0e576a94c669e5c40c47b38",
+      "actual_sha256": "ca6aa75734838e1e9582e61a565040da2d735cf7b0e576a94c669e5c40c47b38"
+    },
+    {
+      "file": "teacher/app.js",
+      "status": 200,
+      "match": true,
+      "expected_sha256": "679ede448d6432c0e38fab78173c41bcf48c2768521b737025fdcbcd6bd1fdc8",
+      "actual_sha256": "679ede448d6432c0e38fab78173c41bcf48c2768521b737025fdcbcd6bd1fdc8"
+    },
+    {
+      "file": "teacher/captcha.js",
+      "status": 200,
+      "match": true,
+      "expected_sha256": "5248ef5c9af3763e9e10cfee45f7d04457f3a4599fbba2e0bf26a857b4ce9946",
+      "actual_sha256": "5248ef5c9af3763e9e10cfee45f7d04457f3a4599fbba2e0bf26a857b4ce9946"
+    },
+    {
+      "file": "teacher/index.html",
+      "status": 200,
+      "match": true,
+      "expected_sha256": "22026d11ccb3dfb73d3ec860c09c6bccde46070f9aeb461028fe4a9977742d90",
+      "actual_sha256": "22026d11ccb3dfb73d3ec860c09c6bccde46070f9aeb461028fe4a9977742d90"
+    },
+    {
+      "file": "teacher/styles.css",
+      "status": 200,
+      "match": true,
+      "expected_sha256": "45aaac55e10f22f2926458f05e6a1c4fdab5dc4c6e1fa181b40dcd084c9229b6",
+      "actual_sha256": "45aaac55e10f22f2926458f05e6a1c4fdab5dc4c6e1fa181b40dcd084c9229b6"
+    },
+    {
+      "file": "teacher/vendor/LICENSE.supabase-js",
+      "status": 200,
+      "match": true,
+      "expected_sha256": "334dd6820e2eaeab2064e7c59001b810566728a28a41a7c1dbf69bbee17d0936",
+      "actual_sha256": "334dd6820e2eaeab2064e7c59001b810566728a28a41a7c1dbf69bbee17d0936"
+    },
+    {
+      "file": "teacher/vendor/README.md",
+      "status": 200,
+      "match": true,
+      "expected_sha256": "cd2df936704080a78de7289b0e38d0120ab1ec926c7371506a05161a49e31f97",
+      "actual_sha256": "cd2df936704080a78de7289b0e38d0120ab1ec926c7371506a05161a49e31f97"
+    },
+    {
+      "file": "teacher/vendor/supabase-2.119.0.min.js",
+      "status": 200,
+      "match": true,
+      "expected_sha256": "71e670ca67ad5df7fe3d919f119f30267b44df80df27ac3ac63254a0ba2319df",
+      "actual_sha256": "71e670ca67ad5df7fe3d919f119f30267b44df80df27ac3ac63254a0ba2319df"
+    },
+    {
+      "file": "shared/auth-captcha.js",
+      "status": 200,
+      "match": true,
+      "expected_sha256": "09ce4781fb7fdd0f9f3d63b2f709f154757e2436948a389667c2a5cc812a78cc",
+      "actual_sha256": "09ce4781fb7fdd0f9f3d63b2f709f154757e2436948a389667c2a5cc812a78cc"
+    },
+    {
+      "file": "shared/colors.css",
+      "status": 200,
+      "match": true,
+      "expected_sha256": "ea25b892c8171b08f5b7eeae94895ca629a37e525e75476d9eb94fc527eceea2",
+      "actual_sha256": "ea25b892c8171b08f5b7eeae94895ca629a37e525e75476d9eb94fc527eceea2"
+    },
+    {
+      "file": "shared/config.js",
+      "status": 200,
+      "match": true,
+      "expected_sha256": "7ad56623ee7627900f216b7f3da66f657d892ae547f28530601dac2196d3f58c",
+      "actual_sha256": "7ad56623ee7627900f216b7f3da66f657d892ae547f28530601dac2196d3f58c"
+    }
+  ]
+}

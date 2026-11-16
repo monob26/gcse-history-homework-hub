@@ -1,0 +1,8 @@
+{
+  "scope": "one bounded LIVE missing-CAPTCHA-token request after owner activation",
+  "status": 400,
+  "error_code": "captcha_failed",
+  "passed": true,
+  "emails_sent": 0,
+  "credentials_or_tokens_recorded": false
+}

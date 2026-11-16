@@ -1,0 +1,53 @@
+{
+  "owner_live_release_approval": true,
+  "pr7_ci": {
+    "run": 43977803893,
+    "head": "3a4f14d2abfd53e32603afcc57eaa0ef3b4d51dc",
+    "result": "PASS"
+  },
+  "hub_merge": "4cedd505e92bd7e81b77082bd6f493cd8aaad6a4",
+  "teacher_candidate": "bc7b9901322a5463b9054bb7a6d3e768808e411a",
+  "server_captcha_enabled": {
+    "source": "owner confirmed LIVE Turnstile saved in Supabase",
+    "configuration_api_verified": false,
+    "missing_token_probe": {
+      "status": 400,
+      "error_code": "captcha_failed",
+      "requests": 1,
+      "passed": true
+    }
+  },
+  "smtp_changed": false,
+  "rate_settings_changed": false,
+  "database_changes": false,
+  "hub_pages_run": 43978082086,
+  "hub_public_assets": {
+    "passed": true,
+    "checked_files": 14
+  },
+  "main_ci": {
+    "run": 43978082581,
+    "head": "4cedd505e92bd7e81b77082bd6f493cd8aaad6a4",
+    "result": "PASS"
+  },
+  "teacher_merge": "632973e4c8384aed2fe6292505d9034aa779c7ed",
+  "teacher_pages_run": 43978269345,
+  "teacher_public_assets": {
+    "passed": true,
+    "checked_files": 11
+  },
+  "r11_status": "DONE with owner-accepted T14 email-provider limitation",
+  "owner_live_browser_verification": {
+    "source": "owner replies in conversation after LIVE sign-in/sign-out instructions",
+    "real_solved_challenge_and_dashboard": "PASS",
+    "sign_out_returned_to_sign_in": "PASS",
+    "automated_captcha_solve": false,
+    "credentials_or_tokens_recorded": false
+  },
+  "t14": {
+    "original_three_email_condition": "NOT PASSED",
+    "disposition": "owner accepted retaining existing provider and known two-email/hour limitation",
+    "smtp_changed": false
+  },
+  "remaining_acceptance_blockers": []
+}
