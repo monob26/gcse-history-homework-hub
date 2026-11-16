@@ -22,5 +22,7 @@ classes and results.
 - Check these docs with `npx --no-install prettier --check README.md AGENTS.md`.
 - Run `npm run test:r6` for relevant frontend changes (Linux `/usr/bin/chromium`).
 - Those browser tests mock the backend and block external requests; no hosted writes.
+- R9: `npm run test:db` uses disposable Docker PostgreSQL; `npm run test:browser` mocks hosted APIs.
+- Never apply `tests/r9/bootstrap.sql` to a hosted project. CI requires no hosted secrets.
 - For documentation-only edits, check links/contracts/formatting; reuse prior test evidence.
 - Update canonical page source, regenerate deployment copies, and review before release.

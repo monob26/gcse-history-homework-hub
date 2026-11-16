@@ -127,6 +127,14 @@ R2/R11 limitations remain. Live resources are unchanged; draft PR #4 remains unm
 
 Offline checks for the new staging guards: `python3 tests/r8/staging.py`.
 
+## R9 automated regression checks
+
+See [R9 test coverage and status](docs/R9.md). Run `npm run test:db` for a disposable Docker
+PostgreSQL rebuild and access/quiz integrity checks, and `npm run test:browser` for the maintained
+mocked pupil, teacher and recovery UI checks. These commands use no hosted credentials or data. The
+R9 workflow runs both suites on pull requests and pushes to `main`. R9 remains open until its
+workflow is observed green on `main`; local passes alone do not meet that final criterion.
+
 ## Page-facing function contract
 
 This contract carries forward R1's API inventory and incorporates the later checked-in R2/R3

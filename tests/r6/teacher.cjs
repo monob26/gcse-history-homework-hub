@@ -24,7 +24,9 @@ const assert = require("node:assert/strict"),
   await new Promise((r) => server.listen(0, "127.0.0.1", r));
   const origin = "http://127.0.0.1:" + server.address().port;
   const browser = await chromium.launch({
-    executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || "/usr/bin/chromium",
+    ...(process.env.PLAYWRIGHT_USE_BUNDLED_CHROMIUM === "1"
+      ? {}
+      : { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || "/usr/bin/chromium" }),
     headless: true,
   });
   const results = [];
