@@ -77,6 +77,9 @@
     "updated_teacher_files_sha256": {
       "teacher/app.js": "5d85f52b1b052efba7b3e2adf8db8fd87d0943fcdb227b424a505160fbbb8176",
       "r8-release.json": "d6bdaf0bafa5f692e6ae8434353948bba85929c95fe4ef305900085524dc8203"
-    }
+    },
+    "gmail_connection": "available; profile and narrowly scoped R8 search succeeded; no recovery email was found",
+    "dedicated_deliverable_teacher": "not configured; personal Gmail identity and aliases not used",
+    "test_auth_admin_credential": "not available; existing key/settings 403s not retried"
   }
 }

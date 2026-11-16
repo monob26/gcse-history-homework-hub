@@ -5,6 +5,33 @@ isolation/publication/quiz acceptance passed, but real password-recovery email d
 successful use of a genuine recovery link have not passed. They must not be relabelled as complete
 by narrowing the sign-off scope.
 
+## Gmail connection follow-up
+
+Gmail is now connected and its profile/search tools work. The connection blocker is resolved. No
+personal mailbox address, email body, recovery link or token is recorded here. A narrowly scoped
+recent R8/project search returned no messages. The user explicitly prohibits using the personal
+Gmail identity as the teacher login or changing its password; no personal address or plus-alias was
+used to create an Auth user or request recovery.
+
+A read-only query restricted to R8-prefixed Auth users still found only the original confirmed
+`r8-test-teacher-a@example.test` account. No separate deliverable test identity is configured.
+Available Gmail tools read/manage existing mail; they do not provision a distinct mailbox. No test
+Auth admin credential is available, and the already documented key/settings 403s were not retried.
+No password, email identity, settings or application deployment was changed in this follow-up.
+
+To proceed, a dedicated deliverable test identity with readable mail (or explicit permission for an
+identified test alias) and test-project-only Auth administration access are required. An existing
+test secret/service-role key can be supplied as a masked runtime variable `R8_TEST_ADMIN_KEY`, never
+in chat or the repository. That allows creating a confirmed ordinary recovery-test user and
+generating a genuine recovery link without touching the original teacher password. It does not by
+itself grant Management API settings-read access or establish SMTP delivery. For actual delivery,
+the dedicated address must be accepted by the existing mailer; if default-mailer restrictions reject
+it, suitable test-only SMTP configuration is also needed. Adding mailbox users to the Supabase
+organization solely to bypass mailer restrictions would unnecessarily broaden access and is not
+proposed.
+
+Full recovery remains blocked; Gmail connection alone is not a recovery pass.
+
 ## Requirement-by-requirement disposition
 
 | Item                                                                                         | Evidence/status                                                                                                              | Sign-off impact and resolution                                                                                            |
@@ -80,10 +107,11 @@ Current [Supabase SMTP documentation](https://supabase.com/docs/guides/auth/auth
 the built-in mail service only delivers to project-team addresses. Custom SMTP supports other
 addresses, including on Free, but requires sender service configuration and credentials. The actual
 project's SMTP configuration cannot be enumerated with the current permissions, so no assumption is
-made about whether it uses default or custom SMTP. Neither an SMTP credential nor a mailbox
-connection is available in this environment. Email capability discovery found Gmail/Outlook
-integrations, but none was connected; a Gmail connection was offered. An email integration alone
-does not create a mailbox, a matching Auth user or sender authorization.
+made about whether it uses default or custom SMTP. At the initial review neither an SMTP credential
+nor a mailbox connection was available; Gmail is now connected as described above. Email capability
+discovery found Gmail/Outlook integrations, initially with none connected; Gmail has since
+connected. An email integration alone does not create a mailbox, a matching Auth user or sender
+authorization.
 
 A legitimate Auth admin `generateLink(type: recovery)` would allow token/link consumption testing
 without email delivery. It does not test delivery itself. The alternate test-project key-inventory
