@@ -133,7 +133,18 @@ See [R9 test coverage and status](docs/R9.md). Run `npm run test:db` for a dispo
 PostgreSQL rebuild and access/quiz integrity checks, and `npm run test:browser` for the maintained
 mocked pupil, teacher and recovery UI checks. These commands use no hosted credentials or data. The
 R9 workflow runs both suites on pull requests and pushes to `main`. R9 remains open until its
-workflow is observed green on `main`; local passes alone do not meet that final criterion.
+workflow is observed green on `main`; local passes alone do not meet that final criterion. That
+criterion was subsequently met by
+[main run 43961631187](https://github.com/monob26/gcse-history-homework-hub/actions/runs/43961631187);
+R9 is complete.
+
+## R10 accessibility preparation
+
+See [R10 coverage and release boundaries](docs/R10.md). Keyboard/focus behavior, timing information,
+connection recovery, class-ID results and a restrictive CSP are prepared on the R10 branch. The
+library is local with its original R5 integrity hash. The new timing and class-ID RPCs require the
+reviewed R10 migration **before** frontend publication. TEST migration/publication and hosted
+acceptance passed; live migration/publication remains unapproved and PR #6 stays draft.
 
 ## Page-facing function contract
 
@@ -176,9 +187,16 @@ attempt RPCs and teacher Auth use different paths.
 
 - `is_history_teacher()` returns a boolean indicating whether the current user is an approved
   teacher.
-- `get_history_class_results(requested_class text, requested_quiz uuid)` returns `pupil_code text`,
-  `register_number integer`, `attempts bigint`, `highest_score integer`, `homework_status text`,
-  subject to approval and allocation.
+- `get_history_class_results(requested_class text, requested_quiz uuid)` (existing deployed API)
+  returns `pupil_code text`, `register_number integer`, `attempts bigint`, `highest_score integer`,
+  `homework_status text`, subject to approval and allocation.
+
+The prepared R10 page instead calls
+`get_history_class_results_by_id(requested_class_id uuid, requested_quiz uuid)` with the same return
+fields. Pupil timing instructions additionally call
+`get_pupil_quiz_timing(entered_code text, entered_quiz_id uuid)`, returning a `time_limits` array of
+`seconds` and `questions` counts for the pupil's current published quiz. These new functions require
+the R10 migration; they are not yet deployed.
 
 The teacher page additionally selects permitted rows from `history_classes`, `history_quizzes` and
 `history_pupils`. Neither page directly reads answer tables. `homework_private` contains

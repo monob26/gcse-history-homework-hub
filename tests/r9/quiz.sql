@@ -8,6 +8,10 @@ GRANT SELECT, UPDATE ON r9_state TO anon;
 SET LOCAL ROLE anon;
 DO $$ DECLARE s record; a record; BEGIN
  SELECT * INTO s FROM r9_state;
+ PERFORM pg_temp.check_true(homework_api.get_pupil_quiz_timing(s.code,
+ '30000000-0000-4000-8000-000000000001')->'time_limits' =
+ '[{"seconds":45,"questions":20},{"seconds":60,"questions":5}]'::jsonb,
+ 'pupil instruction times come from actual quiz questions');
  SELECT * INTO a FROM homework_api.start_pupil_quiz(s.code,'30000000-0000-4000-8000-000000000001');
  UPDATE r9_state SET attempt_id=a.attempt_id::text, token=a.attempt_token::text;
  PERFORM homework_api.open_pupil_question(a.attempt_id::text,a.attempt_token::text);
@@ -69,6 +73,8 @@ DO $$ DECLARE s record; result record; BEGIN
   PERFORM homework_api.open_pupil_question(s.attempt_id,s.token);
   PERFORM homework_api.submit_pupil_answer(s.attempt_id,s.token,'null'::jsonb);
  END LOOP;
+ PERFORM pg_temp.refuses(format('SELECT * FROM homework_api.open_pupil_question(%L,%L)',
+ s.attempt_id,s.token),'P0001','All questions answered; complete the quiz');
  SELECT * INTO result FROM homework_api.complete_pupil_quiz(s.attempt_id,s.token);
  PERFORM pg_temp.check_true(result.total_questions=25 AND result.final_score<=1 AND NOT result.passed,
  'complete quiz uses saved server marks');

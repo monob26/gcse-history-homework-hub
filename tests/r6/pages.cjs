@@ -79,6 +79,13 @@ const root = require("path").resolve(__dirname, "../..");
             passed: completed,
             unfinished_attempt_id: scenario === "expired-resume" ? "fictional-attempt" : null,
           };
+        else if (name === "get_pupil_quiz_timing")
+          data = {
+            time_limits: [
+              { seconds: 45, questions: 20 },
+              { seconds: 60, questions: 5 },
+            ],
+          };
         else if (name === "start_pupil_quiz")
           data = { attempt_id: "fictional-attempt", attempt_token: "fictional-token" };
         else if (name === "open_pupil_question") {

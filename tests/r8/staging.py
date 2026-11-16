@@ -55,7 +55,15 @@ class Staging(unittest.TestCase):
             staged = (self.folder / page / 'shared/config.js').read_text()
             self.assertIn(self.config['supabaseUrl'], staged)
             self.assertIn(self.config['teacherRedirectUrl'], staged)
-            self.assertEqual((self.folder / page / 'index.html').read_text(), module.entry(page))
+            generated = (self.folder / page / 'index.html').read_text()
+            live = 'https://inxsjdogxvqbvxydxmym.supabase.co'
+            self.assertEqual(generated, module.entry(page).replace('connect-src ' + live,
+                             'connect-src ' + self.config['supabaseUrl']))
+            self.assertNotIn('connect-src ' + live, generated)
+            source_page = (self.folder / page / page / 'index.html').read_text()
+            self.assertIn('connect-src ' + self.config['supabaseUrl'], source_page)
+            self.assertNotIn('connect-src ' + live, source_page)
+
         self.assertEqual((ROOT / 'shared/config.js').read_bytes(), before)
 
     def test_test_mode_requires_explicit_config_before_writing(self):
