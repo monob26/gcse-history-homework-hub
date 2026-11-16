@@ -48,6 +48,8 @@ const root = path.resolve(__dirname, "../..");
       const p = await browser.newPage();
       p.setDefaultTimeout(5000);
       let calls = 0;
+      const errors = [];
+      p.on("pageerror", () => errors.push("exception"));
       await p.route("**/*", (route) => {
         const u = new URL(route.request().url());
         if (u.origin === origin) return route.continue();
@@ -55,7 +57,7 @@ const root = path.resolve(__dirname, "../..");
           if (scenario === "provider-failure") return route.abort();
           return route.fulfill({
             contentType: "application/javascript",
-            body: 'window.turnstile={ready(cb){cb()},render(element,options){window.providerOptions=options;window.providerResets=0;return "widget";},reset(){window.providerResets++}};',
+            body: 'window.turnstile={ready(){throw new Error("ready must not be called with async loading")},render(element,options){window.providerOptions=options;window.providerResets=0;return "widget";},reset(){window.providerResets++}};',
           });
         }
         assert.equal(u.origin, "https://ohkpvuhzvshjglbqyepq.supabase.co");
@@ -114,6 +116,7 @@ const root = path.resolve(__dirname, "../..");
         assert.equal(await p.locator("#submitAuth").isDisabled(), true);
         assert.equal(calls, 2);
       }
+      assert.deepEqual(errors, []);
       console.log("PASS: R11 CAPTCHA " + scenario + " (mocked provider, no hosted validation)");
       await p.close();
     }

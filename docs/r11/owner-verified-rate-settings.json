@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-16",
+  "project": "ohkpvuhzvshjglbqyepq",
+  "verification": "owner-provided TEST dashboard screenshots in conversation; not independently API-verified",
+  "email_per_hour": 2,
+  "sms_per_hour": 30,
+  "token_refresh_per_ip_per_5_minutes": 150,
+  "token_verify_per_ip_per_5_minutes": 30,
+  "anonymous_users_per_ip_per_hour": 30,
+  "signups_signins_per_ip_per_5_minutes": 30,
+  "web3_signups_signins_per_ip_per_5_minutes": 30,
+  "displayed_same_user_email_interval_seconds": 60,
+  "interval_note": "Dashboard says the minimum interval setting only applies when Custom SMTP is configured; current SMTP is retained unchanged.",
+  "changes_made": false,
+  "assessment": "Keep existing values pending bounded TEST verification; normal four-teacher concurrency alone does not justify an increase."
+}
