@@ -1,0 +1,42 @@
+name: R9 automated tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: r9-tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  database:
+    name: Database access and quiz integrity
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild disposable PostgreSQL and run SQL regression tests
+        run: python3 tests/r9/database.py
+
+  browser:
+    name: Mocked browser regressions
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Install matching Playwright Chromium
+        run: npx --no-install playwright install --with-deps chromium
+      - name: Pupil timer/full quiz, teacher access and recovery UI
+        run: npm run test:browser
+        env:
+          PLAYWRIGHT_USE_BUNDLED_CHROMIUM: "1"

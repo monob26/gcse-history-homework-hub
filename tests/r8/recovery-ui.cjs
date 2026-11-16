@@ -23,7 +23,12 @@ const ROOT = path.resolve(__dirname, "../..");
   });
   await new Promise((r) => server.listen(0, "127.0.0.1", r));
   const origin = "http://127.0.0.1:" + server.address().port;
-  const browser = await chromium.launch({ executablePath: "/usr/bin/chromium", headless: true });
+  const browser = await chromium.launch({
+    ...(process.env.PLAYWRIGHT_USE_BUNDLED_CHROMIUM === "1"
+      ? {}
+      : { executablePath: "/usr/bin/chromium" }),
+    headless: true,
+  });
   try {
     for (const scenario of ["success", "expired"]) {
       const page = await browser.newPage();
