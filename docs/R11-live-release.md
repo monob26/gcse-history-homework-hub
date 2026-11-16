@@ -1,9 +1,13 @@
 # R11 coordinated LIVE release candidate
 
-This is a local, unpublished candidate based on PR #7, not release evidence. The owner accepted
-retaining the existing rate settings and the original T14 three-email limitation. No SMTP change,
-paid service, database migration, data change, rate-setting increase or replay of hosted fixtures is
-part of this release.
+The owner explicitly approved this coordinated LIVE release on 16 November 2026. Publication and
+verification are pending; this plan is not completion evidence. The owner accepted retaining the
+existing rate settings and the original T14 three-email limitation. No SMTP change, paid service,
+database migration, data change, rate-setting increase or replay of hosted fixtures is part of this
+release.
+
+The owner confirmed regenerating the private widget secret; it remains outside the repository and
+must be entered directly in LIVE Supabase only after frontend verification.
 
 ## Prepared changes and verification
 
