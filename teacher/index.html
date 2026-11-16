@@ -39,6 +39,8 @@
               required
             />
           </div>
+          <div id="authCaptcha" hidden></div>
+          <p id="captchaStatus" class="auth-help" role="status" hidden></p>
           <button class="primary" id="submitAuth" type="submit">Sign in</button>
         </form>
         <div class="auth-links">
@@ -108,6 +110,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="../shared/config.js"></script>
+    <script src="../shared/auth-captcha.js"></script>
+    <script src="./captcha.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>

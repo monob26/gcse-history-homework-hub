@@ -35,6 +35,7 @@ let authRequestPending = false,
   authRetryAfter = null,
   cooldownTimer = null;
 const authCooldowns = new Map();
+const captchaGate = window.HISTORY_CAPTCHA_GATE.create(() => syncAuthControls());
 function retrySeconds(value) {
   if (!value) return null;
   const number = /^\d+$/.test(value) ? Number(value) : (Date.parse(value) - Date.now()) / 1000;
@@ -54,7 +55,7 @@ async function authAwareFetch(input, init) {
 function syncAuthControls() {
   const block = authCooldowns.get(mode);
   const seconds = block ? Math.max(0, Math.ceil((block.until - Date.now()) / 1000)) : 0;
-  submitAuth.disabled = authRequestPending || seconds > 0;
+  submitAuth.disabled = authRequestPending || seconds > 0 || !captchaGate.ready();
   forgot.disabled = authRequestPending;
   back.disabled = authRequestPending;
   if (seconds > 0) {
@@ -81,6 +82,7 @@ function message(value, error = false) {
 }
 function setMode(next) {
   mode = next;
+  captchaGate.setMode(next);
   authTitle.textContent =
     next === "signin"
       ? "Teacher sign in"
@@ -358,7 +360,11 @@ forgot.addEventListener("click", () => setMode("forgot"));
 back.addEventListener("click", () => setMode("signin"));
 authForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  if (authRequestPending || (authCooldowns.get(mode)?.until || 0) > Date.now()) {
+  if (
+    authRequestPending ||
+    !captchaGate.ready() ||
+    (authCooldowns.get(mode)?.until || 0) > Date.now()
+  ) {
     syncAuthControls();
     return;
   }
@@ -369,15 +375,24 @@ authForm.addEventListener("submit", async (e) => {
   const email = el("email").value.trim(),
     password = el("password").value;
   const requestMode = mode;
+  const captchaToken = captchaGate.required() ? captchaGate.consume() : undefined;
   authRequestPending = true;
   authRetryAfter = null;
   syncAuthControls();
   message("Please wait…");
   try {
     let result;
-    if (mode === "signin") result = await client.auth.signInWithPassword({ email, password });
+    if (mode === "signin")
+      result = await client.auth.signInWithPassword({
+        email,
+        password,
+        ...(captchaToken ? { options: { captchaToken } } : {}),
+      });
     else if (mode === "forgot")
-      result = await client.auth.resetPasswordForEmail(email, { redirectTo: REDIRECT_URL });
+      result = await client.auth.resetPasswordForEmail(email, {
+        redirectTo: REDIRECT_URL,
+        ...(captchaToken ? { captchaToken } : {}),
+      });
     else result = await client.auth.updateUser({ password });
     if (result.error) throw result.error;
     if (mode === "forgot")
@@ -401,6 +416,7 @@ authForm.addEventListener("submit", async (e) => {
     } else message(e.message || "Something went wrong.", true);
   } finally {
     authRequestPending = false;
+    if (requestMode !== "reset") captchaGate.reset();
     syncAuthControls();
   }
 });
@@ -427,3 +443,5 @@ weekSelect.addEventListener("change", () => {
 });
 updateSelectors();
 render();
+
+syncAuthControls();
