@@ -11,6 +11,7 @@ const CDN = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0/dist/umd
 let phase = "setup";
 const passed = [];
 const hosted = process.argv.includes("--hosted");
+const authOnly = process.argv.includes("--auth-only");
 const afterTeacher = process.argv.includes("--after-teacher");
 function check(name, condition) {
   if (!condition) throw new Error("Assertion failed");
@@ -160,6 +161,36 @@ function check(name, condition) {
         (await t.locator("#classSelect option").allTextContents()).join("|") ===
           "R8 Fictional Class A",
       );
+    if (authOnly) {
+      phase = "targeted teacher auth after recovery fix";
+      await t.reload();
+      await t.locator("#dashboard").waitFor({ state: "visible" });
+      await t.locator("#signOut").click();
+      await t.locator("#authForm").waitFor({ state: "visible" });
+      check("sign-in email remains enabled after sign-out", await t.locator("#email").isEnabled());
+      await t.locator("#forgot").click();
+      check(
+        "recovery request form accepts email and hides password",
+        (await t.locator("#email").isEnabled()) && (await t.locator("#passwordGroup").isHidden()),
+      );
+      await t.locator("#back").click();
+      check(
+        "back from recovery restores the sign-in controls",
+        (await t.locator("#email").isEnabled()) && (await t.locator("#passwordGroup").isVisible()),
+      );
+      await t.reload();
+      await t.locator("#authForm").waitFor({ state: "visible" });
+      check(
+        "updated teacher sign-out persists after reload",
+        await t.locator("#dashboard").isHidden(),
+      );
+      check(
+        "targeted auth stays within test origins with assets loaded",
+        violations.length === 0 && assetFailures.length === 0 && pageErrors.length === 0,
+      );
+      console.log("Targeted teacher auth passed; full recovery email/token flow remains untested.");
+      return;
+    }
     const rows = await t
       .locator("#results tr")
       .evaluateAll((rows) => rows.map((r) => [...r.cells].map((c) => c.textContent)));

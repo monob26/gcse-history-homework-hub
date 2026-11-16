@@ -1,6 +1,6 @@
 {
   "date": "2026-11-16",
-  "result": "PASS within isolated fictional-data release scope",
+  "result": "CORE PASS; full R8 incomplete; closure recommendation withdrawn",
   "runner_source_commit": "573cd391ad3883130e9d86e8a63ae1e128279eb1",
   "command": "node tests/r8/browser.cjs --hosted",
   "test_project_ref": "ohkpvuhzvshjglbqyepq",
@@ -44,5 +44,39 @@
         "teacher/styles.css": "7f35892630976b2c735c0e34fa0b860040d1ad74670babab5734e9b3fa8b4d89"
       }
     }
-  ]
+  ],
+  "recovery_follow_up": {
+    "report": "../R8-outstanding-review.md",
+    "email_request_for_existing_teacher": {
+      "http_status": 400,
+      "error_code": "email_address_invalid",
+      "meaning": "real recovery request for existing fictional teacher refused"
+    },
+    "invalid_link_redirect_probes": [
+      {
+        "probe": "default_site_url",
+        "http_status": 303,
+        "redirect_base": "https://monob26.github.io/history-teacher-dashboard-test/",
+        "error_code": "otp_expired"
+      },
+      {
+        "probe": "unlisted_destination",
+        "http_status": 303,
+        "redirect_base": "https://monob26.github.io/history-teacher-dashboard-test/",
+        "error_code": "otp_expired"
+      }
+    ],
+    "mocked_recovery_ui_success_and_expiry": "PASS; not end-to-end token/email acceptance",
+    "affected_teacher_regressions": "6 PASS",
+    "hosted_auth_after_fix": "PASS",
+    "full_recovery_token_consumption": "BLOCKED, not run",
+    "exact_auth_allow_list": "owner-confirmed; independent enumeration blocked",
+    "effective_site_url": "independently verified by invalid-link fallback",
+    "updated_teacher_package": "3920b4a092ad5b505a7ce270133e04f06db05895",
+    "updated_teacher_source": "285a225",
+    "updated_teacher_files_sha256": {
+      "teacher/app.js": "5d85f52b1b052efba7b3e2adf8db8fd87d0943fcdb227b424a505160fbbb8176",
+      "r8-release.json": "d6bdaf0bafa5f692e6ae8434353948bba85929c95fe4ef305900085524dc8203"
+    }
+  }
 }

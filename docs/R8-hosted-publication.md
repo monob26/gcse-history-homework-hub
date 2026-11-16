@@ -1,9 +1,10 @@
-# R8 hosted publication and acceptance — passed
+# R8 core hosted publication and acceptance — passed; full R8 incomplete
 
-Status on 16 November 2026: **both separate test websites are published and hosted acceptance
-passed. Recommend signing off/closing R8 for isolated fictional-data release testing, with the
-limitations below carried forward explicitly.** No live website/database was changed; draft PR #4
-remains unmerged.
+Current status: **core hosted flows passed, but full R8 sign-off is withheld.** The
+[outstanding-item review](R8-outstanding-review.md) supersedes the prior closure recommendation and
+records the recovery-form fix deployed as teacher package `3920b4a`. Genuine email delivery and
+recovery-link use remain untested/blocked. The results below preserve the original core run against
+the listed packages.
 
 ## Published releases
 
@@ -86,8 +87,7 @@ change occurred. Draft PR #4 stays open/draft.
   retained. Existing R2/R11 limitations and the known pass-mark presentation discrepancy remain
   outside this isolated release-verification change. They are not resolved by this acceptance run.
 
-These limits do not invalidate the observed separation of the test releases and backend, class
-access controls or saved quiz/results flow. **R8's test isolation and release-verification scope has
-passed; recommend closure with these explicit carry-forward limitations.** Full recovery-flow
-acceptance remains outstanding, and no approval for real pupil data, live release or PR merge is
-implied.
+The core results above remain valid. They do not complete password-recovery acceptance. **Keep R8
+open**; follow the outstanding-item review for the remaining real recovery sequence and
+exact-settings evidence. No full sign-off or closure is recommended until those requirements are
+addressed.

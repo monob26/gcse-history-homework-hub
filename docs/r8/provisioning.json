@@ -21,5 +21,5 @@
   ],
   "bootstrap_bytes": 157359,
   "fixture_source": "supabase/test-fixtures/r8_isolated_fictional_fixtures.sql",
-  "status": "local and hosted acceptance passed; both isolated test sites published; R8 closure recommended with documented limitations"
+  "status": "core local and hosted acceptance passed; recovery form fixed in test deployment; full R8 incomplete pending genuine recovery email/link and exact-settings evidence"
 }
