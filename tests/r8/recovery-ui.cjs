@@ -35,7 +35,9 @@ const ROOT = path.resolve(__dirname, "../..");
       const exceptions = [];
       page.on("pageerror", () => exceptions.push(true));
       await page.route("**/*", (r) =>
-        new URL(r.request().url()).origin === origin ? r.continue() : r.abort(),
+        new URL(r.request().url()).origin === origin && !r.request().url().includes("/vendor/")
+          ? r.continue()
+          : r.abort(),
       );
       await page.addInitScript(
         ({ scenario }) => {

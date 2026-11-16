@@ -33,6 +33,8 @@ const assert = require("node:assert/strict"),
   try {
     for (const scenario of [
       "homework",
+      "partial-results",
+      "class-id-selection",
       "no-homework",
       "denied",
       "unallocated",
@@ -43,7 +45,10 @@ const assert = require("node:assert/strict"),
       const errors = [];
       page.on("pageerror", (e) => errors.push(e.message));
       await page.route("**/*", (route) =>
-        new URL(route.request().url()).origin === origin ? route.continue() : route.abort(),
+        new URL(route.request().url()).origin === origin &&
+        !route.request().url().includes("/vendor/")
+          ? route.continue()
+          : route.abort(),
       );
       await page.addInitScript(
         ({ scenario }) => {
@@ -51,6 +56,8 @@ const assert = require("node:assert/strict"),
             scenario === "unallocated"
               ? []
               : [{ id: "fictional-class", class_name: "Fictional A", year_group: 10 }];
+          if (scenario === "class-id-selection")
+            classes.push({ id: "other-class", class_name: "Fictional B", year_group: 10 });
           const pupils = [
             { pupil_code: "ZZZZZZZZZZZZ", register_number: 2 },
             { pupil_code: "AAAAAAAAAAAA", register_number: 1 },
@@ -63,7 +70,8 @@ const assert = require("node:assert/strict"),
                 queries.push({ table, select: value });
                 return q;
               },
-              eq() {
+              eq(key, value) {
+                queries.push({ table, filter: key, value });
                 return q;
               },
               order() {
@@ -107,18 +115,21 @@ const assert = require("node:assert/strict"),
                   signOut: async () => ({}),
                 },
                 from: query,
-                rpc: async (name) => ({
-                  data:
-                    name === "is_history_teacher"
-                      ? scenario !== "denied"
-                      : pupils.map((p) => ({
-                          ...p,
-                          attempts: 1,
-                          highest_score: 21,
-                          homework_status: "Passed",
-                        })),
-                  error: null,
-                }),
+                rpc: async (name, params) => {
+                  queries.push({ rpc: name, params });
+                  return {
+                    data:
+                      name === "is_history_teacher"
+                        ? scenario !== "denied"
+                        : (scenario === "partial-results" ? pupils.slice(1) : pupils).map((p) => ({
+                            ...p,
+                            attempts: 1,
+                            highest_score: 21,
+                            homework_status: "Passed",
+                          })),
+                    error: null,
+                  };
+                },
               };
             },
           };
@@ -165,6 +176,32 @@ const assert = require("node:assert/strict"),
               (q) => q.table === "history_pupils" && q.select === "pupil_code,register_number",
             ),
           );
+          assert.equal(await page.locator('[data-year="10"]').getAttribute("aria-pressed"), "true");
+          assert.equal(await page.getByRole("tab").count(), 0);
+          if (scenario === "partial-results") {
+            assert.equal(await page.locator("#total").innerText(), "2");
+            assert.equal(await page.locator("#completed").innerText(), "1");
+            assert.equal(await page.locator("#missing").innerText(), "1");
+            assert.match(await page.locator("#results tr").nth(1).innerText(), /Not completed/);
+          }
+          if (scenario === "class-id-selection") {
+            await page.locator("#classSelect").selectOption("other-class");
+            await page.waitForFunction(() =>
+              window.r6Queries.some(
+                (q) =>
+                  q.rpc === "get_history_class_results_by_id" &&
+                  q.params.requested_class_id === "other-class",
+              ),
+            );
+            assert(
+              (await page.evaluate(() => window.r6Queries)).some(
+                (q) =>
+                  q.table === "history_pupils" &&
+                  q.filter === "class_id" &&
+                  q.value === "other-class",
+              ),
+            );
+          }
           await page.locator("#signOut").click();
           assert(await page.locator("#dashboard").isHidden());
         }

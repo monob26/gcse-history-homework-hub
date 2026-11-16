@@ -40,7 +40,7 @@ try:
     for file in [ROOT / 'tests/r9/bootstrap.sql',
                  *sorted((ROOT / 'supabase/migrations').glob('*.sql')),
                  ROOT / 'supabase/seed.sql', ROOT / 'tests/r9/access.sql',
-                 ROOT / 'tests/r9/quiz.sql']:
+                 ROOT / 'tests/r9/quiz.sql', ROOT / 'tests/r10/access-id.sql']:
         print('Checking ' + str(file.relative_to(ROOT)), flush=True)
         sql(file)
     print('PASS: migration rebuild, access and quiz integrity suites')

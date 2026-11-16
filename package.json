@@ -6,7 +6,8 @@
     "format:check": "prettier --ignore-unknown --check pupil teacher shared scripts tests docs package.json .prettierrc.json",
     "test:r6": "node tests/r6/pages.cjs && node tests/r6/teacher.cjs",
     "test:db": "python3 tests/r9/database.py",
-    "test:browser": "npm run test:r6 && node tests/r8/recovery-ui.cjs"
+    "test:browser": "npm run test:r6 && node tests/r8/recovery-ui.cjs && npm run test:r10",
+    "test:r10": "node tests/r10/pupil.cjs && node tests/r10/assets.cjs && python3 tests/r8/staging.py"
   },
   "devDependencies": {
     "playwright": "1.62.1",

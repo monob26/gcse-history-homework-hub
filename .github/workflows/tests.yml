@@ -36,7 +36,7 @@ jobs:
       - run: npm ci
       - name: Install matching Playwright Chromium
         run: npx --no-install playwright install --with-deps chromium
-      - name: Pupil timer/full quiz, teacher access and recovery UI
+      - name: Pupil/teacher regressions, recovery, accessibility and CSP
         run: npm run test:browser
         env:
           PLAYWRIGHT_USE_BUNDLED_CHROMIUM: "1"

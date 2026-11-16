@@ -2,3 +2,5 @@ supabase/
 package-lock.json
 node_modules/
 work/
+
+teacher/vendor/

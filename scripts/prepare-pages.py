@@ -72,4 +72,11 @@ if __name__ == '__main__':
         shutil.copytree(ROOT / folder, destination / folder, dirs_exist_ok=True)
     if override is not None:
         (destination / 'shared/config.js').write_text(override)
-    (destination / 'index.html').write_text(entry(args.page))
+    generated = entry(args.page)
+    if override:
+        live_origin = re.search(r'supabaseUrl:\s*"([^"]+)"', (ROOT / 'shared/config.js').read_text()).group(1)
+        test_origin = json.loads(args.test_config.read_text())['supabaseUrl'].rstrip('/')
+        for page_file in [destination / args.page / 'index.html']:
+            page_file.write_text(page_file.read_text().replace('connect-src ' + live_origin, 'connect-src ' + test_origin))
+        generated = generated.replace('connect-src ' + live_origin, 'connect-src ' + test_origin)
+    (destination / 'index.html').write_text(generated)
