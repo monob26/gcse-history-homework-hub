@@ -7,6 +7,12 @@ const root = require("path").resolve(__dirname, "../..");
 
 (async () => {
   const server = http.createServer((req, res) => {
+    // This suite deliberately tests the retained legacy protocol, independently of deployment activation.
+    if (new URL(req.url, "http://localhost").pathname.endsWith("/shared/release.js")) {
+      res.setHeader("Content-Type", "application/javascript");
+      res.end("window.HISTORY_RELEASE = Object.freeze({quizManager:false});");
+      return;
+    }
     const pathname = new URL(req.url, "http://localhost").pathname;
     const file = require("path").join(root, pathname === "/" ? "index.html" : pathname);
     res.setHeader(

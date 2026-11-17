@@ -7,6 +7,12 @@ const assert = require("node:assert/strict"),
 (async () => {
   const root = path.resolve(__dirname, "../..");
   const server = http.createServer((req, res) => {
+    // This suite deliberately tests the retained legacy protocol, independently of deployment activation.
+    if (new URL(req.url, "http://localhost").pathname.endsWith("/shared/release.js")) {
+      res.setHeader("Content-Type", "application/javascript");
+      res.end("window.HISTORY_RELEASE = Object.freeze({quizManager:false});");
+      return;
+    }
     const file = path.join(
       root,
       new URL(req.url, "http://localhost").pathname.replace(/\/$/, "/index.html"),
