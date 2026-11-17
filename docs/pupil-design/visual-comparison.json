@@ -1,0 +1,57 @@
+{
+  "approved_html_sha256": "70a1a2fdd1737a41d5714b4d7c62a5fe46be76b51fd53b88bdaf79c33aa47ff6",
+  "pixel_comparisons": [
+    {
+      "screen": "code entry",
+      "device": "desktop",
+      "pixel_identical": false,
+      "differing_pixels": 38,
+      "maximum_channel_difference_0_to_255": 2,
+      "fraction_exact_pixels": 0.9999670138888889,
+      "visual_match": true
+    },
+    {
+      "screen": "code entry",
+      "device": "mobile",
+      "pixel_identical": true,
+      "differing_pixels": 0,
+      "maximum_channel_difference_0_to_255": 0,
+      "fraction_exact_pixels": 1.0,
+      "visual_match": true
+    }
+  ],
+  "common_style_properties": {
+    "scope": "Approved HTML vs actual TEST package; common visual components, before real data/state-dependent expansion",
+    "checks": 528,
+    "mismatches": [],
+    "passed": true
+  },
+  "artwork": [
+    {
+      "file": "approved-castle.svg",
+      "sha256": "482ea3f41b89a3e1b307965c49356deae23dc5a7222b9792316cacf0ed8b3f21",
+      "source": "unchanged embedded artwork in approved HTML"
+    },
+    {
+      "file": "approved-collage.png",
+      "sha256": "9d699f51ceb5b23dcc3ed98e2fbf67568122c10edefeabf6621c494ce43eb8a5",
+      "source": "unchanged embedded artwork in approved HTML"
+    },
+    {
+      "file": "approved-quiz.png",
+      "sha256": "534014fb078e63896ff4045c46e4695565207210495a1b31b22084b4f2ec72b0",
+      "source": "unchanged embedded artwork in approved HTML"
+    }
+  ],
+  "intentional_function_preservation": [
+    "Existing Back, Use another code, Exit, Save and Exit, resume and offline controls remain",
+    "Server-derived timing information remains on instructions",
+    "Existing attempts/highest-score information remains on homework cards",
+    "Real correct-answer text and explanation remain inline, expanding cards if needed",
+    "Passed homework remains visible with existing disabled completed action; no invented review destination",
+    "No demo cards, history, Show More, Review Answers or interactive chronology",
+    "Original class/week/topic metadata and page-level heading are preserved"
+  ],
+  "reference_capture_note": "Demo toolbar excluded; native hidden attributes enforced because prototype flex styling otherwise displays the hidden feedback block before submission. Approved HTML bytes remain unchanged.",
+  "rasterisation_note": "Desktop differs only in a few antialiased edge pixels, at most two channel levels; geometry, fonts and colours match. Mobile is pixel-identical."
+}

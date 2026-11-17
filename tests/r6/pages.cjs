@@ -133,7 +133,7 @@ const root = require("path").resolve(__dirname, "../..");
         if (scenario === "full-quiz")
           assert.equal(
             await page.locator("#instructionDetails").innerText(),
-            "25 questions · 20/25 (80%) needed to pass.",
+            "25 questions in total.",
           );
         await page.locator(scenario === "expired-resume" ? "#resumeQuiz" : "#startQuiz").click();
         await page.locator("#question").waitFor({ state: "visible" });
@@ -149,7 +149,11 @@ const root = require("path").resolve(__dirname, "../..");
             await page.locator("#nextQuestion").click();
           }
           await page.locator("#result").waitFor({ state: "visible" });
-          assert.equal(await page.locator("#resultScore").innerText(), "25/25");
+          assert.equal(
+            await page.locator("#instructionPass").innerText(),
+            "80% to pass (20 out of 25).",
+          );
+          assert.equal(await page.locator("#resultScore").innerText(), "25 / 25");
           assert.deepEqual(answers, Array(25).fill(0));
           await page.locator("#resultAction").click();
           await page.locator("#home").waitFor({ state: "visible" });

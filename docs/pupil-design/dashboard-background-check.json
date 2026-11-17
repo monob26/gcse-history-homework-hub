@@ -1,0 +1,41 @@
+{
+  "scope": "Local staged TEST assets, fictional intercepted RPCs; no hosted requests",
+  "outcomes": [
+    {
+      "device": "desktop",
+      "result": "PASS",
+      "dashboard_and_quiz_background_properties_equal": true,
+      "original_dashboard_geometry_and_text_preserved": true,
+      "reichstag_banner_unchanged": true,
+      "background": {
+        "backgroundImage": "url(\"http://127.0.0.1:42777/pupil/assets/approved-quiz.png\")",
+        "backgroundSize": "cover",
+        "backgroundPosition": "50% 100%",
+        "backgroundRepeat": "repeat",
+        "backgroundAttachment": "scroll",
+        "backgroundOrigin": "padding-box",
+        "backgroundClip": "border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundBlendMode": "normal"
+      }
+    },
+    {
+      "device": "mobile",
+      "result": "PASS",
+      "dashboard_and_quiz_background_properties_equal": true,
+      "original_dashboard_geometry_and_text_preserved": true,
+      "reichstag_banner_unchanged": true,
+      "background": {
+        "backgroundImage": "url(\"http://127.0.0.1:42777/pupil/assets/approved-quiz.png\")",
+        "backgroundSize": "cover",
+        "backgroundPosition": "50% 100%",
+        "backgroundRepeat": "repeat",
+        "backgroundAttachment": "scroll",
+        "backgroundOrigin": "padding-box",
+        "backgroundClip": "border-box",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundBlendMode": "normal"
+      }
+    }
+  ]
+}
