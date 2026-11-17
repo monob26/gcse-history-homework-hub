@@ -8,6 +8,12 @@ const root = path.resolve(__dirname, "../..");
 let phase = "setup";
 (async () => {
   const server = http.createServer((req, res) => {
+    // This suite deliberately tests the retained legacy protocol, independently of deployment activation.
+    if (new URL(req.url, "http://localhost").pathname.endsWith("/shared/release.js")) {
+      res.setHeader("Content-Type", "application/javascript");
+      res.end("window.HISTORY_RELEASE = Object.freeze({quizManager:false});");
+      return;
+    }
     const file = path.join(
       root,
       new URL(req.url, "http://localhost").pathname.replace(/\/$/, "/index.html"),
@@ -134,6 +140,9 @@ let phase = "setup";
       await page.locator("#code").fill("ABCDEFGHJKLM");
       await page.locator("#loginForm button").click();
       await page.locator("#homeContent button").click();
+      await page
+        .locator(scenario === "saved-final-resume" ? "#resume" : "#instructions")
+        .waitFor({ state: "visible" });
       assert.equal(await page.evaluate(() => document.activeElement.tagName === "H2"), true);
       if (scenario !== "saved-final-resume")
         assert.match(

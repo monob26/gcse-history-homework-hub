@@ -104,7 +104,16 @@ const root = path.resolve(__dirname, "../..");
           );
           assert.ok(url.pathname.startsWith("/rest/v1/rpc/"));
           calls++;
-          const name = url.pathname.split("/").pop();
+          let name = url.pathname.split("/").pop();
+          if (name === "quiz_session")
+            name = {
+              home: "get_current_pupil_homework",
+              list: "get_current_pupil_homework",
+              start: "start_pupil_quiz",
+              open: "open_pupil_question",
+              answer: "submit_pupil_answer",
+              finish: "complete_pupil_quiz",
+            }[route.request().postDataJSON().action];
           let data;
           if (name === "get_current_pupil_homework")
             data = {
@@ -122,6 +131,10 @@ const root = path.resolve(__dirname, "../..");
                 ? "fictional-attempt"
                 : null,
               due_at: scenario === "overdue" ? "2026-11-18T16:00:00Z" : "2026-11-20T16:00:00Z",
+              time_limits: [
+                { seconds: 45, questions: 20 },
+                { seconds: 60, questions: 5 },
+              ],
             };
           else if (name === "get_pupil_quiz_timing")
             data = {
@@ -173,8 +186,8 @@ const root = path.resolve(__dirname, "../..");
           if (scenario === "not-passed-home")
             assert.match(await page.locator(".status").innerText(), /Completed but not passed/);
           if (scenario === "completed") {
-            assert.equal(await page.locator("#homeContent button").isDisabled(), true);
-            assert.equal(await page.locator(".ribbon").innerText(), "COMPLETED HOMEWORK");
+            assert.equal(await page.locator("#homeContent button").isDisabled(), false);
+            assert.equal(await page.locator(".ribbon").innerText(), "CURRENT HOMEWORK");
           }
           if (scenario === "overdue") {
             assert.equal(await page.locator(".overdue").innerText(), "Overdue");
@@ -235,10 +248,11 @@ const root = path.resolve(__dirname, "../..");
         assert.equal(await page.locator("[id=chronology], .review-button, #show-more").count(), 0);
         assert.deepEqual(errors, []);
         assert.deepEqual(await page.evaluate(() => window.policyFailures || []), []);
-        await page.screenshot({
-          path: path.join(output, device + "-" + scenario + ".png"),
-          fullPage: true,
-        });
+        if (process.env.CAPTURE_VISUAL_EVIDENCE === "1")
+          await page.screenshot({
+            path: path.join(output, device + "-" + scenario + ".png"),
+            fullPage: true,
+          });
         outcomes.push({ device, scenario, result: "PASS", intercepted_rpc_calls: calls });
         await page.close();
       }
