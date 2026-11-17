@@ -158,8 +158,8 @@ async function loadHome() {
         )
         .join("; ") + ". The timer starts when each question opens.";
     const total = stats(),
-      pass = Number(h.pass_mark || 80),
-      threshold = Math.ceil((total * pass) / 100),
+      threshold = Number(h.pass_mark),
+      pass = Math.round((threshold / total) * 100),
       tries = Number(h.attempts_taken || 0),
       best = h.highest_score;
     const due = h.due_at ? new Date(h.due_at) : null,
@@ -169,7 +169,7 @@ async function loadHome() {
       `<p class="muted small">WEEK ${esc(h.week_number ?? "—")} · ${esc(h.class_name)}</p>`,
       `<h3>${esc(h.quiz_title)}</h3><p class="muted">${esc(h.topic || "")}</p>`,
       `<div class="meta"><span class="pill">${total} questions</span>`,
-      `<span class="pill">${pass}% to pass</span>`,
+      `<span class="pill">${threshold}/${total} (${pass}%) to pass</span>`,
       overdue ? '<span class="pill overdue">Overdue</span>' : "",
       h.passed ? '<span class="pill complete">Completed</span>' : "",
       "</div>",
@@ -199,7 +199,7 @@ async function loadHome() {
       } else {
         $("instructionTitle").textContent = h.quiz_title;
         $("instructionDetails").textContent =
-          `${total} questions · ${threshold} correct answers needed to pass (${pass}%).`;
+          `${total} questions · ${threshold}/${total} (${pass}%) needed to pass.`;
         show("instructions");
       }
     };

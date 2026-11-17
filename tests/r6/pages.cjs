@@ -74,7 +74,7 @@ const root = require("path").resolve(__dirname, "../..");
             quiz_id: "00000000-0000-4000-8000-000000000001",
             quiz_title: "Fictional quiz",
             total_questions: 25,
-            pass_mark: 80,
+            pass_mark: 20,
             attempts_taken: 0,
             passed: completed,
             unfinished_attempt_id: scenario === "expired-resume" ? "fictional-attempt" : null,
@@ -125,7 +125,16 @@ const root = require("path").resolve(__dirname, "../..");
           results.push({ scenario, status: "PASS" });
           continue;
         }
+        if (scenario === "full-quiz") {
+          await page.locator("#homeContent").filter({ hasText: "25 questions" }).waitFor();
+          assert.match(await page.locator("#homeContent").innerText(), /20\/25 \(80%\) to pass/);
+        }
         await page.locator("#homeContent button").click();
+        if (scenario === "full-quiz")
+          assert.equal(
+            await page.locator("#instructionDetails").innerText(),
+            "25 questions · 20/25 (80%) needed to pass.",
+          );
         await page.locator(scenario === "expired-resume" ? "#resumeQuiz" : "#startQuiz").click();
         await page.locator("#question").waitFor({ state: "visible" });
         if (scenario === "full-quiz") {
