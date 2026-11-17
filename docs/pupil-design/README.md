@@ -38,10 +38,12 @@ style checks passing. Code entry matches the approved geometry, typography and c
 widths; mobile is pixel-identical and desktop differs only in negligible antialiased edge pixels.
 
 Three original artwork assets are extracted unchanged from the approved HTML. No generic imagery,
-external fonts, CDN assets, dependencies, telemetry or screenshot-as-UI substitute is used. Only
-question screens/inline question feedback use the quieter watercolour; all other art follows the
-approved reference. Existing functional controls and timing information necessarily add content
-where the demo omitted them; no existing functionality is removed to force a screenshot match.
+external fonts, CDN assets, dependencies, telemetry or screenshot-as-UI substitute is used. The
+dashboard and question screens/inline question feedback share the same quieter watercolour following
+the owner's final visual adjustment. Login, instructions and results retain their existing collage;
+the Reichstag dashboard welcome banner is unchanged. Existing functional controls and timing
+information necessarily add content where the demo omitted them; no existing functionality is
+removed to force a screenshot match.
 
 ## Verification
 
@@ -71,3 +73,18 @@ No unresolved functional question remains after the owner's Option 1 clarificati
 history and chronology are deliberate omissions, not hidden unfinished features. The PR remains
 DRAFT. Await explicit owner approval and school/Veritau clearance; do not merge, promote or deploy
 this design LIVE.
+
+## Final dashboard-background adjustment
+
+The owner requested that only the dashboard background match the existing quiz background. The same
+CSS rule now applies `approved-quiz.png`, `cover`, and `center bottom` to `.quiz-bg` and `#home`. No
+artwork was edited. No dimensions, spacing, positioning, text, controls or JavaScript changed. The
+dashboard includes the same blue-and-cream torn-paper lower edge while its original Reichstag
+welcome banner is unchanged.
+
+[Background/layout checks](dashboard-background-check.json) confirm identical quiz/dashboard
+background properties and unchanged dashboard/banner geometry and text at desktop/mobile widths.
+[Other-screen comparisons](dashboard-other-screens-unchanged.json) confirm the ten login,
+instruction, question and result screenshots are unchanged apart from negligible edge rasterisation.
+Existing R6 regressions and formatting passed. These checks intercept fictional TEST responses; no
+Supabase operation or hosted quiz was needed for this CSS-only adjustment.

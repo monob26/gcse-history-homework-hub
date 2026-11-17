@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "device": "desktop",
+      "screen": "login",
+      "unchanged": true,
+      "exact_pixels": false,
+      "maximum_antialias_difference": 2
+    },
+    {
+      "device": "desktop",
+      "screen": "instructions",
+      "unchanged": true,
+      "exact_pixels": true,
+      "maximum_antialias_difference": 0
+    },
+    {
+      "device": "desktop",
+      "screen": "question",
+      "unchanged": true,
+      "exact_pixels": true,
+      "maximum_antialias_difference": 0
+    },
+    {
+      "device": "desktop",
+      "screen": "passed",
+      "unchanged": true,
+      "exact_pixels": true,
+      "maximum_antialias_difference": 0
+    },
+    {
+      "device": "desktop",
+      "screen": "not-passed",
+      "unchanged": true,
+      "exact_pixels": true,
+      "maximum_antialias_difference": 0
+    },
+    {
+      "device": "mobile",
+      "screen": "login",
+      "unchanged": true,
+      "exact_pixels": true,
+      "maximum_antialias_difference": 0
+    },
+    {
+      "device": "mobile",
+      "screen": "instructions",
+      "unchanged": true,
+      "exact_pixels": true,
+      "maximum_antialias_difference": 0
+    },
+    {
+      "device": "mobile",
+      "screen": "question",
+      "unchanged": true,
+      "exact_pixels": true,
+      "maximum_antialias_difference": 0
+    },
+    {
+      "device": "mobile",
+      "screen": "passed",
+      "unchanged": true,
+      "exact_pixels": true,
+      "maximum_antialias_difference": 0
+    },
+    {
+      "device": "mobile",
+      "screen": "not-passed",
+      "unchanged": true,
+      "exact_pixels": true,
+      "maximum_antialias_difference": 0
+    }
+  ]
+}

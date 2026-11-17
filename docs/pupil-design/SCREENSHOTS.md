@@ -1,5 +1,9 @@
 # Pupil design screenshot comparison
 
+Latest owner-approved adjustment: the dashboard now shares the existing quiz watercolour and
+torn-paper background; the Reichstag welcome banner and all original dashboard geometry/text are
+unchanged. Other screens are unchanged.
+
 Desktop: 1280 × 900. Mobile: 390 × 844. Implementation images exercise the real UI with fictional
 intercepted TEST RPC responses; they are not hosted acceptance evidence. Artwork is extracted
 unchanged from the approved HTML.
