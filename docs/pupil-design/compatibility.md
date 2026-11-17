@@ -1,9 +1,14 @@
 # Approved pupil design: TEST-only integration preflight
 
-Status: blocked for a functional-scope decision before UI changes or TEST publication. This is a
-preflight record, not an implemented design or acceptance pass. The complete supplied
-`CODEX-INSTRUCTIONS.md` was read before changes. The approved HTML is the appearance specification;
-its demo JavaScript and fictional homework must not replace the real engine.
+Status: the owner explicitly approved Option 1 on 17 November 2026. The HTML is a visual reference
+only: apply its appearance to existing supported screens and functionality, omit unsupported
+features, and preserve every existing quiz behaviour. No new screens, navigation flows, history,
+review API, question types or backend functionality are authorised. This resolves the preflight stop
+below.
+
+The complete supplied `CODEX-INSTRUCTIONS.md` was read before changes. User clarification takes
+precedence over the prototype's demo functionality. The approved artwork and CSS remain the visual
+reference; demo JavaScript and fictional homework are not application code.
 
 ## Verified isolation
 
@@ -20,7 +25,7 @@ All five supplied SHA-256 checksums matched, including approved HTML
 `70a1a2fdd1737a41d5714b4d7c62a5fe46be76b51fd53b88bdaf79c33aa47ff6`. No TEST/LIVE database data,
 settings or application deployment changed during this preflight.
 
-## Functional conflicts requiring a decision
+## Resolved compatibility boundaries
 
 1. **Interactive chronology:** current `openQuestion()` requires four answer options and renders a
    radio group. The TEST `open_pupil_question` response has no question type. Submission sends one
@@ -51,3 +56,13 @@ and 12-character code rules. Change only pupil UI plus minimal wiring/tests. Com
 state with the approved reference at desktop/mobile widths and perform fictional TEST smoke checks.
 Publish only the isolated pupil TEST package, keep this PR draft, report actual test results and
 unsupported screenshot states, then await owner approval. No merge or LIVE promotion.
+
+## Implementation evidence
+
+See [screenshots](SCREENSHOTS.md), [visual comparisons](visual-comparison.json) and
+[screen/state checks](visual-test-results.json). The existing code-entry, loading, homework,
+instructions, resume, question, result and offline screens remain. Existing exit/save, back,
+code-change, radio-keyboard, deadline, server feedback, retry and connection recovery actions
+remain. The real current quiz appears under Current Homework or Completed Homework according to the
+server state; no extra homework/history data is invented. Passed homework keeps its existing
+disabled completed action, rather than a misleading Review Answers button.

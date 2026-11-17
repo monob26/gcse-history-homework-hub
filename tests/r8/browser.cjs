@@ -303,8 +303,8 @@ function check(name, condition) {
       hosted
         ? "hosted full quiz completion (25/25, passed)"
         : "server marking and full quiz completion (24/25, passed)",
-      (await p.locator("#resultScore").innerText()) === (hosted ? "25/25" : "24/25") &&
-        (await p.locator("#resultHeading").innerText()) === "Homework Complete!",
+      (await p.locator("#resultScore").innerText()) === (hosted ? "25 / 25" : "24 / 25") &&
+        (await p.locator("#resultHeading").innerText()) === "You passed!",
     );
     await p.locator("#resultAction").click();
     await p.locator("#home").waitFor({ state: "visible" });
@@ -322,7 +322,7 @@ function check(name, condition) {
             r.cells[3]?.textContent === expected &&
             r.cells[4]?.textContent === "Passed",
         ),
-      { register, expected: hosted ? "25/25" : "24/25" },
+      { register, expected: hosted ? "25 / 25" : "24 / 25" },
     );
     check("teacher displays the same persisted pupil result", true);
     phase = "sign-out";

@@ -208,7 +208,7 @@ let phase = "setup";
             assert.equal(await page.locator("#homeContent button").isDisabled(), true);
           } else {
             await page.locator("#result").waitFor({ state: "visible" });
-            assert.equal(await page.locator("#resultScore").innerText(), "2/2");
+            assert.equal(await page.locator("#resultScore").innerText(), "2 / 2");
           }
           assert.equal(saved, 2);
           assert.equal(starts, scenario === "last-answer-retry" ? 2 : 1);

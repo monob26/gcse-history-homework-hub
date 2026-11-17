@@ -1,0 +1,27 @@
+{
+  "engine_segments": {
+    "RPC requests and payloads": "byte-identical",
+    "start/session handling": "byte-identical",
+    "timer/deadline/timeout guard": "byte-identical"
+  },
+  "teacher_database_shared_config_and_dependency_lock_changed": false,
+  "existing_screen_ids": [
+    "login",
+    "loading",
+    "home",
+    "instructions",
+    "resume",
+    "question",
+    "result",
+    "offline"
+  ],
+  "new_api_calls": false,
+  "new_question_types": false,
+  "approved_omissions": [
+    "history",
+    "Review Answers",
+    "interactive chronology",
+    "prototype navigation and toolbar"
+  ],
+  "live_deployment_authorised": false
+}
