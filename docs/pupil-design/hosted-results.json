@@ -1,0 +1,18 @@
+{
+  "scope": "Real isolated TEST Supabase and published TEST page; no mocked responses",
+  "passed": [
+    "real TEST pupil code and assigned quiz loaded",
+    "save/exit, fresh-page code entry and server resume preserve progress/deadline",
+    "offline interruption/reconnection resumes same question",
+    "real failed attempt, locked answers and inline incorrect feedback",
+    "retry uses real shuffled options and saved 25/25 passed result",
+    "passed quiz remains visible under Completed Homework without invented review action"
+  ],
+  "answer_submissions": 50,
+  "attempts_completed": 2,
+  "live_requests": 0,
+  "teacher_login_attempts": 0,
+  "emails_sent": 0,
+  "new_backend_functionality": false,
+  "credentials_or_codes_recorded": false
+}

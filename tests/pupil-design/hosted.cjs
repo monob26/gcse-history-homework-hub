@@ -66,6 +66,46 @@ const TEST = "https://ohkpvuhzvshjglbqyepq.supabase.co",
     }
     phase = "TEST login and real assignment";
     await login();
+    if (process.env.PUPIL_DESIGN_VERIFY_ONLY === "1") {
+      assert.equal(await page.locator("#homeContent button").isDisabled(), true);
+      assert.equal(await page.locator(".ribbon").innerText(), "COMPLETED HOMEWORK");
+      assert.match(
+        await page.locator(".homework-extra").last().innerText(),
+        /R8 Fictional Class A/,
+      );
+      assert.equal(await page.locator("header h1").count(), 1);
+      for (const [name, width, height] of [
+        ["desktop", 1280, 900],
+        ["mobile", 390, 844],
+      ]) {
+        await page.setViewportSize({ width, height });
+        await page.screenshot({
+          path: path.join(root, "work/pupil-design-evidence/hosted-" + name + "-completed.png"),
+          fullPage: true,
+        });
+      }
+      assert.deepEqual(errors, []);
+      assert.deepEqual(violations, []);
+      fs.writeFileSync(
+        path.join(root, "work/pupil-design-evidence/hosted-published-check.json"),
+        JSON.stringify(
+          {
+            result: "PASS",
+            scope:
+              "Final published TEST package with existing fictional completed pupil; no new attempt",
+            live_requests: 0,
+            header_heading_preserved: true,
+            original_homework_metadata_preserved: true,
+          },
+          null,
+          2,
+        ) + "\n",
+      );
+      console.log(
+        "PASS: final published TEST pupil UI, preserved heading/metadata, completed action and desktop/mobile rendering; no new attempt",
+      );
+      return;
+    }
     assert.match(await page.locator("#homeContent").innerText(), /Not started/);
     passed.push("real TEST pupil code and assigned quiz loaded");
     await page.locator("#homeContent button").click();

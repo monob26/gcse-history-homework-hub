@@ -3,42 +3,6 @@
   "outcomes": [
     {
       "device": "desktop",
-      "scenario": "correct",
-      "result": "PASS",
-      "intercepted_rpc_calls": 5
-    },
-    {
-      "device": "desktop",
-      "scenario": "incorrect",
-      "result": "PASS",
-      "intercepted_rpc_calls": 5
-    },
-    {
-      "device": "desktop",
-      "scenario": "timeout",
-      "result": "PASS",
-      "intercepted_rpc_calls": 5
-    },
-    {
-      "device": "mobile",
-      "scenario": "correct",
-      "result": "PASS",
-      "intercepted_rpc_calls": 5
-    },
-    {
-      "device": "mobile",
-      "scenario": "incorrect",
-      "result": "PASS",
-      "intercepted_rpc_calls": 5
-    },
-    {
-      "device": "mobile",
-      "scenario": "timeout",
-      "result": "PASS",
-      "intercepted_rpc_calls": 5
-    },
-    {
-      "device": "desktop",
       "scenario": "login",
       "result": "PASS",
       "intercepted_rpc_calls": 0
@@ -72,6 +36,78 @@
       "scenario": "overdue",
       "result": "PASS",
       "intercepted_rpc_calls": 2
+    },
+    {
+      "device": "mobile",
+      "scenario": "login",
+      "result": "PASS",
+      "intercepted_rpc_calls": 0
+    },
+    {
+      "device": "mobile",
+      "scenario": "dashboard",
+      "result": "PASS",
+      "intercepted_rpc_calls": 2
+    },
+    {
+      "device": "mobile",
+      "scenario": "in-progress",
+      "result": "PASS",
+      "intercepted_rpc_calls": 2
+    },
+    {
+      "device": "mobile",
+      "scenario": "not-passed-home",
+      "result": "PASS",
+      "intercepted_rpc_calls": 2
+    },
+    {
+      "device": "mobile",
+      "scenario": "completed",
+      "result": "PASS",
+      "intercepted_rpc_calls": 2
+    },
+    {
+      "device": "mobile",
+      "scenario": "overdue",
+      "result": "PASS",
+      "intercepted_rpc_calls": 2
+    },
+    {
+      "device": "desktop",
+      "scenario": "correct",
+      "result": "PASS",
+      "intercepted_rpc_calls": 5
+    },
+    {
+      "device": "desktop",
+      "scenario": "incorrect",
+      "result": "PASS",
+      "intercepted_rpc_calls": 5
+    },
+    {
+      "device": "desktop",
+      "scenario": "timeout",
+      "result": "PASS",
+      "intercepted_rpc_calls": 5
+    },
+    {
+      "device": "mobile",
+      "scenario": "correct",
+      "result": "PASS",
+      "intercepted_rpc_calls": 5
+    },
+    {
+      "device": "mobile",
+      "scenario": "incorrect",
+      "result": "PASS",
+      "intercepted_rpc_calls": 5
+    },
+    {
+      "device": "mobile",
+      "scenario": "timeout",
+      "result": "PASS",
+      "intercepted_rpc_calls": 5
     },
     {
       "device": "desktop",
@@ -114,42 +150,6 @@
       "scenario": "exit",
       "result": "PASS",
       "intercepted_rpc_calls": 4
-    },
-    {
-      "device": "mobile",
-      "scenario": "login",
-      "result": "PASS",
-      "intercepted_rpc_calls": 0
-    },
-    {
-      "device": "mobile",
-      "scenario": "dashboard",
-      "result": "PASS",
-      "intercepted_rpc_calls": 2
-    },
-    {
-      "device": "mobile",
-      "scenario": "in-progress",
-      "result": "PASS",
-      "intercepted_rpc_calls": 2
-    },
-    {
-      "device": "mobile",
-      "scenario": "not-passed-home",
-      "result": "PASS",
-      "intercepted_rpc_calls": 2
-    },
-    {
-      "device": "mobile",
-      "scenario": "completed",
-      "result": "PASS",
-      "intercepted_rpc_calls": 2
-    },
-    {
-      "device": "mobile",
-      "scenario": "overdue",
-      "result": "PASS",
-      "intercepted_rpc_calls": 2
     },
     {
       "device": "mobile",

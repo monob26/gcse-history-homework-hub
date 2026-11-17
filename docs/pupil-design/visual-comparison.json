@@ -4,12 +4,20 @@
     {
       "screen": "code entry",
       "device": "desktop",
-      "pixel_identical": true
+      "pixel_identical": false,
+      "differing_pixels": 38,
+      "maximum_channel_difference_0_to_255": 2,
+      "fraction_exact_pixels": 0.9999670138888889,
+      "visual_match": true
     },
     {
       "screen": "code entry",
       "device": "mobile",
-      "pixel_identical": true
+      "pixel_identical": true,
+      "differing_pixels": 0,
+      "maximum_channel_difference_0_to_255": 0,
+      "fraction_exact_pixels": 1.0,
+      "visual_match": true
     }
   ],
   "common_style_properties": {
@@ -41,7 +49,9 @@
     "Existing attempts/highest-score information remains on homework cards",
     "Real correct-answer text and explanation remain inline, expanding cards if needed",
     "Passed homework remains visible with existing disabled completed action; no invented review destination",
-    "No demo cards, history, Show More, Review Answers or interactive chronology"
+    "No demo cards, history, Show More, Review Answers or interactive chronology",
+    "Original class/week/topic metadata and page-level heading are preserved"
   ],
-  "reference_capture_note": "Demo toolbar excluded; native hidden attributes enforced because prototype flex styling otherwise displays the hidden feedback block before submission. Approved HTML bytes remain unchanged."
+  "reference_capture_note": "Demo toolbar excluded; native hidden attributes enforced because prototype flex styling otherwise displays the hidden feedback block before submission. Approved HTML bytes remain unchanged.",
+  "rasterisation_note": "Desktop differs only in a few antialiased edge pixels, at most two channel levels; geometry, fonts and colours match. Mobile is pixel-identical."
 }

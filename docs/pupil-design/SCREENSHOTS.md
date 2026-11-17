@@ -26,3 +26,9 @@ the owner explicitly excluded.
 | resume          | [View](screenshots/desktop-resume.png)          | [View](screenshots/mobile-resume.png)          | Existing state retained; no new mock-up screen                                                                      |
 | offline         | [View](screenshots/desktop-offline.png)         | [View](screenshots/mobile-offline.png)         | Existing state retained; no new mock-up screen                                                                      |
 | exit            | [View](screenshots/desktop-exit.png)            | [View](screenshots/mobile-exit.png)            | Existing state retained; no new mock-up screen                                                                      |
+
+## Real TEST smoke evidence
+
+[Hosted failed result](screenshots/hosted-not-passed.png) and
+[hosted passed result](screenshots/hosted-passed.png) use real isolated TEST Supabase responses, not
+mocked payloads. No LIVE request, teacher login or email was involved.

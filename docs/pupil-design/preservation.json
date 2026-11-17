@@ -23,5 +23,6 @@
     "interactive chronology",
     "prototype navigation and toolbar"
   ],
-  "live_deployment_authorised": false
+  "live_deployment_authorised": false,
+  "original_class_week_topic_and_page_heading_preserved": true
 }
