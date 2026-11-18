@@ -1,13 +1,17 @@
 # R11 coordinated LIVE release candidate
 
-The owner explicitly approved this coordinated LIVE release on 16 November 2026. Publication and
-verification are pending; this plan is not completion evidence. The owner accepted retaining the
-existing rate settings and the original T14 three-email limitation. No SMTP change, paid service,
-database migration, data change, rate-setting increase or replay of hosted fixtures is part of this
-release.
+## Recorded LIVE evidence
 
-The owner confirmed regenerating the private widget secret; it remains outside the repository and
-must be entered directly in LIVE Supabase only after frontend verification.
+On 18 November 2026, the owner confirmed successfully completing a LIVE teacher sign-in and sign-out
+using CAPTCHA. A separate check of the LIVE password sign-in endpoint without a token returned HTTP
+400 `captcha_failed`. The successful challenge and sign-in/sign-out are owner-confirmed.
+
+The owner previously confirmed regenerating the private widget secret. The private value was never
+recorded, and provider-side rotation was not independently verified. The original
+three-emails-per-hour recovery criterion remains unmet under the accepted two-email hourly cap. No
+SMTP change or paid service was part of the release.
+
+The sections below preserve the original release plan.
 
 ## Prepared changes and verification
 
