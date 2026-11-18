@@ -24,11 +24,28 @@ def sql(file):
             print(line.split('NOTICE:  ', 1)[1])
 
 
+def concurrent_quiz_requests():
+    def benchmark(script, clients, transactions, *options):
+        return subprocess.Popen([
+            'docker', 'exec', name, 'pgbench', '-n', '-h', '127.0.0.1', '-U', 'postgres',
+            '-c', str(clients), '-j', str(min(clients, 8)), '-t', str(transactions),
+            *options, '-f', '/repo/tests/r9/' + script, 'postgres',
+        ], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+    with benchmark('quiz-manager-observer.sql', 1, 100, '--rate=50') as observer:
+        with benchmark('quiz-manager-pressure.sql', 100, 1) as pressure:
+            for process, expected in ((pressure, 100), (observer, 100)):
+                output, _ = process.communicate()
+                if process.returncode or f'number of transactions actually processed: {expected}/{expected}' not in output:
+                    raise RuntimeError('Disposable concurrency check did not complete all requests')
+    print('PASS: 100 concurrent same-address requests and 100 unrelated valid requests completed')
+
+
 try:
     docker('run', '--detach', '--rm', '--name', name, '--network', 'none',
            '--mount', f'type=bind,source={ROOT},target=/repo,readonly',
            '--tmpfs', '/var/lib/postgresql/data', '-e', 'POSTGRES_HOST_AUTH_METHOD=trust',
-           IMAGE, stdout=subprocess.DEVNULL)
+           IMAGE, '-c', 'max_connections=120', stdout=subprocess.DEVNULL)
     for _ in range(60):
         ready = subprocess.run(['docker', 'exec', name, 'pg_isready', '-h', '127.0.0.1', '-U', 'postgres'],
                                capture_output=True).returncode == 0
@@ -40,9 +57,10 @@ try:
     for file in [ROOT / 'tests/r9/bootstrap.sql',
                  *sorted((ROOT / 'supabase/migrations').glob('*.sql')),
                  ROOT / 'supabase/seed.sql', ROOT / 'tests/r9/access.sql',
-                 ROOT / 'tests/r9/quiz.sql', ROOT / 'tests/r10/access-id.sql']:
+                 ROOT / 'tests/r9/quiz.sql', ROOT / 'tests/r9/quiz-manager.sql', ROOT / 'tests/r10/access-id.sql']:
         print('Checking ' + str(file.relative_to(ROOT)), flush=True)
         sql(file)
+    concurrent_quiz_requests()
     print('PASS: migration rebuild, access and quiz integrity suites')
 except subprocess.CalledProcessError as error:
     # Emit the error category only; never SQL context or credential values.

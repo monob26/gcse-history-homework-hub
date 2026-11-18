@@ -98,7 +98,7 @@ body {
 .entry-bg,
 .quiz-bg,
 .result-bg {
-  background-image: url("./assets/approved-collage.png");
+  background-image: url("./assets/approved-collage.webp");
   background-size: cover;
   background-position: center bottom;
 }
@@ -193,7 +193,7 @@ body {
   margin-bottom: 21px;
   background:
     linear-gradient(90deg, #a9dcff 0%, #b6e0ffde 41%, #b7ddff3d 62%, #ffffff00 100%),
-    url("./assets/approved-collage.png") right 60% / cover no-repeat;
+    url("./assets/approved-collage.webp") right 60% / cover no-repeat;
   box-shadow: 0 4px 12px #164e8424;
 }
 .welcome h1 {
@@ -854,7 +854,7 @@ body {
 /* Dashboard and quiz share the approved watercolour and torn-paper lower edge. */
 .quiz-bg,
 #home {
-  background-image: url("./assets/approved-quiz.png");
+  background-image: url("./assets/approved-quiz.webp");
   background-position: center bottom;
   background-size: cover;
 }
