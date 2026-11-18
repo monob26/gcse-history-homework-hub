@@ -4,3 +4,4 @@ node_modules/
 work/
 
 teacher/vendor/
+shared/release.js

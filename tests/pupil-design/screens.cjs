@@ -35,8 +35,8 @@ const root = path.resolve(__dirname, "../..");
         ? "application/javascript"
         : f.endsWith(".css")
           ? "text/css"
-          : f.endsWith(".png")
-            ? "image/png"
+          : f.endsWith(".webp")
+            ? "image/webp"
             : f.endsWith(".svg")
               ? "image/svg+xml"
               : "text/html",

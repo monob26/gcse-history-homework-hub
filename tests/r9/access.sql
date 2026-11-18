@@ -42,11 +42,15 @@ DO $$ DECLARE fn record; role_name text; allowed boolean; BEGIN
  WHERE n.nspname IN ('public','homework_api','homework_private') LOOP
   FOREACH role_name IN ARRAY ARRAY['anon','authenticated'] LOOP
    allowed := role_name='anon' AND fn.nspname='homework_api' AND fn.proname IN
-    ('get_pupil_quiz_timing','get_current_pupil_homework','start_pupil_quiz','open_pupil_question','submit_pupil_answer','complete_pupil_quiz')
+    ('quiz_session','get_pupil_quiz_timing','get_current_pupil_homework','start_pupil_quiz','open_pupil_question','submit_pupil_answer','complete_pupil_quiz')
     OR role_name='anon' AND fn.nspname='homework_private' AND fn.proname IN
-    ('get_pupil_quiz_timing','get_current_pupil_homework','start_pupil_quiz','open_pupil_question','submit_pupil_answer','complete_pupil_quiz')
+    ('qm_home_list','qm3_session','get_pupil_quiz_timing','get_current_pupil_homework','start_pupil_quiz','open_pupil_question','submit_pupil_answer','complete_pupil_quiz')
     OR role_name='authenticated' AND fn.nspname='public' AND fn.proname IN
-    ('is_history_teacher','get_history_class_results','get_history_class_results_by_id');
+    ('is_history_teacher','get_history_class_results','get_history_class_results_by_id',
+     'quiz_manager_class_results','quiz_manager_classes','quiz_manager_import',
+     'quiz_manager_release','quiz_manager_validate','quiz_manager_write')
+    OR role_name='authenticated' AND fn.nspname='homework_private' AND fn.proname IN
+    ('qm3_release','qm3_results','qm_classes','qm_import','qm_validate','qm_write');
    PERFORM pg_temp.check_true(has_function_privilege(role_name,fn.oid,'EXECUTE')=allowed,
      'function EXECUTE allow-list: '||role_name||' '||fn.nspname||'.'||fn.proname);
   END LOOP;

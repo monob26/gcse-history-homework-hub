@@ -5,6 +5,12 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      canonical_ref:
+        description: Canonical hub commit to verify against a teacher mirror pull request
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -20,6 +26,11 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          repository:
+            ${{ inputs.canonical_ref && 'monob26/gcse-history-homework-hub' || github.repository }}
+          ref: ${{ inputs.canonical_ref || github.sha }}
+          persist-credentials: false
       - name: Rebuild disposable PostgreSQL and run SQL regression tests
         run: python3 tests/r9/database.py
 
@@ -29,6 +40,11 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          repository:
+            ${{ inputs.canonical_ref && 'monob26/gcse-history-homework-hub' || github.repository }}
+          ref: ${{ inputs.canonical_ref || github.sha }}
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -40,3 +56,13 @@ jobs:
         run: npm run test:browser
         env:
           PLAYWRIGHT_USE_BUNDLED_CHROMIUM: "1"
+
+      - name: Check proposed mirror against the canonical deployment
+        if: ${{ inputs.canonical_ref }}
+        uses: actions/checkout@v4
+        with:
+          path: work/teacher-mirror
+          persist-credentials: false
+      - name: Verify generated teacher files
+        if: ${{ inputs.canonical_ref }}
+        run: python3 tests/r8/mirror.py work/teacher-mirror
